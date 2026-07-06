@@ -1,0 +1,388 @@
+{
+    "schema":  "dexhand.integration_kit.v1",
+    "hand_id":  "hand1",
+    "display_name":  "hand1 原灵巧手",
+    "model_xml":  "model/1.xml",
+    "driver":  {
+                   "source":  "driver_adapter"
+               },
+    "driver_source":  "driver_adapter",
+    "motor":  {
+                  "kind":  "python_adapter",
+                  "protocols":  [
+                                    "hand1"
+                                ],
+                  "default_protocol":  "hand1",
+                  "default_baudrates":  {
+                                            "hand1":  230400
+                                        },
+                  "actuator_order":  [
+                                         "act_Thumb_joint0",
+                                         "act_Thumb_joint1",
+                                         "act_Thumb_joint2",
+                                         "act_Thumb_joint3",
+                                         "act_Index_joint1",
+                                         "act_Index_joint2",
+                                         "act_Index_joint3",
+                                         "act_Index_joint4",
+                                         "act_Middle_joint1",
+                                         "act_Middle_joint2",
+                                         "act_Middle_joint3",
+                                         "act_Middle_joint4",
+                                         "act_Ring_joint1",
+                                         "act_Ring_joint2",
+                                         "act_Ring_joint3",
+                                         "act_Ring_joint4"
+                                     ],
+                  "force_control_supported":  true,
+                  "adapter_config":  {
+                                         "command_debounce_ms":  16,
+                                         "telemetry_period_ms":  150
+                                     }
+              },
+    "tactile":  {
+                    "default_baudrate":  115200,
+                    "adapter_source":  "tactile_adapter",
+                    "layout":  {
+                                   "patches":  [
+
+                                               ]
+                               },
+                    "adapter_config":  {
+                                           "frame_format":  "raw_6x8",
+                                           "baseline_threshold":  0,
+                                           "baseline_frames":  30,
+                                           "value_scale":  255
+                                       },
+                    "kind":  "external_python"
+                },
+    "teleop":  {
+                   "adapter_source":  "teleop_adapter",
+                   "wrist_link_name":  "base_link",
+                   "adapter_config":  {
+                                          "paired_sigma":  0.45,
+                                          "smoothing_alpha":  0.55,
+                                          "output_unit":  "degree",
+                                          "rate_limit_rad_per_s":  8,
+                                          "input":  "mediapipe_21x3_or_features",
+                                          "paired_k":  5
+                                      },
+                   "kind":  "external_python"
+               },
+    "fingers":  [
+                    {
+                        "name":  "thumb",
+                        "display_name":  "拇指",
+                        "joints":  [
+                                       {
+                                           "name":  "Thumb_joint0",
+                                           "display_name":  "关节0",
+                                           "motor_id":  1,
+                                           "min_angle":  -200.0,
+                                           "max_angle":  200.0,
+                                           "default_angle":  0.0,
+                                           "torque_limit":  150.0,
+                                           "actuator_name":  "act_Thumb_joint0"
+                                       },
+                                       {
+                                           "name":  "Thumb_joint1",
+                                           "display_name":  "关节1",
+                                           "motor_id":  2,
+                                           "min_angle":  -200.0,
+                                           "max_angle":  200.0,
+                                           "default_angle":  0.0,
+                                           "torque_limit":  150.0,
+                                           "actuator_name":  "act_Thumb_joint1"
+                                       },
+                                       {
+                                           "name":  "Thumb_joint2",
+                                           "display_name":  "关节2",
+                                           "motor_id":  3,
+                                           "min_angle":  -200.0,
+                                           "max_angle":  200.0,
+                                           "default_angle":  0.0,
+                                           "torque_limit":  150.0,
+                                           "actuator_name":  "act_Thumb_joint2"
+                                       },
+                                       {
+                                           "name":  "Thumb_joint3",
+                                           "display_name":  "关节3",
+                                           "motor_id":  4,
+                                           "min_angle":  -200.0,
+                                           "max_angle":  200.0,
+                                           "default_angle":  0.0,
+                                           "torque_limit":  150.0,
+                                           "actuator_name":  "act_Thumb_joint3"
+                                       }
+                                   ]
+                    },
+                    {
+                        "name":  "index",
+                        "display_name":  "食指",
+                        "joints":  [
+                                       {
+                                           "name":  "Index_joint1",
+                                           "display_name":  "关节1",
+                                           "motor_id":  5,
+                                           "min_angle":  -200.0,
+                                           "max_angle":  200.0,
+                                           "default_angle":  0.0,
+                                           "torque_limit":  150.0,
+                                           "actuator_name":  "act_Index_joint1"
+                                       },
+                                       {
+                                           "name":  "Index_joint2",
+                                           "display_name":  "关节2",
+                                           "motor_id":  6,
+                                           "min_angle":  -200.0,
+                                           "max_angle":  200.0,
+                                           "default_angle":  0.0,
+                                           "torque_limit":  150.0,
+                                           "actuator_name":  "act_Index_joint2"
+                                       },
+                                       {
+                                           "name":  "Index_joint3",
+                                           "display_name":  "关节3",
+                                           "motor_id":  7,
+                                           "min_angle":  -200.0,
+                                           "max_angle":  200.0,
+                                           "default_angle":  0.0,
+                                           "torque_limit":  150.0,
+                                           "actuator_name":  "act_Index_joint3"
+                                       },
+                                       {
+                                           "name":  "Index_joint4",
+                                           "display_name":  "关节4",
+                                           "motor_id":  8,
+                                           "min_angle":  -200.0,
+                                           "max_angle":  200.0,
+                                           "default_angle":  0.0,
+                                           "torque_limit":  150.0,
+                                           "actuator_name":  "act_Index_joint4"
+                                       }
+                                   ]
+                    },
+                    {
+                        "name":  "middle",
+                        "display_name":  "中指",
+                        "joints":  [
+                                       {
+                                           "name":  "Middle_joint1",
+                                           "display_name":  "关节1",
+                                           "motor_id":  9,
+                                           "min_angle":  -200.0,
+                                           "max_angle":  200.0,
+                                           "default_angle":  0.0,
+                                           "torque_limit":  150.0,
+                                           "actuator_name":  "act_Middle_joint1"
+                                       },
+                                       {
+                                           "name":  "Middle_joint2",
+                                           "display_name":  "关节2",
+                                           "motor_id":  10,
+                                           "min_angle":  -200.0,
+                                           "max_angle":  200.0,
+                                           "default_angle":  0.0,
+                                           "torque_limit":  150.0,
+                                           "actuator_name":  "act_Middle_joint2"
+                                       },
+                                       {
+                                           "name":  "Middle_joint3",
+                                           "display_name":  "关节3",
+                                           "motor_id":  11,
+                                           "min_angle":  -200.0,
+                                           "max_angle":  200.0,
+                                           "default_angle":  0.0,
+                                           "torque_limit":  150.0,
+                                           "actuator_name":  "act_Middle_joint3"
+                                       },
+                                       {
+                                           "name":  "Middle_joint4",
+                                           "display_name":  "关节4",
+                                           "motor_id":  12,
+                                           "min_angle":  -200.0,
+                                           "max_angle":  200.0,
+                                           "default_angle":  0.0,
+                                           "torque_limit":  150.0,
+                                           "actuator_name":  "act_Middle_joint4"
+                                       }
+                                   ]
+                    },
+                    {
+                        "name":  "ring",
+                        "display_name":  "无名指",
+                        "joints":  [
+                                       {
+                                           "name":  "Ring_joint1",
+                                           "display_name":  "关节1",
+                                           "motor_id":  13,
+                                           "min_angle":  -200.0,
+                                           "max_angle":  200.0,
+                                           "default_angle":  0.0,
+                                           "torque_limit":  150.0,
+                                           "actuator_name":  "act_Ring_joint1"
+                                       },
+                                       {
+                                           "name":  "Ring_joint2",
+                                           "display_name":  "关节2",
+                                           "motor_id":  14,
+                                           "min_angle":  -200.0,
+                                           "max_angle":  200.0,
+                                           "default_angle":  0.0,
+                                           "torque_limit":  150.0,
+                                           "actuator_name":  "act_Ring_joint2"
+                                       },
+                                       {
+                                           "name":  "Ring_joint3",
+                                           "display_name":  "关节3",
+                                           "motor_id":  15,
+                                           "min_angle":  -200.0,
+                                           "max_angle":  200.0,
+                                           "default_angle":  0.0,
+                                           "torque_limit":  150.0,
+                                           "actuator_name":  "act_Ring_joint3"
+                                       },
+                                       {
+                                           "name":  "Ring_joint4",
+                                           "display_name":  "关节4",
+                                           "motor_id":  16,
+                                           "min_angle":  -200.0,
+                                           "max_angle":  200.0,
+                                           "default_angle":  0.0,
+                                           "torque_limit":  150.0,
+                                           "actuator_name":  "act_Ring_joint4"
+                                       }
+                                   ]
+                    }
+                ],
+    "gestures":  {
+                     "builtin":  {
+                                     "张开":  [
+                                                0.0,
+                                                0.0,
+                                                0.0,
+                                                0.0,
+                                                0.0,
+                                                0.0,
+                                                0.0,
+                                                0.0,
+                                                0.0,
+                                                0.0,
+                                                0.0,
+                                                0.0,
+                                                0.0,
+                                                0.0,
+                                                0.0,
+                                                0.0
+                                            ],
+                                     "握拳":  [
+                                                20.0,
+                                                80.0,
+                                                80.0,
+                                                70.0,
+                                                90.0,
+                                                100.0,
+                                                90.0,
+                                                80.0,
+                                                90.0,
+                                                100.0,
+                                                90.0,
+                                                80.0,
+                                                90.0,
+                                                100.0,
+                                                90.0,
+                                                80.0
+                                            ],
+                                     "捏取":  [
+                                                25.0,
+                                                60.0,
+                                                50.0,
+                                                40.0,
+                                                60.0,
+                                                50.0,
+                                                40.0,
+                                                30.0,
+                                                0.0,
+                                                0.0,
+                                                0.0,
+                                                0.0,
+                                                0.0,
+                                                0.0,
+                                                0.0,
+                                                0.0
+                                            ],
+                                     "指向":  [
+                                                20.0,
+                                                70.0,
+                                                60.0,
+                                                50.0,
+                                                0.0,
+                                                0.0,
+                                                0.0,
+                                                0.0,
+                                                90.0,
+                                                100.0,
+                                                90.0,
+                                                80.0,
+                                                90.0,
+                                                100.0,
+                                                90.0,
+                                                80.0
+                                            ],
+                                     "OK 手势":  [
+                                                   25.0,
+                                                   70.0,
+                                                   60.0,
+                                                   50.0,
+                                                   70.0,
+                                                   60.0,
+                                                   50.0,
+                                                   40.0,
+                                                   0.0,
+                                                   0.0,
+                                                   0.0,
+                                                   0.0,
+                                                   0.0,
+                                                   0.0,
+                                                   0.0,
+                                                   0.0
+                                               ],
+                                     "三指抓取":  [
+                                                  25.0,
+                                                  55.0,
+                                                  45.0,
+                                                  35.0,
+                                                  55.0,
+                                                  45.0,
+                                                  35.0,
+                                                  25.0,
+                                                  55.0,
+                                                  45.0,
+                                                  35.0,
+                                                  25.0,
+                                                  0.0,
+                                                  0.0,
+                                                  0.0,
+                                                  0.0
+                                              ],
+                                     "竖大拇指":  [
+                                                  0.0,
+                                                  0.0,
+                                                  0.0,
+                                                  0.0,
+                                                  90.0,
+                                                  100.0,
+                                                  90.0,
+                                                  80.0,
+                                                  90.0,
+                                                  100.0,
+                                                  90.0,
+                                                  80.0,
+                                                  90.0,
+                                                  100.0,
+                                                  90.0,
+                                                  80.0
+                                              ]
+                                 }
+                 }
+}

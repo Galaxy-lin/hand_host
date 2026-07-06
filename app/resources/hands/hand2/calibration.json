@@ -1,0 +1,116 @@
+{
+  "joints": [
+    {
+      "name": "if_mcp",
+      "motor_id": 5,
+      "min_angle": -17.99,
+      "max_angle": 111.73,
+      "default_angle": 0.0
+    },
+    {
+      "name": "if_rot",
+      "motor_id": 6,
+      "min_angle": -59.99,
+      "max_angle": 59.99,
+      "default_angle": 0.0
+    },
+    {
+      "name": "if_pip",
+      "motor_id": 7,
+      "min_angle": -28.99,
+      "max_angle": 108.0,
+      "default_angle": 0.0
+    },
+    {
+      "name": "if_dip",
+      "motor_id": 8,
+      "min_angle": -20.97,
+      "max_angle": 117.0,
+      "default_angle": 0.0
+    },
+    {
+      "name": "mf_mcp",
+      "motor_id": 9,
+      "min_angle": -17.99,
+      "max_angle": 111.73,
+      "default_angle": 0.0
+    },
+    {
+      "name": "mf_rot",
+      "motor_id": 10,
+      "min_angle": -59.99,
+      "max_angle": 59.99,
+      "default_angle": 0.0
+    },
+    {
+      "name": "mf_pip",
+      "motor_id": 11,
+      "min_angle": -28.99,
+      "max_angle": 108.0,
+      "default_angle": 0.0
+    },
+    {
+      "name": "mf_dip",
+      "motor_id": 12,
+      "min_angle": -20.97,
+      "max_angle": 117.0,
+      "default_angle": 0.0
+    },
+    {
+      "name": "rf_mcp",
+      "motor_id": 13,
+      "min_angle": -17.99,
+      "max_angle": 111.73,
+      "default_angle": 0.0
+    },
+    {
+      "name": "rf_rot",
+      "motor_id": 14,
+      "min_angle": -59.99,
+      "max_angle": 59.99,
+      "default_angle": 0.0
+    },
+    {
+      "name": "rf_pip",
+      "motor_id": 15,
+      "min_angle": -28.99,
+      "max_angle": 108.0,
+      "default_angle": 0.0
+    },
+    {
+      "name": "rf_dip",
+      "motor_id": 16,
+      "min_angle": -20.97,
+      "max_angle": 117.0,
+      "default_angle": 0.0
+    },
+    {
+      "name": "th_cmc",
+      "motor_id": 1,
+      "min_angle": -20.0,
+      "max_angle": 119.98,
+      "default_angle": 0.0
+    },
+    {
+      "name": "th_axl",
+      "motor_id": 2,
+      "min_angle": -119.98,
+      "max_angle": 20.0,
+      "default_angle": 0.0
+    },
+    {
+      "name": "th_mcp",
+      "motor_id": 3,
+      "min_angle": -26.93,
+      "max_angle": 139.97,
+      "default_angle": 0.0
+    },
+    {
+      "name": "th_ipl",
+      "motor_id": 4,
+      "min_angle": -76.78,
+      "max_angle": 107.72,
+      "default_angle": 0.0
+    }
+  ]
+}

@@ -1,0 +1,410 @@
+<?xml version="1.0" ?>
+<mujoco model="Whole_hands_final_version_urdf">
+  
+  
+  <default>
+    <geom solimp="0.999 0.999 0.001 0.0001 1" solref="0.0001 1" friction=".2"/>
+    <joint damping="0.03" frictionloss="0.001" armature="0.1"/>
+    <position kp="20" kv="2.0"/>
+    <default class="visual">
+      <geom group="1" type="mesh" contype="0" conaffinity="0" density="0" rgba="0.8 0.8 0.8 0.3"/>
+    </default>
+  </default>
+  <option integrator="implicitfast" cone="elliptic" timestep="0.002" solver="CG" iterations="50" tolerance="1e-10"/>
+  <compiler angle="radian"/>
+  
+
+  
+  <asset>
+    
+    
+    <mesh name="base_link" file="meshes/base_link.STL"/>
+    
+    
+    <mesh name="Thumb_link0" file="meshes/Thumb_link0.STL"/>
+    
+    
+    <mesh name="Thumb_link1" file="meshes/Thumb_link1.STL"/>
+    
+    
+    <mesh name="Thumb_link2" file="meshes/Thumb_link2.STL"/>
+    
+    
+    <mesh name="Thumb_Tip" file="meshes/Thumb_Tip.STL"/>
+    
+    
+    <mesh name="Thumb_Visual_link" file="meshes/Thumb_Visual_link.STL"/>
+    
+    
+    <mesh name="Index_link1" file="meshes/Index_link1.STL"/>
+    
+    
+    <mesh name="Index_link2" file="meshes/Index_link2.STL"/>
+    
+    
+    <mesh name="Index_link3" file="meshes/Index_link3.STL"/>
+    
+    
+    <mesh name="Index_Tip" file="meshes/Index_Tip.STL"/>
+    
+    
+    <mesh name="Index_Visual_link" file="meshes/Index_Visual_link.STL"/>
+    
+    
+    <mesh name="Middle_link1" file="meshes/Middle_link1.STL"/>
+    
+    
+    <mesh name="Middle_link2" file="meshes/Middle_link2.STL"/>
+    
+    
+    <mesh name="Middle_link3" file="meshes/Middle_link3.STL"/>
+    
+    
+    <mesh name="Middle_Tip" file="meshes/Middle_Tip.STL"/>
+    
+    
+    <mesh name="Middle_Visual_link" file="meshes/Middle_Visual_link.STL"/>
+    
+    
+    <mesh name="Ring_link1" file="meshes/Ring_link1.STL"/>
+    
+    
+    <mesh name="Ring_link2" file="meshes/Ring_link2.STL"/>
+    
+    
+    <mesh name="Ring_link3" file="meshes/Ring_link3.STL"/>
+    
+    
+    <mesh name="Ring_Tip" file="meshes/Ring_Tip.STL"/>
+    
+    
+    <mesh name="Ring_Visual_link" file="meshes/Ring_Visual_link.STL"/>
+    
+  
+  </asset>
+  
+
+  
+  <worldbody>
+    
+    
+    <body name="base_link">
+      <geom type="mesh" rgba="0.792157 0.819608 0.933333 1" mesh="base_link"/>
+      
+    
+    </body>
+    <body name="Thumb_link0" pos="-0.02095 0.0106 0.026" quat="0.707105 0 -0.707108 0">
+      
+      
+      <inertial pos="4.66885e-10 -0.0103646 -0.0160065" quat="0.737574 0.675266 0 0" mass="0.022982250000000003" diaginertia="1.6751925e-05 1.66931e-05 2.431245e-06"/>
+      
+      
+      <joint name="Thumb_joint0" pos="0 0 0" axis="0 0 -1" range="-0.7 0.16"/>
+      
+      
+      <geom type="mesh" rgba="1 1 1 1" mesh="Thumb_link0"/>
+      
+      
+      <body name="Thumb_link1" pos="0 0 -0.02045" quat="0.707105 0 0.707108 0">
+        
+        
+        <inertial pos="0.000494344 0.0340888 -0.00284837" quat="0.495642 0.46166 -0.522211 0.518175" mass="0.015391199999999999" diaginertia="4.790524999999999e-05 4.5140749999999996e-05 5.6168999999999995e-06"/>
+        
+        
+        <joint name="Thumb_joint1" pos="0 0 0" axis="0 0 -1" range="-0.1745 2.0944"/>
+        
+        
+        <geom type="mesh" rgba="1 1 1 1" mesh="Thumb_link1"/>
+        
+        
+        <body name="Thumb_link2" pos="0 0.074974 0.0019633" quat="0.499998 -0.5 0.500002 -0.5">
+          
+          
+          <inertial pos="-0.00374906 -0.023 -4.2124e-10" quat="0.708078 0.706134 0 0" mass="0.081434" diaginertia="0.00010550575000000001 9.28255e-05 4.0118e-05"/>
+          
+          
+          <joint name="Thumb_joint2" pos="0 0 0" axis="0 0 1" range="-0.1745 1.7453"/>
+          
+          
+          <geom type="mesh" rgba="1 1 1 1" mesh="Thumb_link2"/>
+          
+          
+          <body name="Thumb_Tip" pos="0 -0.046 0" quat="-3.67321e-06 1 0 0">
+            
+            
+            <inertial pos="-0.00159557 0.0209992 0.000277567" quat="0.996894 0.0758203 0.00290559 0.0210905" mass="0.05482" diaginertia="5.6283500000000004e-05 4.620775e-05 3.5498000000000005e-05"/>
+            
+            
+            <joint name="Thumb_joint3" pos="0 0 0" axis="0 0 -1" range="-0.1745 1.7453"/>
+            
+            
+            <geom type="mesh" rgba="1 1 1 1" mesh="Thumb_Tip"/>
+            
+            
+            <body name="Thumb_Visual_link" pos="0 0.0325 0">
+              <geom type="mesh" rgba="0.8 0.8 0.8 0.3" mesh="Thumb_Visual_link" contype="0" conaffinity="0"/>
+              
+          
+            </body>
+          </body>
+          
+        
+        </body>
+        
+      
+      </body>
+      
+    
+    </body>
+    
+    
+    <body name="Index_link1" pos="-0.02045 0.036 0.08606" quat="0.499998 0.5 -0.500002 -0.5">
+      
+      
+      <inertial pos="4.39628e-10 -1.48592e-06 -0.0161626" quat="0.521415 0.477626 -0.477626 0.521415" mass="0.028166049999999998" diaginertia="1.7584475e-05 1.6982925e-05 3.3909749999999998e-06"/>
+      
+      
+      <joint name="Index_joint1" pos="0 0 0" axis="0 0 -1" range="-0.7854 0.4363"/>
+      
+      
+      <geom type="mesh" rgba="1 1 1 1" mesh="Index_link1"/>
+      
+      
+      <body name="Index_link2" pos="0 0.0115 -0.02045" quat="0.707105 0 0.707108 0">
+        
+        
+        <inertial pos="-0.0008122 0.014445 -0.000491424" quat="0.995866 0.0851953 -0.00204373 -0.0314434" mass="0.012465799999999999" diaginertia="1.0843425e-05 9.5869e-06 6.736100000000001e-06"/>
+        
+        
+        <joint name="Index_joint2" pos="0 0 0" axis="0 0 -1" range="-0.1745 1.57"/>
+        
+        
+        <geom type="mesh" rgba="1 1 1 1" mesh="Index_link2"/>
+        
+        
+        <body name="Index_link3" pos="0 0.03 0" quat="-3.67321e-06 -1 0 0">
+          
+          
+          <inertial pos="-0.00403015 -0.0215 0" quat="0.706334 0.707879 0 0" mass="0.073764" diaginertia="8.587425e-05 7.949975e-05 2.8657e-05"/>
+          
+          
+          <joint name="Index_joint3" pos="0 0 0" axis="0 0 1" range="-0.1745 1.57"/>
+          
+          
+          <geom type="mesh" rgba="1 1 1 1" mesh="Index_link3"/>
+          
+          
+          <body name="Index_Tip" pos="0 -0.043 0" quat="-3.67321e-06 -1 0 0">
+            
+            
+            <inertial pos="-0.00297848 0.0192579 0.000298891" quat="0.985005 0.128443 0.0101838 0.114734" mass="0.0411587" diaginertia="3.117325e-05 2.5921e-05 2.11057e-05"/>
+            
+            
+            <joint name="Index_joint4" pos="0 0 0" axis="0 0 -1" range="-0.1745 1.57"/>
+            
+            
+            <geom type="mesh" rgba="1 1 1 1" mesh="Index_Tip"/>
+            
+            
+            <body name="Index_Visual_link" pos="0 0.03 0" quat="0.707105 -0.707108 0 0">
+              <geom type="mesh" rgba="0.8 0.8 0.8 0.3" mesh="Index_Visual_link" contype="0" conaffinity="0"/>
+              
+          
+            </body>
+          </body>
+          
+        
+        </body>
+        
+      
+      </body>
+      
+    
+    </body>
+    
+    
+    <body name="Middle_link1" pos="-0.02045 0 0.096" quat="0.499998 0.5 -0.500002 -0.5">
+      
+      
+      <inertial pos="4.39628e-10 -1.48592e-06 -0.0161626" quat="0.521415 0.477626 -0.477626 0.521415" mass="0.028166049999999998" diaginertia="1.7584475e-05 1.6982925e-05 3.3909749999999998e-06"/>
+      
+      
+      <joint name="Middle_joint1" pos="0 0 0" axis="0 0 -1" range="-0.4363 0.4363"/>
+      
+      
+      <geom type="mesh" rgba="1 1 1 1" mesh="Middle_link1"/>
+      
+      
+      <body name="Middle_link2" pos="0 0.0115 -0.02045" quat="0.707105 0 0.707108 0">
+        
+        
+        <inertial pos="-0.0008122 0.014445 -0.000491424" quat="0.995866 0.0851953 -0.00204373 -0.0314434" mass="0.012465799999999999" diaginertia="1.0843425e-05 9.5869e-06 6.736100000000001e-06"/>
+        
+        
+        <joint name="Middle_joint2" pos="0 0 0" axis="0 0 -1" range="-0.1745 1.57"/>
+        
+        
+        <geom type="mesh" rgba="1 1 1 1" mesh="Middle_link2"/>
+        
+        
+        <body name="Middle_link3" pos="0 0.03 0" quat="-3.67321e-06 -1 0 0">
+          
+          
+          <inertial pos="-0.00403015 -0.0215 0" quat="0.706334 0.707879 0 0" mass="0.073764" diaginertia="8.587425e-05 7.949975e-05 2.8657e-05"/>
+          
+          
+          <joint name="Middle_joint3" pos="0 0 0" axis="0 0 1" range="-0.1745 1.57"/>
+          
+          
+          <geom type="mesh" rgba="1 1 1 1" mesh="Middle_link3"/>
+          
+          
+          <body name="Middle_Tip" pos="0 -0.043 0" quat="-3.67321e-06 -1 0 0">
+            
+            
+            <inertial pos="-0.00297848 0.0192579 0.000298891" quat="0.985005 0.128443 0.0101838 0.114734" mass="0.0411587" diaginertia="3.117325e-05 2.5921e-05 2.11057e-05"/>
+            
+            
+            <joint name="Middle_joint4" pos="0 0 0" axis="0 0 -1" range="-0.1745 1.57"/>
+            
+            
+            <geom type="mesh" rgba="1 1 1 1" mesh="Middle_Tip"/>
+            
+            
+            <body name="Middle_Visual_link" pos="0 0.03 0" quat="0.707105 -0.707108 0 0">
+              <geom type="mesh" rgba="0.8 0.8 0.8 0.3" mesh="Middle_Visual_link" contype="0" conaffinity="0"/>
+              
+          
+            </body>
+          </body>
+          
+        
+        </body>
+        
+      
+      </body>
+      
+    
+    </body>
+    
+    
+    <body name="Ring_link1" pos="-0.02045 -0.036 0.08629" quat="0.499998 0.5 -0.500002 -0.5">
+      
+      
+      <inertial pos="4.39628e-10 -1.48592e-06 -0.0161626" quat="0.521415 0.477626 -0.477626 0.521415" mass="0.028166049999999998" diaginertia="1.7584475e-05 1.6982925e-05 3.3909749999999998e-06"/>
+      
+      
+      <joint name="Ring_joint1" pos="0 0 0" axis="0 0 -1" range="-0.4363 0.7854"/>
+      
+      
+      <geom type="mesh" rgba="0.792157 0.819608 0.933333 1" mesh="Ring_link1"/>
+      
+      
+      <body name="Ring_link2" pos="0 0.0115 -0.02045" quat="0.707105 0 0.707108 0">
+        
+        
+        <inertial pos="-0.0008122 0.014445 -0.000491424" quat="0.995866 0.0851953 -0.00204373 -0.0314434" mass="0.012465799999999999" diaginertia="1.0843425e-05 9.5869e-06 6.736100000000001e-06"/>
+        
+        
+        <joint name="Ring_joint2" pos="0 0 0" axis="0 0 -1" range="-0.1745 1.57"/>
+        
+        
+        <geom type="mesh" rgba="1 1 1 1" mesh="Ring_link2"/>
+        
+        
+        <body name="Ring_link3" pos="0 0.03 0" quat="-3.67321e-06 -1 0 0">
+          
+          
+          <inertial pos="-0.00403015 -0.0215 0" quat="0.706334 0.707879 0 0" mass="0.073764" diaginertia="8.587425e-05 7.949975e-05 2.8657e-05"/>
+          
+          
+          <joint name="Ring_joint3" pos="0 0 0" axis="0 0 1" range="-0.1745 1.57"/>
+          
+          
+          <geom type="mesh" rgba="1 1 1 1" mesh="Ring_link3"/>
+          
+          
+          <body name="Ring_Tip" pos="0 -0.043 0" quat="-3.67321e-06 -1 0 0">
+            
+            
+            <inertial pos="-0.00297848 0.0192579 0.000298891" quat="0.985005 0.128443 0.0101838 0.114734" mass="0.0411587" diaginertia="3.117325e-05 2.5921e-05 2.11057e-05"/>
+            
+            
+            <joint name="Ring_joint4" pos="0 0 0" axis="0 0 -1" range="-0.1745 1.57"/>
+            
+            
+            <geom type="mesh" rgba="1 1 1 1" mesh="Ring_Tip"/>
+            
+            
+            <body name="Ring_Visual_link" pos="0 0.03 0" quat="0.707105 -0.707108 0 0">
+              <geom type="mesh" rgba="0.8 0.8 0.8 0.3" mesh="Ring_Visual_link" contype="0" conaffinity="0"/>
+              
+          
+            </body>
+          </body>
+          
+        
+        </body>
+        
+      
+      </body>
+      
+    
+    </body>
+    
+  
+  </worldbody>
+  
+
+  <contact>
+    <exclude body1="Thumb_link0" body2="Thumb_link1"/>
+    <exclude body1="Thumb_link1" body2="Thumb_link2"/>
+    <exclude body1="Thumb_link2" body2="Thumb_Tip"/>
+    <exclude body1="Index_link1" body2="Index_link2"/>
+    <exclude body1="Index_link2" body2="Index_link3"/>
+    <exclude body1="Index_link3" body2="Index_Tip"/>
+    <exclude body1="Middle_link1" body2="Middle_link2"/>
+    <exclude body1="Middle_link2" body2="Middle_link3"/>
+    <exclude body1="Middle_link3" body2="Middle_Tip"/>
+    <exclude body1="Ring_link1" body2="Ring_link2"/>
+    <exclude body1="Ring_link2" body2="Ring_link3"/>
+    <exclude body1="Ring_link3" body2="Ring_Tip"/>
+    <exclude body1="base_link" body2="Thumb_link0"/>
+    <exclude body1="base_link" body2="Thumb_link1"/>
+    <exclude body1="base_link" body2="Thumb_link2"/>
+    <exclude body1="base_link" body2="Thumb_Tip"/>
+    <exclude body1="base_link" body2="Index_link1"/>
+    <exclude body1="base_link" body2="Index_link2"/>
+    <exclude body1="base_link" body2="Index_link3"/>
+    <exclude body1="base_link" body2="Index_Tip"/>
+    <exclude body1="base_link" body2="Middle_link1"/>
+    <exclude body1="base_link" body2="Middle_link2"/>
+    <exclude body1="base_link" body2="Middle_link3"/>
+    <exclude body1="base_link" body2="Middle_Tip"/>
+    <exclude body1="base_link" body2="Ring_link1"/>
+    <exclude body1="base_link" body2="Ring_link2"/>
+    <exclude body1="base_link" body2="Ring_link3"/>
+    <exclude body1="base_link" body2="Ring_Tip"/>
+    <exclude body1="Thumb_link0" body2="Index_link1"/>
+    <exclude body1="Index_link1" body2="Middle_link1"/>
+    <exclude body1="Middle_link1" body2="Ring_link1"/>
+  </contact>
+  <actuator>
+    <position name="act_Thumb_joint0" joint="Thumb_joint0" ctrlrange="-0.7 0.16"/>
+    <position name="act_Thumb_joint1" joint="Thumb_joint1" ctrlrange="-0.1745 2.0944"/>
+    <position name="act_Thumb_joint2" joint="Thumb_joint2" ctrlrange="-0.1745 1.7453"/>
+    <position name="act_Thumb_joint3" joint="Thumb_joint3" ctrlrange="-0.1745 1.7453"/>
+    <position name="act_Index_joint1" joint="Index_joint1" ctrlrange="-0.7854 0.4363"/>
+    <position name="act_Index_joint2" joint="Index_joint2" ctrlrange="-0.1745 1.57"/>
+    <position name="act_Index_joint3" joint="Index_joint3" ctrlrange="-0.1745 1.57"/>
+    <position name="act_Index_joint4" joint="Index_joint4" ctrlrange="-0.1745 1.57"/>
+    <position name="act_Middle_joint1" joint="Middle_joint1" ctrlrange="-0.4363 0.4363"/>
+    <position name="act_Middle_joint2" joint="Middle_joint2" ctrlrange="-0.1745 1.57"/>
+    <position name="act_Middle_joint3" joint="Middle_joint3" ctrlrange="-0.1745 1.57"/>
+    <position name="act_Middle_joint4" joint="Middle_joint4" ctrlrange="-0.1745 1.57"/>
+    <position name="act_Ring_joint1" joint="Ring_joint1" ctrlrange="-0.4363 0.7854"/>
+    <position name="act_Ring_joint2" joint="Ring_joint2" ctrlrange="-0.1745 1.57"/>
+    <position name="act_Ring_joint3" joint="Ring_joint3" ctrlrange="-0.1745 1.57"/>
+    <position name="act_Ring_joint4" joint="Ring_joint4" ctrlrange="-0.1745 1.57"/>
+  </actuator>
+</mujoco>

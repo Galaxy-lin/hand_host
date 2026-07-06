@@ -1,0 +1,1488 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mujoco model="leap_hand_sensor_5_rh">
+  <compiler angle="radian" meshdir="./meshes/" />
+  <option integrator="implicitfast" cone="elliptic" impratio="100" />
+  <statistic center="0.0 -0.09 0.29" extent="0.36" />
+  <asset>
+    <material name="white" rgba="1 1 1 1" />
+    <material name="sensor_blue" rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+    <material name="collision_clear" rgba="0 0 0 0" />
+    <mesh name="base_link" file="base_link.STL" />
+    <mesh name="index_link1" file="index_link1.STL" />
+    <mesh name="index_link2" file="index_link2.STL" />
+    <mesh name="index_link3" file="index_link3.STL" />
+    <mesh name="index_tip" file="index_tip.STL" />
+    <mesh name="middle_link1" file="middle_link1.STL" />
+    <mesh name="middle_link2" file="middle_link2.STL" />
+    <mesh name="middle_link3" file="middle_link3.STL" />
+    <mesh name="middle_tip" file="middle_tip.STL" />
+    <mesh name="ring_link1" file="ring_link1.STL" />
+    <mesh name="ring_link2" file="ring_link2.STL" />
+    <mesh name="ring_link3" file="ring_link3.STL" />
+    <mesh name="ring_tip" file="ring_tip.STL" />
+    <mesh name="thumb_link1" file="thumb_link1.STL" />
+    <mesh name="thumb_link2" file="thumb_link2.STL" />
+    <mesh name="thumb_link3" file="thumb_link3.STL" />
+    <mesh name="thumb_tip" file="thumb_tip.STL" />
+  </asset>
+  <default>
+    <geom solimp="0.95 0.99 0.001 0.5 2" solref="0.005 1" friction="1.0 0.005 0.0001" condim="3" />
+    <position kp="3.0" kv="0.01" />
+    <joint damping="0.03" frictionloss="0.001" />
+    <default class="visual">
+      <geom group="1" type="mesh" contype="0" conaffinity="0" density="0" />
+    </default>
+    <default class="collision">
+      <geom group="3" type="mesh" contype="1" conaffinity="1" rgba="0 0 0 0" friction="0.5" />
+    </default>
+    <default class="mcp">
+      <joint limited="true" range="-0.314 1.95" />
+      <position ctrlrange="-0.314 1.95" />
+    </default>
+    <default class="rot">
+      <joint limited="true" range="-1.047 1.047" />
+      <position ctrlrange="-1.047 1.047" />
+    </default>
+    <default class="pip">
+      <joint limited="true" range="-0.506 1.885" />
+      <position ctrlrange="-0.506 1.885" />
+    </default>
+    <default class="dip">
+      <joint limited="true" range="-0.366 2.042" />
+      <position ctrlrange="-0.366 2.042" />
+    </default>
+    <default class="thumb_cmc">
+      <joint limited="true" range="-0.349 2.094" />
+      <position ctrlrange="-0.349 2.094" />
+    </default>
+    <default class="thumb_axl">
+      <joint limited="true" range="-2.094 0.349" />
+      <position ctrlrange="-2.094 0.349" />
+    </default>
+    <default class="thumb_mcp">
+      <joint limited="true" range="-0.47 2.443" />
+      <position ctrlrange="-0.47 2.443" />
+    </default>
+    <default class="thumb_ipl">
+      <joint limited="true" range="-1.34 1.88" />
+      <position ctrlrange="-1.34 1.88" />
+    </default>
+  </default>
+  <contact>
+    <exclude body1="palm" body2="if_bs" />
+    <exclude body1="palm" body2="mf_bs" />
+    <exclude body1="palm" body2="rf_bs" />
+    <exclude body1="palm" body2="th_mp" />
+    <exclude body1="palm" body2="if_px" />
+    <exclude body1="palm" body2="mf_px" />
+    <exclude body1="palm" body2="rf_px" />
+    <exclude body1="palm" body2="th_bs" />
+    <exclude body1="palm" body2="if_md" />
+    <exclude body1="palm" body2="mf_md" />
+    <exclude body1="palm" body2="rf_md" />
+    <exclude body1="palm" body2="th_px" />
+    <exclude body1="if_bs" body2="if_px" />
+    <exclude body1="if_bs" body2="if_md" />
+    <exclude body1="if_bs" body2="if_ds" />
+    <exclude body1="if_px" body2="if_md" />
+    <exclude body1="if_px" body2="if_ds" />
+    <exclude body1="if_md" body2="if_ds" />
+    <exclude body1="mf_bs" body2="mf_px" />
+    <exclude body1="mf_bs" body2="mf_md" />
+    <exclude body1="mf_bs" body2="mf_ds" />
+    <exclude body1="mf_px" body2="mf_md" />
+    <exclude body1="mf_px" body2="mf_ds" />
+    <exclude body1="mf_md" body2="mf_ds" />
+    <exclude body1="rf_bs" body2="rf_px" />
+    <exclude body1="rf_bs" body2="rf_md" />
+    <exclude body1="rf_bs" body2="rf_ds" />
+    <exclude body1="rf_px" body2="rf_md" />
+    <exclude body1="rf_px" body2="rf_ds" />
+    <exclude body1="rf_md" body2="rf_ds" />
+    <exclude body1="th_mp" body2="th_bs" />
+    <exclude body1="th_mp" body2="th_px" />
+    <exclude body1="th_mp" body2="th_ds" />
+    <exclude body1="th_bs" body2="th_px" />
+    <exclude body1="th_bs" body2="th_ds" />
+    <exclude body1="th_px" body2="th_ds" />
+  </contact>
+  <actuator>
+    <position name="if_mcp_act" joint="if_mcp" class="mcp" />
+    <position name="if_rot_act" joint="if_rot" class="rot" />
+    <position name="if_pip_act" joint="if_pip" class="pip" />
+    <position name="if_dip_act" joint="if_dip" class="dip" />
+    <position name="mf_mcp_act" joint="mf_mcp" class="mcp" />
+    <position name="mf_rot_act" joint="mf_rot" class="rot" />
+    <position name="mf_pip_act" joint="mf_pip" class="pip" />
+    <position name="mf_dip_act" joint="mf_dip" class="dip" />
+    <position name="rf_mcp_act" joint="rf_mcp" class="mcp" />
+    <position name="rf_rot_act" joint="rf_rot" class="rot" />
+    <position name="rf_pip_act" joint="rf_pip" class="pip" />
+    <position name="rf_dip_act" joint="rf_dip" class="dip" />
+    <position name="th_cmc_act" joint="th_cmc" class="thumb_cmc" />
+    <position name="th_axl_act" joint="th_axl" class="thumb_axl" />
+    <position name="th_mcp_act" joint="th_mcp" class="thumb_mcp" />
+    <position name="th_ipl_act" joint="th_ipl" class="thumb_ipl" />
+  </actuator>
+  <sensor>
+    <jointpos name="if_mcp_sensor" joint="if_mcp" />
+    <jointpos name="if_rot_sensor" joint="if_rot" />
+    <jointpos name="if_pip_sensor" joint="if_pip" />
+    <jointpos name="if_dip_sensor" joint="if_dip" />
+    <jointpos name="mf_mcp_sensor" joint="mf_mcp" />
+    <jointpos name="mf_rot_sensor" joint="mf_rot" />
+    <jointpos name="mf_pip_sensor" joint="mf_pip" />
+    <jointpos name="mf_dip_sensor" joint="mf_dip" />
+    <jointpos name="rf_mcp_sensor" joint="rf_mcp" />
+    <jointpos name="rf_rot_sensor" joint="rf_rot" />
+    <jointpos name="rf_pip_sensor" joint="rf_pip" />
+    <jointpos name="rf_dip_sensor" joint="rf_dip" />
+    <jointpos name="th_cmc_sensor" joint="th_cmc" />
+    <jointpos name="th_axl_sensor" joint="th_axl" />
+    <jointpos name="th_mcp_sensor" joint="th_mcp" />
+    <jointpos name="th_ipl_sensor" joint="th_ipl" />
+    <touch name="touch_tx_palm_r0_c0" site="tx_palm_r0_c0" />
+    <touch name="touch_tx_palm_r0_c1" site="tx_palm_r0_c1" />
+    <touch name="touch_tx_palm_r0_c2" site="tx_palm_r0_c2" />
+    <touch name="touch_tx_palm_r0_c3" site="tx_palm_r0_c3" />
+    <touch name="touch_tx_palm_r0_c4" site="tx_palm_r0_c4" />
+    <touch name="touch_tx_palm_r0_c5" site="tx_palm_r0_c5" />
+    <touch name="touch_tx_palm_r0_c6" site="tx_palm_r0_c6" />
+    <touch name="touch_tx_palm_r0_c7" site="tx_palm_r0_c7" />
+    <touch name="touch_tx_palm_r0_c8" site="tx_palm_r0_c8" />
+    <touch name="touch_tx_palm_r0_c9" site="tx_palm_r0_c9" />
+    <touch name="touch_tx_palm_r0_c10" site="tx_palm_r0_c10" />
+    <touch name="touch_tx_palm_r0_c11" site="tx_palm_r0_c11" />
+    <touch name="touch_tx_palm_r0_c12" site="tx_palm_r0_c12" />
+    <touch name="touch_tx_palm_r0_c13" site="tx_palm_r0_c13" />
+    <touch name="touch_tx_palm_r0_c14" site="tx_palm_r0_c14" />
+    <touch name="touch_tx_palm_r0_c15" site="tx_palm_r0_c15" />
+    <touch name="touch_tx_palm_r1_c0" site="tx_palm_r1_c0" />
+    <touch name="touch_tx_palm_r1_c1" site="tx_palm_r1_c1" />
+    <touch name="touch_tx_palm_r1_c2" site="tx_palm_r1_c2" />
+    <touch name="touch_tx_palm_r1_c3" site="tx_palm_r1_c3" />
+    <touch name="touch_tx_palm_r1_c4" site="tx_palm_r1_c4" />
+    <touch name="touch_tx_palm_r1_c5" site="tx_palm_r1_c5" />
+    <touch name="touch_tx_palm_r1_c6" site="tx_palm_r1_c6" />
+    <touch name="touch_tx_palm_r1_c7" site="tx_palm_r1_c7" />
+    <touch name="touch_tx_palm_r1_c8" site="tx_palm_r1_c8" />
+    <touch name="touch_tx_palm_r1_c9" site="tx_palm_r1_c9" />
+    <touch name="touch_tx_palm_r1_c10" site="tx_palm_r1_c10" />
+    <touch name="touch_tx_palm_r1_c11" site="tx_palm_r1_c11" />
+    <touch name="touch_tx_palm_r1_c12" site="tx_palm_r1_c12" />
+    <touch name="touch_tx_palm_r1_c13" site="tx_palm_r1_c13" />
+    <touch name="touch_tx_palm_r1_c14" site="tx_palm_r1_c14" />
+    <touch name="touch_tx_palm_r1_c15" site="tx_palm_r1_c15" />
+    <touch name="touch_tx_palm_r2_c0" site="tx_palm_r2_c0" />
+    <touch name="touch_tx_palm_r2_c1" site="tx_palm_r2_c1" />
+    <touch name="touch_tx_palm_r2_c2" site="tx_palm_r2_c2" />
+    <touch name="touch_tx_palm_r2_c3" site="tx_palm_r2_c3" />
+    <touch name="touch_tx_palm_r2_c4" site="tx_palm_r2_c4" />
+    <touch name="touch_tx_palm_r2_c5" site="tx_palm_r2_c5" />
+    <touch name="touch_tx_palm_r2_c6" site="tx_palm_r2_c6" />
+    <touch name="touch_tx_palm_r2_c7" site="tx_palm_r2_c7" />
+    <touch name="touch_tx_palm_r2_c8" site="tx_palm_r2_c8" />
+    <touch name="touch_tx_palm_r2_c9" site="tx_palm_r2_c9" />
+    <touch name="touch_tx_palm_r2_c10" site="tx_palm_r2_c10" />
+    <touch name="touch_tx_palm_r2_c11" site="tx_palm_r2_c11" />
+    <touch name="touch_tx_palm_r2_c12" site="tx_palm_r2_c12" />
+    <touch name="touch_tx_palm_r2_c13" site="tx_palm_r2_c13" />
+    <touch name="touch_tx_palm_r2_c14" site="tx_palm_r2_c14" />
+    <touch name="touch_tx_palm_r2_c15" site="tx_palm_r2_c15" />
+    <touch name="touch_tx_palm_r3_c0" site="tx_palm_r3_c0" />
+    <touch name="touch_tx_palm_r3_c1" site="tx_palm_r3_c1" />
+    <touch name="touch_tx_palm_r3_c2" site="tx_palm_r3_c2" />
+    <touch name="touch_tx_palm_r3_c3" site="tx_palm_r3_c3" />
+    <touch name="touch_tx_palm_r3_c4" site="tx_palm_r3_c4" />
+    <touch name="touch_tx_palm_r3_c5" site="tx_palm_r3_c5" />
+    <touch name="touch_tx_palm_r3_c6" site="tx_palm_r3_c6" />
+    <touch name="touch_tx_palm_r3_c7" site="tx_palm_r3_c7" />
+    <touch name="touch_tx_palm_r3_c8" site="tx_palm_r3_c8" />
+    <touch name="touch_tx_palm_r3_c9" site="tx_palm_r3_c9" />
+    <touch name="touch_tx_palm_r3_c10" site="tx_palm_r3_c10" />
+    <touch name="touch_tx_palm_r3_c11" site="tx_palm_r3_c11" />
+    <touch name="touch_tx_palm_r3_c12" site="tx_palm_r3_c12" />
+    <touch name="touch_tx_palm_r3_c13" site="tx_palm_r3_c13" />
+    <touch name="touch_tx_palm_r3_c14" site="tx_palm_r3_c14" />
+    <touch name="touch_tx_palm_r3_c15" site="tx_palm_r3_c15" />
+    <touch name="touch_tx_palm_r4_c0" site="tx_palm_r4_c0" />
+    <touch name="touch_tx_palm_r4_c1" site="tx_palm_r4_c1" />
+    <touch name="touch_tx_palm_r4_c2" site="tx_palm_r4_c2" />
+    <touch name="touch_tx_palm_r4_c3" site="tx_palm_r4_c3" />
+    <touch name="touch_tx_palm_r4_c4" site="tx_palm_r4_c4" />
+    <touch name="touch_tx_palm_r4_c5" site="tx_palm_r4_c5" />
+    <touch name="touch_tx_palm_r4_c6" site="tx_palm_r4_c6" />
+    <touch name="touch_tx_palm_r4_c7" site="tx_palm_r4_c7" />
+    <touch name="touch_tx_palm_r4_c8" site="tx_palm_r4_c8" />
+    <touch name="touch_tx_palm_r4_c9" site="tx_palm_r4_c9" />
+    <touch name="touch_tx_palm_r4_c10" site="tx_palm_r4_c10" />
+    <touch name="touch_tx_palm_r4_c11" site="tx_palm_r4_c11" />
+    <touch name="touch_tx_palm_r4_c12" site="tx_palm_r4_c12" />
+    <touch name="touch_tx_palm_r4_c13" site="tx_palm_r4_c13" />
+    <touch name="touch_tx_palm_r4_c14" site="tx_palm_r4_c14" />
+    <touch name="touch_tx_palm_r4_c15" site="tx_palm_r4_c15" />
+    <touch name="touch_tx_palm_r5_c0" site="tx_palm_r5_c0" />
+    <touch name="touch_tx_palm_r5_c1" site="tx_palm_r5_c1" />
+    <touch name="touch_tx_palm_r5_c2" site="tx_palm_r5_c2" />
+    <touch name="touch_tx_palm_r5_c3" site="tx_palm_r5_c3" />
+    <touch name="touch_tx_palm_r5_c4" site="tx_palm_r5_c4" />
+    <touch name="touch_tx_palm_r5_c5" site="tx_palm_r5_c5" />
+    <touch name="touch_tx_palm_r5_c6" site="tx_palm_r5_c6" />
+    <touch name="touch_tx_palm_r5_c7" site="tx_palm_r5_c7" />
+    <touch name="touch_tx_palm_r5_c8" site="tx_palm_r5_c8" />
+    <touch name="touch_tx_palm_r5_c9" site="tx_palm_r5_c9" />
+    <touch name="touch_tx_palm_r5_c10" site="tx_palm_r5_c10" />
+    <touch name="touch_tx_palm_r5_c11" site="tx_palm_r5_c11" />
+    <touch name="touch_tx_palm_r5_c12" site="tx_palm_r5_c12" />
+    <touch name="touch_tx_palm_r5_c13" site="tx_palm_r5_c13" />
+    <touch name="touch_tx_palm_r5_c14" site="tx_palm_r5_c14" />
+    <touch name="touch_tx_palm_r5_c15" site="tx_palm_r5_c15" />
+    <touch name="touch_tx_palm_r6_c0" site="tx_palm_r6_c0" />
+    <touch name="touch_tx_palm_r6_c1" site="tx_palm_r6_c1" />
+    <touch name="touch_tx_palm_r6_c2" site="tx_palm_r6_c2" />
+    <touch name="touch_tx_palm_r6_c3" site="tx_palm_r6_c3" />
+    <touch name="touch_tx_palm_r6_c4" site="tx_palm_r6_c4" />
+    <touch name="touch_tx_palm_r6_c5" site="tx_palm_r6_c5" />
+    <touch name="touch_tx_palm_r6_c6" site="tx_palm_r6_c6" />
+    <touch name="touch_tx_palm_r6_c7" site="tx_palm_r6_c7" />
+    <touch name="touch_tx_palm_r6_c8" site="tx_palm_r6_c8" />
+    <touch name="touch_tx_palm_r6_c9" site="tx_palm_r6_c9" />
+    <touch name="touch_tx_palm_r6_c10" site="tx_palm_r6_c10" />
+    <touch name="touch_tx_palm_r6_c11" site="tx_palm_r6_c11" />
+    <touch name="touch_tx_palm_r6_c12" site="tx_palm_r6_c12" />
+    <touch name="touch_tx_palm_r6_c13" site="tx_palm_r6_c13" />
+    <touch name="touch_tx_palm_r6_c14" site="tx_palm_r6_c14" />
+    <touch name="touch_tx_palm_r6_c15" site="tx_palm_r6_c15" />
+    <touch name="touch_tx_palm_r7_c0" site="tx_palm_r7_c0" />
+    <touch name="touch_tx_palm_r7_c1" site="tx_palm_r7_c1" />
+    <touch name="touch_tx_palm_r7_c2" site="tx_palm_r7_c2" />
+    <touch name="touch_tx_palm_r7_c3" site="tx_palm_r7_c3" />
+    <touch name="touch_tx_palm_r7_c4" site="tx_palm_r7_c4" />
+    <touch name="touch_tx_palm_r7_c5" site="tx_palm_r7_c5" />
+    <touch name="touch_tx_palm_r7_c6" site="tx_palm_r7_c6" />
+    <touch name="touch_tx_palm_r7_c7" site="tx_palm_r7_c7" />
+    <touch name="touch_tx_palm_r7_c8" site="tx_palm_r7_c8" />
+    <touch name="touch_tx_palm_r7_c9" site="tx_palm_r7_c9" />
+    <touch name="touch_tx_palm_r7_c10" site="tx_palm_r7_c10" />
+    <touch name="touch_tx_palm_r7_c11" site="tx_palm_r7_c11" />
+    <touch name="touch_tx_palm_r7_c12" site="tx_palm_r7_c12" />
+    <touch name="touch_tx_palm_r7_c13" site="tx_palm_r7_c13" />
+    <touch name="touch_tx_palm_r7_c14" site="tx_palm_r7_c14" />
+    <touch name="touch_tx_palm_r7_c15" site="tx_palm_r7_c15" />
+    <touch name="touch_tx_palm_r8_c0" site="tx_palm_r8_c0" />
+    <touch name="touch_tx_palm_r8_c1" site="tx_palm_r8_c1" />
+    <touch name="touch_tx_palm_r8_c2" site="tx_palm_r8_c2" />
+    <touch name="touch_tx_palm_r8_c3" site="tx_palm_r8_c3" />
+    <touch name="touch_tx_palm_r8_c4" site="tx_palm_r8_c4" />
+    <touch name="touch_tx_palm_r8_c5" site="tx_palm_r8_c5" />
+    <touch name="touch_tx_palm_r8_c6" site="tx_palm_r8_c6" />
+    <touch name="touch_tx_palm_r8_c7" site="tx_palm_r8_c7" />
+    <touch name="touch_tx_palm_r8_c8" site="tx_palm_r8_c8" />
+    <touch name="touch_tx_palm_r8_c9" site="tx_palm_r8_c9" />
+    <touch name="touch_tx_palm_r8_c10" site="tx_palm_r8_c10" />
+    <touch name="touch_tx_palm_r8_c11" site="tx_palm_r8_c11" />
+    <touch name="touch_tx_palm_r8_c12" site="tx_palm_r8_c12" />
+    <touch name="touch_tx_palm_r8_c13" site="tx_palm_r8_c13" />
+    <touch name="touch_tx_palm_r8_c14" site="tx_palm_r8_c14" />
+    <touch name="touch_tx_palm_r8_c15" site="tx_palm_r8_c15" />
+    <touch name="touch_tx_palm_r9_c0" site="tx_palm_r9_c0" />
+    <touch name="touch_tx_palm_r9_c1" site="tx_palm_r9_c1" />
+    <touch name="touch_tx_palm_r9_c2" site="tx_palm_r9_c2" />
+    <touch name="touch_tx_palm_r9_c3" site="tx_palm_r9_c3" />
+    <touch name="touch_tx_palm_r9_c4" site="tx_palm_r9_c4" />
+    <touch name="touch_tx_palm_r9_c5" site="tx_palm_r9_c5" />
+    <touch name="touch_tx_palm_r9_c6" site="tx_palm_r9_c6" />
+    <touch name="touch_tx_palm_r9_c7" site="tx_palm_r9_c7" />
+    <touch name="touch_tx_palm_r9_c8" site="tx_palm_r9_c8" />
+    <touch name="touch_tx_palm_r9_c9" site="tx_palm_r9_c9" />
+    <touch name="touch_tx_palm_r9_c10" site="tx_palm_r9_c10" />
+    <touch name="touch_tx_palm_r9_c11" site="tx_palm_r9_c11" />
+    <touch name="touch_tx_palm_r9_c12" site="tx_palm_r9_c12" />
+    <touch name="touch_tx_palm_r9_c13" site="tx_palm_r9_c13" />
+    <touch name="touch_tx_palm_r9_c14" site="tx_palm_r9_c14" />
+    <touch name="touch_tx_palm_r9_c15" site="tx_palm_r9_c15" />
+    <touch name="touch_tx_palm_r10_c0" site="tx_palm_r10_c0" />
+    <touch name="touch_tx_palm_r10_c1" site="tx_palm_r10_c1" />
+    <touch name="touch_tx_palm_r10_c2" site="tx_palm_r10_c2" />
+    <touch name="touch_tx_palm_r10_c3" site="tx_palm_r10_c3" />
+    <touch name="touch_tx_palm_r10_c4" site="tx_palm_r10_c4" />
+    <touch name="touch_tx_palm_r10_c5" site="tx_palm_r10_c5" />
+    <touch name="touch_tx_palm_r10_c6" site="tx_palm_r10_c6" />
+    <touch name="touch_tx_palm_r10_c7" site="tx_palm_r10_c7" />
+    <touch name="touch_tx_palm_r10_c8" site="tx_palm_r10_c8" />
+    <touch name="touch_tx_palm_r10_c9" site="tx_palm_r10_c9" />
+    <touch name="touch_tx_palm_r10_c10" site="tx_palm_r10_c10" />
+    <touch name="touch_tx_palm_r10_c11" site="tx_palm_r10_c11" />
+    <touch name="touch_tx_palm_r10_c12" site="tx_palm_r10_c12" />
+    <touch name="touch_tx_palm_r10_c13" site="tx_palm_r10_c13" />
+    <touch name="touch_tx_palm_r10_c14" site="tx_palm_r10_c14" />
+    <touch name="touch_tx_palm_r10_c15" site="tx_palm_r10_c15" />
+    <touch name="touch_tx_palm_r11_c0" site="tx_palm_r11_c0" />
+    <touch name="touch_tx_palm_r11_c1" site="tx_palm_r11_c1" />
+    <touch name="touch_tx_palm_r11_c2" site="tx_palm_r11_c2" />
+    <touch name="touch_tx_palm_r11_c3" site="tx_palm_r11_c3" />
+    <touch name="touch_tx_palm_r11_c4" site="tx_palm_r11_c4" />
+    <touch name="touch_tx_palm_r11_c5" site="tx_palm_r11_c5" />
+    <touch name="touch_tx_palm_r11_c6" site="tx_palm_r11_c6" />
+    <touch name="touch_tx_palm_r11_c7" site="tx_palm_r11_c7" />
+    <touch name="touch_tx_palm_r11_c8" site="tx_palm_r11_c8" />
+    <touch name="touch_tx_palm_r11_c9" site="tx_palm_r11_c9" />
+    <touch name="touch_tx_palm_r11_c10" site="tx_palm_r11_c10" />
+    <touch name="touch_tx_palm_r11_c11" site="tx_palm_r11_c11" />
+    <touch name="touch_tx_palm_r11_c12" site="tx_palm_r11_c12" />
+    <touch name="touch_tx_palm_r11_c13" site="tx_palm_r11_c13" />
+    <touch name="touch_tx_palm_r11_c14" site="tx_palm_r11_c14" />
+    <touch name="touch_tx_palm_r11_c15" site="tx_palm_r11_c15" />
+    <touch name="touch_tx_palm_r12_c0" site="tx_palm_r12_c0" />
+    <touch name="touch_tx_palm_r12_c1" site="tx_palm_r12_c1" />
+    <touch name="touch_tx_palm_r12_c2" site="tx_palm_r12_c2" />
+    <touch name="touch_tx_palm_r12_c3" site="tx_palm_r12_c3" />
+    <touch name="touch_tx_palm_r12_c4" site="tx_palm_r12_c4" />
+    <touch name="touch_tx_palm_r12_c5" site="tx_palm_r12_c5" />
+    <touch name="touch_tx_palm_r12_c6" site="tx_palm_r12_c6" />
+    <touch name="touch_tx_palm_r12_c7" site="tx_palm_r12_c7" />
+    <touch name="touch_tx_palm_r12_c8" site="tx_palm_r12_c8" />
+    <touch name="touch_tx_palm_r12_c9" site="tx_palm_r12_c9" />
+    <touch name="touch_tx_palm_r12_c10" site="tx_palm_r12_c10" />
+    <touch name="touch_tx_palm_r12_c11" site="tx_palm_r12_c11" />
+    <touch name="touch_tx_palm_r12_c12" site="tx_palm_r12_c12" />
+    <touch name="touch_tx_palm_r12_c13" site="tx_palm_r12_c13" />
+    <touch name="touch_tx_palm_r12_c14" site="tx_palm_r12_c14" />
+    <touch name="touch_tx_palm_r12_c15" site="tx_palm_r12_c15" />
+    <touch name="touch_tx_palm_r13_c0" site="tx_palm_r13_c0" />
+    <touch name="touch_tx_palm_r13_c1" site="tx_palm_r13_c1" />
+    <touch name="touch_tx_palm_r13_c2" site="tx_palm_r13_c2" />
+    <touch name="touch_tx_palm_r13_c3" site="tx_palm_r13_c3" />
+    <touch name="touch_tx_palm_r13_c4" site="tx_palm_r13_c4" />
+    <touch name="touch_tx_palm_r13_c5" site="tx_palm_r13_c5" />
+    <touch name="touch_tx_palm_r13_c6" site="tx_palm_r13_c6" />
+    <touch name="touch_tx_palm_r13_c7" site="tx_palm_r13_c7" />
+    <touch name="touch_tx_palm_r13_c8" site="tx_palm_r13_c8" />
+    <touch name="touch_tx_palm_r13_c9" site="tx_palm_r13_c9" />
+    <touch name="touch_tx_palm_r13_c10" site="tx_palm_r13_c10" />
+    <touch name="touch_tx_palm_r13_c11" site="tx_palm_r13_c11" />
+    <touch name="touch_tx_palm_r13_c12" site="tx_palm_r13_c12" />
+    <touch name="touch_tx_palm_r13_c13" site="tx_palm_r13_c13" />
+    <touch name="touch_tx_palm_r13_c14" site="tx_palm_r13_c14" />
+    <touch name="touch_tx_palm_r13_c15" site="tx_palm_r13_c15" />
+    <touch name="touch_tx_palm_r14_c0" site="tx_palm_r14_c0" />
+    <touch name="touch_tx_palm_r14_c1" site="tx_palm_r14_c1" />
+    <touch name="touch_tx_palm_r14_c2" site="tx_palm_r14_c2" />
+    <touch name="touch_tx_palm_r14_c3" site="tx_palm_r14_c3" />
+    <touch name="touch_tx_palm_r14_c4" site="tx_palm_r14_c4" />
+    <touch name="touch_tx_palm_r14_c5" site="tx_palm_r14_c5" />
+    <touch name="touch_tx_palm_r14_c6" site="tx_palm_r14_c6" />
+    <touch name="touch_tx_palm_r14_c7" site="tx_palm_r14_c7" />
+    <touch name="touch_tx_palm_r14_c8" site="tx_palm_r14_c8" />
+    <touch name="touch_tx_palm_r14_c9" site="tx_palm_r14_c9" />
+    <touch name="touch_tx_palm_r14_c10" site="tx_palm_r14_c10" />
+    <touch name="touch_tx_palm_r14_c11" site="tx_palm_r14_c11" />
+    <touch name="touch_tx_palm_r14_c12" site="tx_palm_r14_c12" />
+    <touch name="touch_tx_palm_r14_c13" site="tx_palm_r14_c13" />
+    <touch name="touch_tx_palm_r14_c14" site="tx_palm_r14_c14" />
+    <touch name="touch_tx_palm_r14_c15" site="tx_palm_r14_c15" />
+    <touch name="touch_tx_palm_r15_c0" site="tx_palm_r15_c0" />
+    <touch name="touch_tx_palm_r15_c1" site="tx_palm_r15_c1" />
+    <touch name="touch_tx_palm_r15_c2" site="tx_palm_r15_c2" />
+    <touch name="touch_tx_palm_r15_c3" site="tx_palm_r15_c3" />
+    <touch name="touch_tx_palm_r15_c4" site="tx_palm_r15_c4" />
+    <touch name="touch_tx_palm_r15_c5" site="tx_palm_r15_c5" />
+    <touch name="touch_tx_palm_r15_c6" site="tx_palm_r15_c6" />
+    <touch name="touch_tx_palm_r15_c7" site="tx_palm_r15_c7" />
+    <touch name="touch_tx_palm_r15_c8" site="tx_palm_r15_c8" />
+    <touch name="touch_tx_palm_r15_c9" site="tx_palm_r15_c9" />
+    <touch name="touch_tx_palm_r15_c10" site="tx_palm_r15_c10" />
+    <touch name="touch_tx_palm_r15_c11" site="tx_palm_r15_c11" />
+    <touch name="touch_tx_palm_r15_c12" site="tx_palm_r15_c12" />
+    <touch name="touch_tx_palm_r15_c13" site="tx_palm_r15_c13" />
+    <touch name="touch_tx_palm_r15_c14" site="tx_palm_r15_c14" />
+    <touch name="touch_tx_palm_r15_c15" site="tx_palm_r15_c15" />
+    <touch name="touch_tx_if_mid_pad_r0_c0" site="tx_if_mid_pad_r0_c0" />
+    <touch name="touch_tx_if_mid_pad_r0_c1" site="tx_if_mid_pad_r0_c1" />
+    <touch name="touch_tx_if_mid_pad_r0_c2" site="tx_if_mid_pad_r0_c2" />
+    <touch name="touch_tx_if_mid_pad_r0_c3" site="tx_if_mid_pad_r0_c3" />
+    <touch name="touch_tx_if_mid_pad_r0_c4" site="tx_if_mid_pad_r0_c4" />
+    <touch name="touch_tx_if_mid_pad_r0_c5" site="tx_if_mid_pad_r0_c5" />
+    <touch name="touch_tx_if_mid_pad_r0_c6" site="tx_if_mid_pad_r0_c6" />
+    <touch name="touch_tx_if_mid_pad_r1_c0" site="tx_if_mid_pad_r1_c0" />
+    <touch name="touch_tx_if_mid_pad_r1_c1" site="tx_if_mid_pad_r1_c1" />
+    <touch name="touch_tx_if_mid_pad_r1_c2" site="tx_if_mid_pad_r1_c2" />
+    <touch name="touch_tx_if_mid_pad_r1_c3" site="tx_if_mid_pad_r1_c3" />
+    <touch name="touch_tx_if_mid_pad_r1_c4" site="tx_if_mid_pad_r1_c4" />
+    <touch name="touch_tx_if_mid_pad_r1_c5" site="tx_if_mid_pad_r1_c5" />
+    <touch name="touch_tx_if_mid_pad_r1_c6" site="tx_if_mid_pad_r1_c6" />
+    <touch name="touch_tx_if_mid_pad_r2_c0" site="tx_if_mid_pad_r2_c0" />
+    <touch name="touch_tx_if_mid_pad_r2_c1" site="tx_if_mid_pad_r2_c1" />
+    <touch name="touch_tx_if_mid_pad_r2_c2" site="tx_if_mid_pad_r2_c2" />
+    <touch name="touch_tx_if_mid_pad_r2_c3" site="tx_if_mid_pad_r2_c3" />
+    <touch name="touch_tx_if_mid_pad_r2_c4" site="tx_if_mid_pad_r2_c4" />
+    <touch name="touch_tx_if_mid_pad_r2_c5" site="tx_if_mid_pad_r2_c5" />
+    <touch name="touch_tx_if_mid_pad_r2_c6" site="tx_if_mid_pad_r2_c6" />
+    <touch name="touch_tx_if_mid_pad_r3_c0" site="tx_if_mid_pad_r3_c0" />
+    <touch name="touch_tx_if_mid_pad_r3_c1" site="tx_if_mid_pad_r3_c1" />
+    <touch name="touch_tx_if_mid_pad_r3_c2" site="tx_if_mid_pad_r3_c2" />
+    <touch name="touch_tx_if_mid_pad_r3_c3" site="tx_if_mid_pad_r3_c3" />
+    <touch name="touch_tx_if_mid_pad_r3_c4" site="tx_if_mid_pad_r3_c4" />
+    <touch name="touch_tx_if_mid_pad_r3_c5" site="tx_if_mid_pad_r3_c5" />
+    <touch name="touch_tx_if_mid_pad_r3_c6" site="tx_if_mid_pad_r3_c6" />
+    <touch name="touch_tx_if_distal_pad_r0_c0" site="tx_if_distal_pad_r0_c0" />
+    <touch name="touch_tx_if_distal_pad_r0_c1" site="tx_if_distal_pad_r0_c1" />
+    <touch name="touch_tx_if_distal_pad_r0_c2" site="tx_if_distal_pad_r0_c2" />
+    <touch name="touch_tx_if_distal_pad_r0_c3" site="tx_if_distal_pad_r0_c3" />
+    <touch name="touch_tx_if_distal_pad_r0_c4" site="tx_if_distal_pad_r0_c4" />
+    <touch name="touch_tx_if_distal_pad_r0_c5" site="tx_if_distal_pad_r0_c5" />
+    <touch name="touch_tx_if_distal_pad_r0_c6" site="tx_if_distal_pad_r0_c6" />
+    <touch name="touch_tx_if_distal_pad_r1_c0" site="tx_if_distal_pad_r1_c0" />
+    <touch name="touch_tx_if_distal_pad_r1_c1" site="tx_if_distal_pad_r1_c1" />
+    <touch name="touch_tx_if_distal_pad_r1_c2" site="tx_if_distal_pad_r1_c2" />
+    <touch name="touch_tx_if_distal_pad_r1_c3" site="tx_if_distal_pad_r1_c3" />
+    <touch name="touch_tx_if_distal_pad_r1_c4" site="tx_if_distal_pad_r1_c4" />
+    <touch name="touch_tx_if_distal_pad_r1_c5" site="tx_if_distal_pad_r1_c5" />
+    <touch name="touch_tx_if_distal_pad_r1_c6" site="tx_if_distal_pad_r1_c6" />
+    <touch name="touch_tx_if_distal_pad_r2_c0" site="tx_if_distal_pad_r2_c0" />
+    <touch name="touch_tx_if_distal_pad_r2_c1" site="tx_if_distal_pad_r2_c1" />
+    <touch name="touch_tx_if_distal_pad_r2_c2" site="tx_if_distal_pad_r2_c2" />
+    <touch name="touch_tx_if_distal_pad_r2_c3" site="tx_if_distal_pad_r2_c3" />
+    <touch name="touch_tx_if_distal_pad_r2_c4" site="tx_if_distal_pad_r2_c4" />
+    <touch name="touch_tx_if_distal_pad_r2_c5" site="tx_if_distal_pad_r2_c5" />
+    <touch name="touch_tx_if_distal_pad_r2_c6" site="tx_if_distal_pad_r2_c6" />
+    <touch name="touch_tx_if_distal_pad_r3_c0" site="tx_if_distal_pad_r3_c0" />
+    <touch name="touch_tx_if_distal_pad_r3_c1" site="tx_if_distal_pad_r3_c1" />
+    <touch name="touch_tx_if_distal_pad_r3_c2" site="tx_if_distal_pad_r3_c2" />
+    <touch name="touch_tx_if_distal_pad_r3_c3" site="tx_if_distal_pad_r3_c3" />
+    <touch name="touch_tx_if_distal_pad_r3_c4" site="tx_if_distal_pad_r3_c4" />
+    <touch name="touch_tx_if_distal_pad_r3_c5" site="tx_if_distal_pad_r3_c5" />
+    <touch name="touch_tx_if_distal_pad_r3_c6" site="tx_if_distal_pad_r3_c6" />
+    <touch name="touch_tx_if_tip_r0_c0" site="tx_if_tip_r0_c0" />
+    <touch name="touch_tx_if_tip_r0_c1" site="tx_if_tip_r0_c1" />
+    <touch name="touch_tx_if_tip_r0_c2" site="tx_if_tip_r0_c2" />
+    <touch name="touch_tx_if_tip_r0_c3" site="tx_if_tip_r0_c3" />
+    <touch name="touch_tx_if_tip_r0_c4" site="tx_if_tip_r0_c4" />
+    <touch name="touch_tx_if_tip_r0_c5" site="tx_if_tip_r0_c5" />
+    <touch name="touch_tx_if_tip_r0_c6" site="tx_if_tip_r0_c6" />
+    <touch name="touch_tx_if_tip_r1_c0" site="tx_if_tip_r1_c0" />
+    <touch name="touch_tx_if_tip_r1_c1" site="tx_if_tip_r1_c1" />
+    <touch name="touch_tx_if_tip_r1_c2" site="tx_if_tip_r1_c2" />
+    <touch name="touch_tx_if_tip_r1_c3" site="tx_if_tip_r1_c3" />
+    <touch name="touch_tx_if_tip_r1_c4" site="tx_if_tip_r1_c4" />
+    <touch name="touch_tx_if_tip_r1_c5" site="tx_if_tip_r1_c5" />
+    <touch name="touch_tx_if_tip_r1_c6" site="tx_if_tip_r1_c6" />
+    <touch name="touch_tx_if_tip_r2_c0" site="tx_if_tip_r2_c0" />
+    <touch name="touch_tx_if_tip_r2_c1" site="tx_if_tip_r2_c1" />
+    <touch name="touch_tx_if_tip_r2_c2" site="tx_if_tip_r2_c2" />
+    <touch name="touch_tx_if_tip_r2_c3" site="tx_if_tip_r2_c3" />
+    <touch name="touch_tx_if_tip_r2_c4" site="tx_if_tip_r2_c4" />
+    <touch name="touch_tx_if_tip_r2_c5" site="tx_if_tip_r2_c5" />
+    <touch name="touch_tx_if_tip_r2_c6" site="tx_if_tip_r2_c6" />
+    <touch name="touch_tx_if_tip_r3_c0" site="tx_if_tip_r3_c0" />
+    <touch name="touch_tx_if_tip_r3_c1" site="tx_if_tip_r3_c1" />
+    <touch name="touch_tx_if_tip_r3_c2" site="tx_if_tip_r3_c2" />
+    <touch name="touch_tx_if_tip_r3_c3" site="tx_if_tip_r3_c3" />
+    <touch name="touch_tx_if_tip_r3_c4" site="tx_if_tip_r3_c4" />
+    <touch name="touch_tx_if_tip_r3_c5" site="tx_if_tip_r3_c5" />
+    <touch name="touch_tx_if_tip_r3_c6" site="tx_if_tip_r3_c6" />
+    <touch name="touch_tx_if_tip_r4_c0" site="tx_if_tip_r4_c0" />
+    <touch name="touch_tx_if_tip_r4_c1" site="tx_if_tip_r4_c1" />
+    <touch name="touch_tx_if_tip_r4_c2" site="tx_if_tip_r4_c2" />
+    <touch name="touch_tx_if_tip_r4_c3" site="tx_if_tip_r4_c3" />
+    <touch name="touch_tx_if_tip_r4_c4" site="tx_if_tip_r4_c4" />
+    <touch name="touch_tx_if_tip_r4_c5" site="tx_if_tip_r4_c5" />
+    <touch name="touch_tx_if_tip_r4_c6" site="tx_if_tip_r4_c6" />
+    <touch name="touch_tx_if_tip_r5_c0" site="tx_if_tip_r5_c0" />
+    <touch name="touch_tx_if_tip_r5_c1" site="tx_if_tip_r5_c1" />
+    <touch name="touch_tx_if_tip_r5_c2" site="tx_if_tip_r5_c2" />
+    <touch name="touch_tx_if_tip_r5_c3" site="tx_if_tip_r5_c3" />
+    <touch name="touch_tx_if_tip_r5_c4" site="tx_if_tip_r5_c4" />
+    <touch name="touch_tx_if_tip_r5_c5" site="tx_if_tip_r5_c5" />
+    <touch name="touch_tx_if_tip_r5_c6" site="tx_if_tip_r5_c6" />
+    <touch name="touch_tx_mf_mid_pad_r0_c0" site="tx_mf_mid_pad_r0_c0" />
+    <touch name="touch_tx_mf_mid_pad_r0_c1" site="tx_mf_mid_pad_r0_c1" />
+    <touch name="touch_tx_mf_mid_pad_r0_c2" site="tx_mf_mid_pad_r0_c2" />
+    <touch name="touch_tx_mf_mid_pad_r0_c3" site="tx_mf_mid_pad_r0_c3" />
+    <touch name="touch_tx_mf_mid_pad_r0_c4" site="tx_mf_mid_pad_r0_c4" />
+    <touch name="touch_tx_mf_mid_pad_r0_c5" site="tx_mf_mid_pad_r0_c5" />
+    <touch name="touch_tx_mf_mid_pad_r0_c6" site="tx_mf_mid_pad_r0_c6" />
+    <touch name="touch_tx_mf_mid_pad_r1_c0" site="tx_mf_mid_pad_r1_c0" />
+    <touch name="touch_tx_mf_mid_pad_r1_c1" site="tx_mf_mid_pad_r1_c1" />
+    <touch name="touch_tx_mf_mid_pad_r1_c2" site="tx_mf_mid_pad_r1_c2" />
+    <touch name="touch_tx_mf_mid_pad_r1_c3" site="tx_mf_mid_pad_r1_c3" />
+    <touch name="touch_tx_mf_mid_pad_r1_c4" site="tx_mf_mid_pad_r1_c4" />
+    <touch name="touch_tx_mf_mid_pad_r1_c5" site="tx_mf_mid_pad_r1_c5" />
+    <touch name="touch_tx_mf_mid_pad_r1_c6" site="tx_mf_mid_pad_r1_c6" />
+    <touch name="touch_tx_mf_mid_pad_r2_c0" site="tx_mf_mid_pad_r2_c0" />
+    <touch name="touch_tx_mf_mid_pad_r2_c1" site="tx_mf_mid_pad_r2_c1" />
+    <touch name="touch_tx_mf_mid_pad_r2_c2" site="tx_mf_mid_pad_r2_c2" />
+    <touch name="touch_tx_mf_mid_pad_r2_c3" site="tx_mf_mid_pad_r2_c3" />
+    <touch name="touch_tx_mf_mid_pad_r2_c4" site="tx_mf_mid_pad_r2_c4" />
+    <touch name="touch_tx_mf_mid_pad_r2_c5" site="tx_mf_mid_pad_r2_c5" />
+    <touch name="touch_tx_mf_mid_pad_r2_c6" site="tx_mf_mid_pad_r2_c6" />
+    <touch name="touch_tx_mf_mid_pad_r3_c0" site="tx_mf_mid_pad_r3_c0" />
+    <touch name="touch_tx_mf_mid_pad_r3_c1" site="tx_mf_mid_pad_r3_c1" />
+    <touch name="touch_tx_mf_mid_pad_r3_c2" site="tx_mf_mid_pad_r3_c2" />
+    <touch name="touch_tx_mf_mid_pad_r3_c3" site="tx_mf_mid_pad_r3_c3" />
+    <touch name="touch_tx_mf_mid_pad_r3_c4" site="tx_mf_mid_pad_r3_c4" />
+    <touch name="touch_tx_mf_mid_pad_r3_c5" site="tx_mf_mid_pad_r3_c5" />
+    <touch name="touch_tx_mf_mid_pad_r3_c6" site="tx_mf_mid_pad_r3_c6" />
+    <touch name="touch_tx_mf_distal_pad_r0_c0" site="tx_mf_distal_pad_r0_c0" />
+    <touch name="touch_tx_mf_distal_pad_r0_c1" site="tx_mf_distal_pad_r0_c1" />
+    <touch name="touch_tx_mf_distal_pad_r0_c2" site="tx_mf_distal_pad_r0_c2" />
+    <touch name="touch_tx_mf_distal_pad_r0_c3" site="tx_mf_distal_pad_r0_c3" />
+    <touch name="touch_tx_mf_distal_pad_r0_c4" site="tx_mf_distal_pad_r0_c4" />
+    <touch name="touch_tx_mf_distal_pad_r0_c5" site="tx_mf_distal_pad_r0_c5" />
+    <touch name="touch_tx_mf_distal_pad_r0_c6" site="tx_mf_distal_pad_r0_c6" />
+    <touch name="touch_tx_mf_distal_pad_r1_c0" site="tx_mf_distal_pad_r1_c0" />
+    <touch name="touch_tx_mf_distal_pad_r1_c1" site="tx_mf_distal_pad_r1_c1" />
+    <touch name="touch_tx_mf_distal_pad_r1_c2" site="tx_mf_distal_pad_r1_c2" />
+    <touch name="touch_tx_mf_distal_pad_r1_c3" site="tx_mf_distal_pad_r1_c3" />
+    <touch name="touch_tx_mf_distal_pad_r1_c4" site="tx_mf_distal_pad_r1_c4" />
+    <touch name="touch_tx_mf_distal_pad_r1_c5" site="tx_mf_distal_pad_r1_c5" />
+    <touch name="touch_tx_mf_distal_pad_r1_c6" site="tx_mf_distal_pad_r1_c6" />
+    <touch name="touch_tx_mf_distal_pad_r2_c0" site="tx_mf_distal_pad_r2_c0" />
+    <touch name="touch_tx_mf_distal_pad_r2_c1" site="tx_mf_distal_pad_r2_c1" />
+    <touch name="touch_tx_mf_distal_pad_r2_c2" site="tx_mf_distal_pad_r2_c2" />
+    <touch name="touch_tx_mf_distal_pad_r2_c3" site="tx_mf_distal_pad_r2_c3" />
+    <touch name="touch_tx_mf_distal_pad_r2_c4" site="tx_mf_distal_pad_r2_c4" />
+    <touch name="touch_tx_mf_distal_pad_r2_c5" site="tx_mf_distal_pad_r2_c5" />
+    <touch name="touch_tx_mf_distal_pad_r2_c6" site="tx_mf_distal_pad_r2_c6" />
+    <touch name="touch_tx_mf_distal_pad_r3_c0" site="tx_mf_distal_pad_r3_c0" />
+    <touch name="touch_tx_mf_distal_pad_r3_c1" site="tx_mf_distal_pad_r3_c1" />
+    <touch name="touch_tx_mf_distal_pad_r3_c2" site="tx_mf_distal_pad_r3_c2" />
+    <touch name="touch_tx_mf_distal_pad_r3_c3" site="tx_mf_distal_pad_r3_c3" />
+    <touch name="touch_tx_mf_distal_pad_r3_c4" site="tx_mf_distal_pad_r3_c4" />
+    <touch name="touch_tx_mf_distal_pad_r3_c5" site="tx_mf_distal_pad_r3_c5" />
+    <touch name="touch_tx_mf_distal_pad_r3_c6" site="tx_mf_distal_pad_r3_c6" />
+    <touch name="touch_tx_mf_tip_r0_c0" site="tx_mf_tip_r0_c0" />
+    <touch name="touch_tx_mf_tip_r0_c1" site="tx_mf_tip_r0_c1" />
+    <touch name="touch_tx_mf_tip_r0_c2" site="tx_mf_tip_r0_c2" />
+    <touch name="touch_tx_mf_tip_r0_c3" site="tx_mf_tip_r0_c3" />
+    <touch name="touch_tx_mf_tip_r0_c4" site="tx_mf_tip_r0_c4" />
+    <touch name="touch_tx_mf_tip_r0_c5" site="tx_mf_tip_r0_c5" />
+    <touch name="touch_tx_mf_tip_r0_c6" site="tx_mf_tip_r0_c6" />
+    <touch name="touch_tx_mf_tip_r1_c0" site="tx_mf_tip_r1_c0" />
+    <touch name="touch_tx_mf_tip_r1_c1" site="tx_mf_tip_r1_c1" />
+    <touch name="touch_tx_mf_tip_r1_c2" site="tx_mf_tip_r1_c2" />
+    <touch name="touch_tx_mf_tip_r1_c3" site="tx_mf_tip_r1_c3" />
+    <touch name="touch_tx_mf_tip_r1_c4" site="tx_mf_tip_r1_c4" />
+    <touch name="touch_tx_mf_tip_r1_c5" site="tx_mf_tip_r1_c5" />
+    <touch name="touch_tx_mf_tip_r1_c6" site="tx_mf_tip_r1_c6" />
+    <touch name="touch_tx_mf_tip_r2_c0" site="tx_mf_tip_r2_c0" />
+    <touch name="touch_tx_mf_tip_r2_c1" site="tx_mf_tip_r2_c1" />
+    <touch name="touch_tx_mf_tip_r2_c2" site="tx_mf_tip_r2_c2" />
+    <touch name="touch_tx_mf_tip_r2_c3" site="tx_mf_tip_r2_c3" />
+    <touch name="touch_tx_mf_tip_r2_c4" site="tx_mf_tip_r2_c4" />
+    <touch name="touch_tx_mf_tip_r2_c5" site="tx_mf_tip_r2_c5" />
+    <touch name="touch_tx_mf_tip_r2_c6" site="tx_mf_tip_r2_c6" />
+    <touch name="touch_tx_mf_tip_r3_c0" site="tx_mf_tip_r3_c0" />
+    <touch name="touch_tx_mf_tip_r3_c1" site="tx_mf_tip_r3_c1" />
+    <touch name="touch_tx_mf_tip_r3_c2" site="tx_mf_tip_r3_c2" />
+    <touch name="touch_tx_mf_tip_r3_c3" site="tx_mf_tip_r3_c3" />
+    <touch name="touch_tx_mf_tip_r3_c4" site="tx_mf_tip_r3_c4" />
+    <touch name="touch_tx_mf_tip_r3_c5" site="tx_mf_tip_r3_c5" />
+    <touch name="touch_tx_mf_tip_r3_c6" site="tx_mf_tip_r3_c6" />
+    <touch name="touch_tx_mf_tip_r4_c0" site="tx_mf_tip_r4_c0" />
+    <touch name="touch_tx_mf_tip_r4_c1" site="tx_mf_tip_r4_c1" />
+    <touch name="touch_tx_mf_tip_r4_c2" site="tx_mf_tip_r4_c2" />
+    <touch name="touch_tx_mf_tip_r4_c3" site="tx_mf_tip_r4_c3" />
+    <touch name="touch_tx_mf_tip_r4_c4" site="tx_mf_tip_r4_c4" />
+    <touch name="touch_tx_mf_tip_r4_c5" site="tx_mf_tip_r4_c5" />
+    <touch name="touch_tx_mf_tip_r4_c6" site="tx_mf_tip_r4_c6" />
+    <touch name="touch_tx_mf_tip_r5_c0" site="tx_mf_tip_r5_c0" />
+    <touch name="touch_tx_mf_tip_r5_c1" site="tx_mf_tip_r5_c1" />
+    <touch name="touch_tx_mf_tip_r5_c2" site="tx_mf_tip_r5_c2" />
+    <touch name="touch_tx_mf_tip_r5_c3" site="tx_mf_tip_r5_c3" />
+    <touch name="touch_tx_mf_tip_r5_c4" site="tx_mf_tip_r5_c4" />
+    <touch name="touch_tx_mf_tip_r5_c5" site="tx_mf_tip_r5_c5" />
+    <touch name="touch_tx_mf_tip_r5_c6" site="tx_mf_tip_r5_c6" />
+    <touch name="touch_tx_rf_mid_pad_r0_c0" site="tx_rf_mid_pad_r0_c0" />
+    <touch name="touch_tx_rf_mid_pad_r0_c1" site="tx_rf_mid_pad_r0_c1" />
+    <touch name="touch_tx_rf_mid_pad_r0_c2" site="tx_rf_mid_pad_r0_c2" />
+    <touch name="touch_tx_rf_mid_pad_r0_c3" site="tx_rf_mid_pad_r0_c3" />
+    <touch name="touch_tx_rf_mid_pad_r0_c4" site="tx_rf_mid_pad_r0_c4" />
+    <touch name="touch_tx_rf_mid_pad_r0_c5" site="tx_rf_mid_pad_r0_c5" />
+    <touch name="touch_tx_rf_mid_pad_r0_c6" site="tx_rf_mid_pad_r0_c6" />
+    <touch name="touch_tx_rf_mid_pad_r1_c0" site="tx_rf_mid_pad_r1_c0" />
+    <touch name="touch_tx_rf_mid_pad_r1_c1" site="tx_rf_mid_pad_r1_c1" />
+    <touch name="touch_tx_rf_mid_pad_r1_c2" site="tx_rf_mid_pad_r1_c2" />
+    <touch name="touch_tx_rf_mid_pad_r1_c3" site="tx_rf_mid_pad_r1_c3" />
+    <touch name="touch_tx_rf_mid_pad_r1_c4" site="tx_rf_mid_pad_r1_c4" />
+    <touch name="touch_tx_rf_mid_pad_r1_c5" site="tx_rf_mid_pad_r1_c5" />
+    <touch name="touch_tx_rf_mid_pad_r1_c6" site="tx_rf_mid_pad_r1_c6" />
+    <touch name="touch_tx_rf_mid_pad_r2_c0" site="tx_rf_mid_pad_r2_c0" />
+    <touch name="touch_tx_rf_mid_pad_r2_c1" site="tx_rf_mid_pad_r2_c1" />
+    <touch name="touch_tx_rf_mid_pad_r2_c2" site="tx_rf_mid_pad_r2_c2" />
+    <touch name="touch_tx_rf_mid_pad_r2_c3" site="tx_rf_mid_pad_r2_c3" />
+    <touch name="touch_tx_rf_mid_pad_r2_c4" site="tx_rf_mid_pad_r2_c4" />
+    <touch name="touch_tx_rf_mid_pad_r2_c5" site="tx_rf_mid_pad_r2_c5" />
+    <touch name="touch_tx_rf_mid_pad_r2_c6" site="tx_rf_mid_pad_r2_c6" />
+    <touch name="touch_tx_rf_mid_pad_r3_c0" site="tx_rf_mid_pad_r3_c0" />
+    <touch name="touch_tx_rf_mid_pad_r3_c1" site="tx_rf_mid_pad_r3_c1" />
+    <touch name="touch_tx_rf_mid_pad_r3_c2" site="tx_rf_mid_pad_r3_c2" />
+    <touch name="touch_tx_rf_mid_pad_r3_c3" site="tx_rf_mid_pad_r3_c3" />
+    <touch name="touch_tx_rf_mid_pad_r3_c4" site="tx_rf_mid_pad_r3_c4" />
+    <touch name="touch_tx_rf_mid_pad_r3_c5" site="tx_rf_mid_pad_r3_c5" />
+    <touch name="touch_tx_rf_mid_pad_r3_c6" site="tx_rf_mid_pad_r3_c6" />
+    <touch name="touch_tx_rf_distal_pad_r0_c0" site="tx_rf_distal_pad_r0_c0" />
+    <touch name="touch_tx_rf_distal_pad_r0_c1" site="tx_rf_distal_pad_r0_c1" />
+    <touch name="touch_tx_rf_distal_pad_r0_c2" site="tx_rf_distal_pad_r0_c2" />
+    <touch name="touch_tx_rf_distal_pad_r0_c3" site="tx_rf_distal_pad_r0_c3" />
+    <touch name="touch_tx_rf_distal_pad_r0_c4" site="tx_rf_distal_pad_r0_c4" />
+    <touch name="touch_tx_rf_distal_pad_r0_c5" site="tx_rf_distal_pad_r0_c5" />
+    <touch name="touch_tx_rf_distal_pad_r0_c6" site="tx_rf_distal_pad_r0_c6" />
+    <touch name="touch_tx_rf_distal_pad_r1_c0" site="tx_rf_distal_pad_r1_c0" />
+    <touch name="touch_tx_rf_distal_pad_r1_c1" site="tx_rf_distal_pad_r1_c1" />
+    <touch name="touch_tx_rf_distal_pad_r1_c2" site="tx_rf_distal_pad_r1_c2" />
+    <touch name="touch_tx_rf_distal_pad_r1_c3" site="tx_rf_distal_pad_r1_c3" />
+    <touch name="touch_tx_rf_distal_pad_r1_c4" site="tx_rf_distal_pad_r1_c4" />
+    <touch name="touch_tx_rf_distal_pad_r1_c5" site="tx_rf_distal_pad_r1_c5" />
+    <touch name="touch_tx_rf_distal_pad_r1_c6" site="tx_rf_distal_pad_r1_c6" />
+    <touch name="touch_tx_rf_distal_pad_r2_c0" site="tx_rf_distal_pad_r2_c0" />
+    <touch name="touch_tx_rf_distal_pad_r2_c1" site="tx_rf_distal_pad_r2_c1" />
+    <touch name="touch_tx_rf_distal_pad_r2_c2" site="tx_rf_distal_pad_r2_c2" />
+    <touch name="touch_tx_rf_distal_pad_r2_c3" site="tx_rf_distal_pad_r2_c3" />
+    <touch name="touch_tx_rf_distal_pad_r2_c4" site="tx_rf_distal_pad_r2_c4" />
+    <touch name="touch_tx_rf_distal_pad_r2_c5" site="tx_rf_distal_pad_r2_c5" />
+    <touch name="touch_tx_rf_distal_pad_r2_c6" site="tx_rf_distal_pad_r2_c6" />
+    <touch name="touch_tx_rf_distal_pad_r3_c0" site="tx_rf_distal_pad_r3_c0" />
+    <touch name="touch_tx_rf_distal_pad_r3_c1" site="tx_rf_distal_pad_r3_c1" />
+    <touch name="touch_tx_rf_distal_pad_r3_c2" site="tx_rf_distal_pad_r3_c2" />
+    <touch name="touch_tx_rf_distal_pad_r3_c3" site="tx_rf_distal_pad_r3_c3" />
+    <touch name="touch_tx_rf_distal_pad_r3_c4" site="tx_rf_distal_pad_r3_c4" />
+    <touch name="touch_tx_rf_distal_pad_r3_c5" site="tx_rf_distal_pad_r3_c5" />
+    <touch name="touch_tx_rf_distal_pad_r3_c6" site="tx_rf_distal_pad_r3_c6" />
+    <touch name="touch_tx_rf_tip_r0_c0" site="tx_rf_tip_r0_c0" />
+    <touch name="touch_tx_rf_tip_r0_c1" site="tx_rf_tip_r0_c1" />
+    <touch name="touch_tx_rf_tip_r0_c2" site="tx_rf_tip_r0_c2" />
+    <touch name="touch_tx_rf_tip_r0_c3" site="tx_rf_tip_r0_c3" />
+    <touch name="touch_tx_rf_tip_r0_c4" site="tx_rf_tip_r0_c4" />
+    <touch name="touch_tx_rf_tip_r0_c5" site="tx_rf_tip_r0_c5" />
+    <touch name="touch_tx_rf_tip_r0_c6" site="tx_rf_tip_r0_c6" />
+    <touch name="touch_tx_rf_tip_r1_c0" site="tx_rf_tip_r1_c0" />
+    <touch name="touch_tx_rf_tip_r1_c1" site="tx_rf_tip_r1_c1" />
+    <touch name="touch_tx_rf_tip_r1_c2" site="tx_rf_tip_r1_c2" />
+    <touch name="touch_tx_rf_tip_r1_c3" site="tx_rf_tip_r1_c3" />
+    <touch name="touch_tx_rf_tip_r1_c4" site="tx_rf_tip_r1_c4" />
+    <touch name="touch_tx_rf_tip_r1_c5" site="tx_rf_tip_r1_c5" />
+    <touch name="touch_tx_rf_tip_r1_c6" site="tx_rf_tip_r1_c6" />
+    <touch name="touch_tx_rf_tip_r2_c0" site="tx_rf_tip_r2_c0" />
+    <touch name="touch_tx_rf_tip_r2_c1" site="tx_rf_tip_r2_c1" />
+    <touch name="touch_tx_rf_tip_r2_c2" site="tx_rf_tip_r2_c2" />
+    <touch name="touch_tx_rf_tip_r2_c3" site="tx_rf_tip_r2_c3" />
+    <touch name="touch_tx_rf_tip_r2_c4" site="tx_rf_tip_r2_c4" />
+    <touch name="touch_tx_rf_tip_r2_c5" site="tx_rf_tip_r2_c5" />
+    <touch name="touch_tx_rf_tip_r2_c6" site="tx_rf_tip_r2_c6" />
+    <touch name="touch_tx_rf_tip_r3_c0" site="tx_rf_tip_r3_c0" />
+    <touch name="touch_tx_rf_tip_r3_c1" site="tx_rf_tip_r3_c1" />
+    <touch name="touch_tx_rf_tip_r3_c2" site="tx_rf_tip_r3_c2" />
+    <touch name="touch_tx_rf_tip_r3_c3" site="tx_rf_tip_r3_c3" />
+    <touch name="touch_tx_rf_tip_r3_c4" site="tx_rf_tip_r3_c4" />
+    <touch name="touch_tx_rf_tip_r3_c5" site="tx_rf_tip_r3_c5" />
+    <touch name="touch_tx_rf_tip_r3_c6" site="tx_rf_tip_r3_c6" />
+    <touch name="touch_tx_rf_tip_r4_c0" site="tx_rf_tip_r4_c0" />
+    <touch name="touch_tx_rf_tip_r4_c1" site="tx_rf_tip_r4_c1" />
+    <touch name="touch_tx_rf_tip_r4_c2" site="tx_rf_tip_r4_c2" />
+    <touch name="touch_tx_rf_tip_r4_c3" site="tx_rf_tip_r4_c3" />
+    <touch name="touch_tx_rf_tip_r4_c4" site="tx_rf_tip_r4_c4" />
+    <touch name="touch_tx_rf_tip_r4_c5" site="tx_rf_tip_r4_c5" />
+    <touch name="touch_tx_rf_tip_r4_c6" site="tx_rf_tip_r4_c6" />
+    <touch name="touch_tx_rf_tip_r5_c0" site="tx_rf_tip_r5_c0" />
+    <touch name="touch_tx_rf_tip_r5_c1" site="tx_rf_tip_r5_c1" />
+    <touch name="touch_tx_rf_tip_r5_c2" site="tx_rf_tip_r5_c2" />
+    <touch name="touch_tx_rf_tip_r5_c3" site="tx_rf_tip_r5_c3" />
+    <touch name="touch_tx_rf_tip_r5_c4" site="tx_rf_tip_r5_c4" />
+    <touch name="touch_tx_rf_tip_r5_c5" site="tx_rf_tip_r5_c5" />
+    <touch name="touch_tx_rf_tip_r5_c6" site="tx_rf_tip_r5_c6" />
+    <touch name="touch_tx_th_pad_r0_c0" site="tx_th_pad_r0_c0" />
+    <touch name="touch_tx_th_pad_r0_c1" site="tx_th_pad_r0_c1" />
+    <touch name="touch_tx_th_pad_r0_c2" site="tx_th_pad_r0_c2" />
+    <touch name="touch_tx_th_pad_r0_c3" site="tx_th_pad_r0_c3" />
+    <touch name="touch_tx_th_pad_r0_c4" site="tx_th_pad_r0_c4" />
+    <touch name="touch_tx_th_pad_r0_c5" site="tx_th_pad_r0_c5" />
+    <touch name="touch_tx_th_pad_r0_c6" site="tx_th_pad_r0_c6" />
+    <touch name="touch_tx_th_pad_r1_c0" site="tx_th_pad_r1_c0" />
+    <touch name="touch_tx_th_pad_r1_c1" site="tx_th_pad_r1_c1" />
+    <touch name="touch_tx_th_pad_r1_c2" site="tx_th_pad_r1_c2" />
+    <touch name="touch_tx_th_pad_r1_c3" site="tx_th_pad_r1_c3" />
+    <touch name="touch_tx_th_pad_r1_c4" site="tx_th_pad_r1_c4" />
+    <touch name="touch_tx_th_pad_r1_c5" site="tx_th_pad_r1_c5" />
+    <touch name="touch_tx_th_pad_r1_c6" site="tx_th_pad_r1_c6" />
+    <touch name="touch_tx_th_pad_r2_c0" site="tx_th_pad_r2_c0" />
+    <touch name="touch_tx_th_pad_r2_c1" site="tx_th_pad_r2_c1" />
+    <touch name="touch_tx_th_pad_r2_c2" site="tx_th_pad_r2_c2" />
+    <touch name="touch_tx_th_pad_r2_c3" site="tx_th_pad_r2_c3" />
+    <touch name="touch_tx_th_pad_r2_c4" site="tx_th_pad_r2_c4" />
+    <touch name="touch_tx_th_pad_r2_c5" site="tx_th_pad_r2_c5" />
+    <touch name="touch_tx_th_pad_r2_c6" site="tx_th_pad_r2_c6" />
+    <touch name="touch_tx_th_pad_r3_c0" site="tx_th_pad_r3_c0" />
+    <touch name="touch_tx_th_pad_r3_c1" site="tx_th_pad_r3_c1" />
+    <touch name="touch_tx_th_pad_r3_c2" site="tx_th_pad_r3_c2" />
+    <touch name="touch_tx_th_pad_r3_c3" site="tx_th_pad_r3_c3" />
+    <touch name="touch_tx_th_pad_r3_c4" site="tx_th_pad_r3_c4" />
+    <touch name="touch_tx_th_pad_r3_c5" site="tx_th_pad_r3_c5" />
+    <touch name="touch_tx_th_pad_r3_c6" site="tx_th_pad_r3_c6" />
+    <touch name="touch_tx_th_tip_r0_c0" site="tx_th_tip_r0_c0" />
+    <touch name="touch_tx_th_tip_r0_c1" site="tx_th_tip_r0_c1" />
+    <touch name="touch_tx_th_tip_r0_c2" site="tx_th_tip_r0_c2" />
+    <touch name="touch_tx_th_tip_r0_c3" site="tx_th_tip_r0_c3" />
+    <touch name="touch_tx_th_tip_r0_c4" site="tx_th_tip_r0_c4" />
+    <touch name="touch_tx_th_tip_r0_c5" site="tx_th_tip_r0_c5" />
+    <touch name="touch_tx_th_tip_r0_c6" site="tx_th_tip_r0_c6" />
+    <touch name="touch_tx_th_tip_r1_c0" site="tx_th_tip_r1_c0" />
+    <touch name="touch_tx_th_tip_r1_c1" site="tx_th_tip_r1_c1" />
+    <touch name="touch_tx_th_tip_r1_c2" site="tx_th_tip_r1_c2" />
+    <touch name="touch_tx_th_tip_r1_c3" site="tx_th_tip_r1_c3" />
+    <touch name="touch_tx_th_tip_r1_c4" site="tx_th_tip_r1_c4" />
+    <touch name="touch_tx_th_tip_r1_c5" site="tx_th_tip_r1_c5" />
+    <touch name="touch_tx_th_tip_r1_c6" site="tx_th_tip_r1_c6" />
+    <touch name="touch_tx_th_tip_r2_c0" site="tx_th_tip_r2_c0" />
+    <touch name="touch_tx_th_tip_r2_c1" site="tx_th_tip_r2_c1" />
+    <touch name="touch_tx_th_tip_r2_c2" site="tx_th_tip_r2_c2" />
+    <touch name="touch_tx_th_tip_r2_c3" site="tx_th_tip_r2_c3" />
+    <touch name="touch_tx_th_tip_r2_c4" site="tx_th_tip_r2_c4" />
+    <touch name="touch_tx_th_tip_r2_c5" site="tx_th_tip_r2_c5" />
+    <touch name="touch_tx_th_tip_r2_c6" site="tx_th_tip_r2_c6" />
+    <touch name="touch_tx_th_tip_r3_c0" site="tx_th_tip_r3_c0" />
+    <touch name="touch_tx_th_tip_r3_c1" site="tx_th_tip_r3_c1" />
+    <touch name="touch_tx_th_tip_r3_c2" site="tx_th_tip_r3_c2" />
+    <touch name="touch_tx_th_tip_r3_c3" site="tx_th_tip_r3_c3" />
+    <touch name="touch_tx_th_tip_r3_c4" site="tx_th_tip_r3_c4" />
+    <touch name="touch_tx_th_tip_r3_c5" site="tx_th_tip_r3_c5" />
+    <touch name="touch_tx_th_tip_r3_c6" site="tx_th_tip_r3_c6" />
+    <touch name="touch_tx_th_tip_r4_c0" site="tx_th_tip_r4_c0" />
+    <touch name="touch_tx_th_tip_r4_c1" site="tx_th_tip_r4_c1" />
+    <touch name="touch_tx_th_tip_r4_c2" site="tx_th_tip_r4_c2" />
+    <touch name="touch_tx_th_tip_r4_c3" site="tx_th_tip_r4_c3" />
+    <touch name="touch_tx_th_tip_r4_c4" site="tx_th_tip_r4_c4" />
+    <touch name="touch_tx_th_tip_r4_c5" site="tx_th_tip_r4_c5" />
+    <touch name="touch_tx_th_tip_r4_c6" site="tx_th_tip_r4_c6" />
+    <touch name="touch_tx_th_tip_r5_c0" site="tx_th_tip_r5_c0" />
+    <touch name="touch_tx_th_tip_r5_c1" site="tx_th_tip_r5_c1" />
+    <touch name="touch_tx_th_tip_r5_c2" site="tx_th_tip_r5_c2" />
+    <touch name="touch_tx_th_tip_r5_c3" site="tx_th_tip_r5_c3" />
+    <touch name="touch_tx_th_tip_r5_c4" site="tx_th_tip_r5_c4" />
+    <touch name="touch_tx_th_tip_r5_c5" site="tx_th_tip_r5_c5" />
+    <touch name="touch_tx_th_tip_r5_c6" site="tx_th_tip_r5_c6" />
+  </sensor>
+  <worldbody>
+    <body name="palm" pos="0 0 0.1" quat="0.707107 0 -0.707107 0">
+      <inertial pos="0.07932150848 -0.0005699048613 0.01099296709" mass="0.5318816914" fullinertia="0.0009569940334 0.0007062159583 0.001548522163 3.636826453e-05 1.473723692e-05 6.330838064e-07" />
+      <geom name="palm_visual" class="visual" mesh="base_link" material="sensor_blue" />
+      <geom name="palm_collision" class="collision" mesh="base_link" />
+      <body name="if_bs" pos="0.1495 -0.06 0.00951" quat="0.4999981634 0.5 -0.5 0.5000018366">
+        <inertial pos="-0.0249553502 -0.04969792354 -9.767521666e-05" mass="0.07775232361" fullinertia="2.402793296e-05 2.279474367e-05 2.846964274e-05 -7.829927674e-06 7.49774139e-08 9.273841483e-09" />
+        <joint name="if_mcp" class="mcp" pos="0 0 0" axis="0 0 1" />
+        <geom name="if_bs_visual" class="visual" mesh="index_link1" material="white" />
+        <geom name="if_bs_collision" class="collision" mesh="index_link1" />
+        <body name="if_px" pos="-0.03577 -0.067483 0" quat="0.4991474413 -0.4991492748 -0.5008511137 0.500849274">
+          <inertial pos="-0.009825654214 -0.0005720398152 -0.03465676241" mass="0.02724420241" fullinertia="2.847885185e-06 3.927357053e-06 4.171312684e-06 -2.743097554e-08 3.498644046e-09 9.297683418e-11" />
+          <joint name="if_rot" class="rot" pos="0 0 0" axis="0 0 1" />
+          <geom name="if_px_visual" class="visual" mesh="index_link2" material="white" />
+          <geom name="if_px_collision" class="collision" mesh="index_link2" />
+          <body name="if_md" pos="-0.016049 -5.4793e-05 -0.035977" quat="-7.586870913e-06 -0.002406546151 0.7071039847 -0.7071054825">
+            <inertial pos="0.04578279431 -0.004037096816 0.0002145767498" mass="0.04693729099" fullinertia="1.01421539e-05 1.18373976e-05 1.114691766e-05 1.632705629e-06 1.06396801e-08 -5.16209509e-08" />
+            <joint name="if_pip" class="pip" pos="0 0 0" axis="0 0 1" />
+            <geom name="if_md_visual" class="visual" mesh="index_link3" material="white" />
+            <geom name="if_md_collision" class="collision" mesh="index_link3" />
+            <body name="if_ds" pos="0.059 0.00020143 -0.0002" quat="0.7059023776 0 0 0.7083091368">
+              <inertial pos="-0.0001469825788 -0.03804431389 0.0003795830386" mass="0.02161150278" fullinertia="6.756911853e-06 4.820464808e-06 4.350977698e-06 -2.817307831e-07 3.817535725e-09 -5.345070188e-08" />
+              <joint name="if_dip" class="dip" pos="0 0 0" axis="0 0 1" />
+              <geom name="if_ds_visual" class="visual" mesh="index_tip" material="sensor_blue" />
+              <geom name="if_ds_collision" class="collision" mesh="index_tip" />
+              <site name="tx_if_tip_r0_c0" pos="0.010815 -0.040555 -0.013957" quat="0.010812 0.927473 -0.026901 0.372766" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_if_tip_r0_c1" pos="0.014136 -0.040539 -0.009980" quat="0.006635 0.882365 -0.012447 0.470354" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_if_tip_r0_c2" pos="0.016342 -0.040533 -0.005174" quat="0.000619 0.807431 -0.000847 0.589961" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_if_tip_r0_c3" pos="0.017129 -0.040532 0.000102" quat="-0.003266 0.694107 0.003149 0.719858" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_if_tip_r0_c4" pos="0.016332 -0.040533 0.005375" quat="0.001314 0.569935 -0.000911 0.821688" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_if_tip_r0_c5" pos="0.014132 -0.040539 0.010183" quat="0.013352 0.454914 -0.006822 0.890409" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_if_tip_r0_c6" pos="0.010796 -0.040554 0.014152" quat="0.021421 0.372634 -0.008605 0.927691" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_if_tip_r1_c0" pos="0.010499 -0.045572 -0.013900" quat="0.016242 0.927644 -0.040622 0.370895" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_if_tip_r1_c1" pos="0.013898 -0.045555 -0.009973" quat="0.014284 0.884612 -0.027155 0.465317" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_if_tip_r1_c2" pos="0.016202 -0.045551 -0.005191" quat="0.012294 0.810858 -0.017044 0.584865" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_if_tip_r1_c3" pos="0.017040 -0.045552 0.000102" quat="0.012538 0.693687 -0.012079 0.720066" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_if_tip_r1_c4" pos="0.016187 -0.045551 0.005391" quat="0.017721 0.567286 -0.012211 0.823240" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_if_tip_r1_c5" pos="0.013886 -0.045555 0.010170" quat="0.028556 0.447238 -0.014288 0.893845" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_if_tip_r1_c6" pos="0.010496 -0.045573 0.014101" quat="0.040308 0.373183 -0.016232 0.926739" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_if_tip_r2_c0" pos="0.009982 -0.050596 -0.013832" quat="0.023817 0.937706 -0.065619 0.340345" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_if_tip_r2_c1" pos="0.013485 -0.050581 -0.009975" quat="0.024837 0.890021 -0.048840 0.452615" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_if_tip_r2_c2" pos="0.015882 -0.050581 -0.005211" quat="0.023722 0.812154 -0.033102 0.582020" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_if_tip_r2_c3" pos="0.016758 -0.050586 0.000103" quat="0.028088 0.693333 -0.027065 0.719561" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_if_tip_r2_c4" pos="0.015863 -0.050580 0.005412" quat="0.033979 0.567186 -0.023430 0.822555" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_if_tip_r2_c5" pos="0.013469 -0.050580 0.010175" quat="0.049519 0.442759 -0.024499 0.894937" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_if_tip_r2_c6" pos="0.009968 -0.050595 0.014028" quat="0.068911 0.325162 -0.023766 0.942845" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_if_tip_r3_c0" pos="0.009224 -0.055604 -0.013777" quat="0.033485 0.937705 -0.094379 0.332689" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_if_tip_r3_c1" pos="0.012813 -0.055592 -0.009991" quat="0.035252 0.880978 -0.066483 0.467135" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_if_tip_r3_c2" pos="0.015235 -0.055596 -0.005225" quat="0.044517 0.806768 -0.061289 0.585992" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_if_tip_r3_c3" pos="0.016114 -0.055603 0.000104" quat="0.057339 0.692530 -0.055385 0.716970" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_if_tip_r3_c4" pos="0.015214 -0.055594 0.005430" quat="0.064139 0.571406 -0.044863 0.816926" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_if_tip_r3_c5" pos="0.012773 -0.055588 0.010188" quat="0.066607 0.451848 -0.033856 0.888960" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_if_tip_r3_c6" pos="0.009176 -0.055599 0.013971" quat="0.096644 0.330483 -0.034042 0.938233" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_if_tip_r4_c0" pos="0.008128 -0.060541 -0.013739" quat="0.041785 0.938560 -0.122598 0.319889" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_if_tip_r4_c1" pos="0.011791 -0.060540 -0.010021" quat="0.053579 0.888654 -0.107590 0.442546" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_if_tip_r4_c2" pos="0.014167 -0.060537 -0.005236" quat="0.080720 0.799501 -0.110336 0.584900" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_if_tip_r4_c3" pos="0.014996 -0.060539 0.000101" quat="0.103450 0.679802 -0.097749 0.719453" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_if_tip_r4_c4" pos="0.014160 -0.060537 0.005438" quat="0.108169 0.584993 -0.079108 0.799890" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_if_tip_r4_c5" pos="0.011764 -0.060539 0.010218" quat="0.107778 0.467542 -0.057557 0.875486" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_if_tip_r4_c6" pos="0.008103 -0.060540 0.013938" quat="0.117710 0.331504 -0.041727 0.935151" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_if_tip_r5_c0" pos="0.006234 -0.065201 -0.013626" quat="0.114824 0.885138 -0.314455 0.323210" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_if_tip_r5_c1" pos="0.010050 -0.065260 -0.010057" quat="0.129544 0.843014 -0.234011 0.466675" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_if_tip_r5_c2" pos="0.012447 -0.065269 -0.005267" quat="0.131686 0.777741 -0.173714 0.589577" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_if_tip_r5_c3" pos="0.013216 -0.065256 0.000101" quat="0.143496 0.677398 -0.137233 0.708313" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_if_tip_r5_c4" pos="0.012454 -0.065273 0.005471" quat="0.178408 0.584795 -0.133771 0.779930" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_if_tip_r5_c5" pos="0.010049 -0.065265 0.010256" quat="0.234155 0.466690 -0.129637 0.842951" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_if_tip_r5_c6" pos="0.006242 -0.065206 0.013822" quat="0.331537 0.300117 -0.112128 0.887379" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+            </body>
+            <site name="tx_if_distal_pad_r0_c0" pos="0.024457 0.016184 -0.015100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_if_distal_pad_r0_c1" pos="0.024457 0.016184 -0.010100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_if_distal_pad_r0_c2" pos="0.024457 0.016184 -0.005100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_if_distal_pad_r0_c3" pos="0.024457 0.016184 -0.000100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_if_distal_pad_r0_c4" pos="0.024457 0.016184 0.004900" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_if_distal_pad_r0_c5" pos="0.024457 0.016184 0.009900" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_if_distal_pad_r0_c6" pos="0.024457 0.016184 0.014900" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_if_distal_pad_r1_c0" pos="0.029457 0.016201 -0.015100" quat="0.500852 -0.499146 -0.500853 -0.499145" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_if_distal_pad_r1_c1" pos="0.029457 0.016201 -0.010100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_if_distal_pad_r1_c2" pos="0.029457 0.016201 -0.005100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_if_distal_pad_r1_c3" pos="0.029457 0.016201 -0.000100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_if_distal_pad_r1_c4" pos="0.029457 0.016201 0.004900" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_if_distal_pad_r1_c5" pos="0.029457 0.016201 0.009900" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_if_distal_pad_r1_c6" pos="0.029457 0.016201 0.014900" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_if_distal_pad_r2_c0" pos="0.034457 0.016218 -0.015100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_if_distal_pad_r2_c1" pos="0.034457 0.016218 -0.010100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_if_distal_pad_r2_c2" pos="0.034457 0.016218 -0.005100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_if_distal_pad_r2_c3" pos="0.034457 0.016218 -0.000100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_if_distal_pad_r2_c4" pos="0.034457 0.016218 0.004900" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_if_distal_pad_r2_c5" pos="0.034457 0.016218 0.009900" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_if_distal_pad_r2_c6" pos="0.034457 0.016218 0.014900" quat="0.500853 -0.499145 -0.500852 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_if_distal_pad_r3_c0" pos="0.039457 0.016235 -0.015100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_if_distal_pad_r3_c1" pos="0.039457 0.016235 -0.010100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_if_distal_pad_r3_c2" pos="0.039457 0.016235 -0.005100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_if_distal_pad_r3_c3" pos="0.039457 0.016235 -0.000100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_if_distal_pad_r3_c4" pos="0.039457 0.016235 0.004900" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_if_distal_pad_r3_c5" pos="0.039457 0.016235 0.009900" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_if_distal_pad_r3_c6" pos="0.039457 0.016235 0.014900" quat="0.500853 -0.499145 -0.500852 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+          </body>
+        </body>
+        <site name="tx_if_mid_pad_r0_c0" pos="0.016239 -0.040787 -0.015090" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_if_mid_pad_r0_c1" pos="0.016239 -0.040770 -0.010090" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_if_mid_pad_r0_c2" pos="0.016239 -0.040753 -0.005090" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_if_mid_pad_r0_c3" pos="0.016239 -0.040736 -0.000090" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_if_mid_pad_r0_c4" pos="0.016239 -0.040719 0.004910" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_if_mid_pad_r0_c5" pos="0.016239 -0.040702 0.009910" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_if_mid_pad_r0_c6" pos="0.016239 -0.040685 0.014910" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_if_mid_pad_r1_c0" pos="0.016222 -0.035787 -0.015107" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_if_mid_pad_r1_c1" pos="0.016222 -0.035770 -0.010107" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_if_mid_pad_r1_c2" pos="0.016222 -0.035753 -0.005107" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_if_mid_pad_r1_c3" pos="0.016222 -0.035736 -0.000107" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_if_mid_pad_r1_c4" pos="0.016222 -0.035719 0.004893" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_if_mid_pad_r1_c5" pos="0.016222 -0.035702 0.009893" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_if_mid_pad_r1_c6" pos="0.016222 -0.035685 0.014893" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_if_mid_pad_r2_c0" pos="0.016205 -0.030787 -0.015124" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_if_mid_pad_r2_c1" pos="0.016205 -0.030770 -0.010124" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_if_mid_pad_r2_c2" pos="0.016205 -0.030753 -0.005124" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_if_mid_pad_r2_c3" pos="0.016205 -0.030736 -0.000124" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_if_mid_pad_r2_c4" pos="0.016205 -0.030719 0.004876" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_if_mid_pad_r2_c5" pos="0.016205 -0.030702 0.009876" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_if_mid_pad_r2_c6" pos="0.016205 -0.030685 0.014876" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_if_mid_pad_r3_c0" pos="0.016188 -0.025787 -0.015140" quat="-0.000008 0.707102 0.002406 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_if_mid_pad_r3_c1" pos="0.016188 -0.025770 -0.010140" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_if_mid_pad_r3_c2" pos="0.016188 -0.025753 -0.005141" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_if_mid_pad_r3_c3" pos="0.016188 -0.025736 -0.000141" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_if_mid_pad_r3_c4" pos="0.016188 -0.025719 0.004859" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_if_mid_pad_r3_c5" pos="0.016188 -0.025702 0.009859" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_if_mid_pad_r3_c6" pos="0.016188 -0.025685 0.014859" quat="-0.000008 0.707103 0.002406 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+      </body>
+      <body name="mf_bs" pos="0.1495 0 0.00951" quat="0.4999981634 0.5 -0.5 0.5000018366">
+        <inertial pos="-0.0249553502 -0.04969792354 -9.767521666e-05" mass="0.07775232361" fullinertia="2.402793296e-05 2.279474367e-05 2.846964274e-05 -7.829927674e-06 7.49774139e-08 9.273841483e-09" />
+        <joint name="mf_mcp" class="mcp" pos="0 0 0" axis="0 0 1" />
+        <geom name="mf_bs_visual" class="visual" mesh="middle_link1" material="white" />
+        <geom name="mf_bs_collision" class="collision" mesh="middle_link1" />
+        <body name="mf_px" pos="-0.03577 -0.067483 0" quat="0.4991474413 -0.4991492748 -0.5008511137 0.500849274">
+          <inertial pos="-0.009825654214 -0.0005720398152 -0.03465676241" mass="0.02724420241" fullinertia="2.847885185e-06 3.927357053e-06 4.171312684e-06 -2.743097554e-08 3.498644046e-09 9.297683416e-11" />
+          <joint name="mf_rot" class="rot" pos="0 0 0" axis="0 0 1" />
+          <geom name="mf_px_visual" class="visual" mesh="middle_link2" material="sensor_blue" />
+          <geom name="mf_px_collision" class="collision" mesh="middle_link2" />
+          <body name="mf_md" pos="-0.016049 -5.4793e-05 -0.035977" quat="-7.586870913e-06 -0.002406546151 0.7071039847 -0.7071054825">
+            <inertial pos="0.04578279431 -0.004037096816 0.0002145767498" mass="0.04693729099" fullinertia="1.01421539e-05 1.18373976e-05 1.114691766e-05 1.632705629e-06 1.06396801e-08 -5.16209509e-08" />
+            <joint name="mf_pip" class="pip" pos="0 0 0" axis="0 0 1" />
+            <geom name="mf_md_visual" class="visual" mesh="middle_link3" material="white" />
+            <geom name="mf_md_collision" class="collision" mesh="middle_link3" />
+            <body name="mf_ds" pos="0.059 0.00020143 -0.0002" quat="0.7059023776 0 0 0.7083091368">
+              <inertial pos="-0.0001472449216 -0.0380443709 0.0003796333062" mass="0.02161107169" fullinertia="6.756755053e-06 4.820424198e-06 4.350787014e-06 -2.816552283e-07 3.806334562e-09 -5.347339546e-08" />
+              <joint name="mf_dip" class="dip" pos="0 0 0" axis="0 0 1" />
+              <geom name="mf_ds_visual" class="visual" mesh="middle_tip" material="white" />
+              <geom name="mf_ds_collision" class="collision" mesh="middle_tip" />
+              <site name="tx_mf_tip_r0_c0" pos="0.010815 -0.040555 -0.013957" quat="0.010812 0.927473 -0.026901 0.372766" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_mf_tip_r0_c1" pos="0.014136 -0.040539 -0.009980" quat="0.006635 0.882365 -0.012447 0.470354" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_mf_tip_r0_c2" pos="0.016342 -0.040533 -0.005174" quat="0.000619 0.807431 -0.000847 0.589961" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_mf_tip_r0_c3" pos="0.017129 -0.040532 0.000102" quat="-0.003266 0.694107 0.003149 0.719858" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_mf_tip_r0_c4" pos="0.016332 -0.040533 0.005375" quat="0.001314 0.569935 -0.000911 0.821688" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_mf_tip_r0_c5" pos="0.014132 -0.040539 0.010183" quat="0.013352 0.454914 -0.006822 0.890409" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_mf_tip_r0_c6" pos="0.010796 -0.040554 0.014152" quat="0.021421 0.372634 -0.008605 0.927691" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_mf_tip_r1_c0" pos="0.010499 -0.045572 -0.013900" quat="0.016242 0.927644 -0.040622 0.370895" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_mf_tip_r1_c1" pos="0.013898 -0.045555 -0.009973" quat="0.014284 0.884612 -0.027155 0.465317" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_mf_tip_r1_c2" pos="0.016202 -0.045551 -0.005191" quat="0.012294 0.810858 -0.017044 0.584865" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_mf_tip_r1_c3" pos="0.017040 -0.045552 0.000102" quat="0.012538 0.693687 -0.012079 0.720066" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_mf_tip_r1_c4" pos="0.016187 -0.045551 0.005391" quat="0.017721 0.567286 -0.012211 0.823240" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_mf_tip_r1_c5" pos="0.013886 -0.045555 0.010170" quat="0.028556 0.447238 -0.014288 0.893845" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_mf_tip_r1_c6" pos="0.010496 -0.045573 0.014101" quat="0.040308 0.373183 -0.016232 0.926739" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_mf_tip_r2_c0" pos="0.009982 -0.050596 -0.013832" quat="0.023817 0.937706 -0.065619 0.340345" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_mf_tip_r2_c1" pos="0.013485 -0.050581 -0.009975" quat="0.024837 0.890021 -0.048840 0.452615" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_mf_tip_r2_c2" pos="0.015882 -0.050581 -0.005211" quat="0.023722 0.812154 -0.033102 0.582020" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_mf_tip_r2_c3" pos="0.016758 -0.050586 0.000103" quat="0.028088 0.693333 -0.027065 0.719561" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_mf_tip_r2_c4" pos="0.015863 -0.050580 0.005412" quat="0.033979 0.567186 -0.023430 0.822555" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_mf_tip_r2_c5" pos="0.013469 -0.050580 0.010175" quat="0.049519 0.442759 -0.024499 0.894937" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_mf_tip_r2_c6" pos="0.009968 -0.050595 0.014028" quat="0.068911 0.325162 -0.023766 0.942845" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_mf_tip_r3_c0" pos="0.009224 -0.055604 -0.013777" quat="0.033485 0.937705 -0.094379 0.332689" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_mf_tip_r3_c1" pos="0.012813 -0.055592 -0.009991" quat="0.035252 0.880978 -0.066483 0.467135" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_mf_tip_r3_c2" pos="0.015235 -0.055596 -0.005225" quat="0.044517 0.806768 -0.061289 0.585992" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_mf_tip_r3_c3" pos="0.016114 -0.055603 0.000104" quat="0.057339 0.692530 -0.055385 0.716970" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_mf_tip_r3_c4" pos="0.015214 -0.055594 0.005430" quat="0.064139 0.571406 -0.044863 0.816926" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_mf_tip_r3_c5" pos="0.012773 -0.055588 0.010188" quat="0.066607 0.451848 -0.033856 0.888960" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_mf_tip_r3_c6" pos="0.009176 -0.055599 0.013971" quat="0.096644 0.330483 -0.034042 0.938233" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_mf_tip_r4_c0" pos="0.008128 -0.060541 -0.013739" quat="0.041785 0.938560 -0.122598 0.319889" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_mf_tip_r4_c1" pos="0.011791 -0.060540 -0.010021" quat="0.053579 0.888654 -0.107590 0.442546" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_mf_tip_r4_c2" pos="0.014167 -0.060537 -0.005236" quat="0.080720 0.799501 -0.110336 0.584900" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_mf_tip_r4_c3" pos="0.014996 -0.060539 0.000101" quat="0.103450 0.679802 -0.097749 0.719453" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_mf_tip_r4_c4" pos="0.014160 -0.060537 0.005438" quat="0.108169 0.584993 -0.079108 0.799890" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_mf_tip_r4_c5" pos="0.011764 -0.060539 0.010218" quat="0.107778 0.467542 -0.057557 0.875486" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_mf_tip_r4_c6" pos="0.008103 -0.060540 0.013938" quat="0.117710 0.331504 -0.041727 0.935151" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_mf_tip_r5_c0" pos="0.006234 -0.065201 -0.013626" quat="0.114824 0.885138 -0.314455 0.323210" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_mf_tip_r5_c1" pos="0.010050 -0.065260 -0.010057" quat="0.129544 0.843014 -0.234011 0.466675" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_mf_tip_r5_c2" pos="0.012447 -0.065269 -0.005267" quat="0.131686 0.777741 -0.173714 0.589577" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_mf_tip_r5_c3" pos="0.013216 -0.065256 0.000101" quat="0.143496 0.677398 -0.137233 0.708313" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_mf_tip_r5_c4" pos="0.012454 -0.065273 0.005471" quat="0.178408 0.584795 -0.133771 0.779930" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_mf_tip_r5_c5" pos="0.010049 -0.065265 0.010256" quat="0.234155 0.466690 -0.129637 0.842951" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_mf_tip_r5_c6" pos="0.006242 -0.065206 0.013822" quat="0.331537 0.300117 -0.112128 0.887379" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+            </body>
+            <site name="tx_mf_distal_pad_r0_c0" pos="0.024457 0.016184 -0.015100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_mf_distal_pad_r0_c1" pos="0.024457 0.016184 -0.010100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_mf_distal_pad_r0_c2" pos="0.024457 0.016184 -0.005100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_mf_distal_pad_r0_c3" pos="0.024457 0.016184 -0.000100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_mf_distal_pad_r0_c4" pos="0.024457 0.016184 0.004900" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_mf_distal_pad_r0_c5" pos="0.024457 0.016184 0.009900" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_mf_distal_pad_r0_c6" pos="0.024457 0.016184 0.014900" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_mf_distal_pad_r1_c0" pos="0.029457 0.016201 -0.015100" quat="0.500852 -0.499146 -0.500853 -0.499145" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_mf_distal_pad_r1_c1" pos="0.029457 0.016201 -0.010100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_mf_distal_pad_r1_c2" pos="0.029457 0.016201 -0.005100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_mf_distal_pad_r1_c3" pos="0.029457 0.016201 -0.000100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_mf_distal_pad_r1_c4" pos="0.029457 0.016201 0.004900" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_mf_distal_pad_r1_c5" pos="0.029457 0.016201 0.009900" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_mf_distal_pad_r1_c6" pos="0.029457 0.016201 0.014900" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_mf_distal_pad_r2_c0" pos="0.034457 0.016218 -0.015100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_mf_distal_pad_r2_c1" pos="0.034457 0.016218 -0.010100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_mf_distal_pad_r2_c2" pos="0.034457 0.016218 -0.005100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_mf_distal_pad_r2_c3" pos="0.034457 0.016218 -0.000100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_mf_distal_pad_r2_c4" pos="0.034457 0.016218 0.004900" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_mf_distal_pad_r2_c5" pos="0.034457 0.016218 0.009900" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_mf_distal_pad_r2_c6" pos="0.034457 0.016218 0.014900" quat="0.500853 -0.499145 -0.500852 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_mf_distal_pad_r3_c0" pos="0.039457 0.016235 -0.015100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_mf_distal_pad_r3_c1" pos="0.039457 0.016235 -0.010100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_mf_distal_pad_r3_c2" pos="0.039457 0.016235 -0.005100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_mf_distal_pad_r3_c3" pos="0.039457 0.016235 -0.000100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_mf_distal_pad_r3_c4" pos="0.039457 0.016235 0.004900" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_mf_distal_pad_r3_c5" pos="0.039457 0.016235 0.009900" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_mf_distal_pad_r3_c6" pos="0.039457 0.016235 0.014900" quat="0.500853 -0.499145 -0.500852 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+          </body>
+        </body>
+        <site name="tx_mf_mid_pad_r0_c0" pos="0.016239 -0.040787 -0.015090" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_mf_mid_pad_r0_c1" pos="0.016239 -0.040770 -0.010090" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_mf_mid_pad_r0_c2" pos="0.016239 -0.040753 -0.005090" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_mf_mid_pad_r0_c3" pos="0.016239 -0.040736 -0.000090" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_mf_mid_pad_r0_c4" pos="0.016239 -0.040719 0.004910" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_mf_mid_pad_r0_c5" pos="0.016239 -0.040702 0.009910" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_mf_mid_pad_r0_c6" pos="0.016239 -0.040685 0.014910" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_mf_mid_pad_r1_c0" pos="0.016222 -0.035787 -0.015107" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_mf_mid_pad_r1_c1" pos="0.016222 -0.035770 -0.010107" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_mf_mid_pad_r1_c2" pos="0.016222 -0.035753 -0.005107" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_mf_mid_pad_r1_c3" pos="0.016222 -0.035736 -0.000107" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_mf_mid_pad_r1_c4" pos="0.016222 -0.035719 0.004893" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_mf_mid_pad_r1_c5" pos="0.016222 -0.035702 0.009893" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_mf_mid_pad_r1_c6" pos="0.016222 -0.035685 0.014893" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_mf_mid_pad_r2_c0" pos="0.016205 -0.030787 -0.015124" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_mf_mid_pad_r2_c1" pos="0.016205 -0.030770 -0.010124" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_mf_mid_pad_r2_c2" pos="0.016205 -0.030753 -0.005124" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_mf_mid_pad_r2_c3" pos="0.016205 -0.030736 -0.000124" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_mf_mid_pad_r2_c4" pos="0.016205 -0.030719 0.004876" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_mf_mid_pad_r2_c5" pos="0.016205 -0.030702 0.009876" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_mf_mid_pad_r2_c6" pos="0.016205 -0.030685 0.014876" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_mf_mid_pad_r3_c0" pos="0.016188 -0.025787 -0.015140" quat="-0.000008 0.707102 0.002406 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_mf_mid_pad_r3_c1" pos="0.016188 -0.025770 -0.010140" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_mf_mid_pad_r3_c2" pos="0.016188 -0.025753 -0.005141" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_mf_mid_pad_r3_c3" pos="0.016188 -0.025736 -0.000141" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_mf_mid_pad_r3_c4" pos="0.016188 -0.025719 0.004859" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_mf_mid_pad_r3_c5" pos="0.016188 -0.025702 0.009859" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_mf_mid_pad_r3_c6" pos="0.016188 -0.025685 0.014859" quat="-0.000008 0.707103 0.002406 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+      </body>
+      <body name="rf_bs" pos="0.1495 0.06 0.00951" quat="0.4999981634 0.5 -0.5 0.5000018366">
+        <inertial pos="-0.0249553502 -0.04969792354 -9.767521666e-05" mass="0.07775232361" fullinertia="2.402793296e-05 2.279474367e-05 2.846964274e-05 -7.829927674e-06 7.49774139e-08 9.273841483e-09" />
+        <joint name="rf_mcp" class="mcp" pos="0 0 0" axis="0 0 1" />
+        <geom name="rf_bs_visual" class="visual" mesh="ring_link1" material="white" />
+        <geom name="rf_bs_collision" class="collision" mesh="ring_link1" />
+        <body name="rf_px" pos="-0.03577 -0.067483 0" quat="0.4991474413 -0.4991492748 -0.5008511137 0.500849274">
+          <inertial pos="-0.009825654214 -0.0005720398152 -0.03465676241" mass="0.02724420241" fullinertia="2.847885185e-06 3.927357053e-06 4.171312684e-06 -2.743097554e-08 3.498644046e-09 9.297683418e-11" />
+          <joint name="rf_rot" class="rot" pos="0 0 0" axis="0 0 1" />
+          <geom name="rf_px_visual" class="visual" mesh="ring_link2" material="white" />
+          <geom name="rf_px_collision" class="collision" mesh="ring_link2" />
+          <body name="rf_md" pos="-0.016049 -5.4793e-05 -0.035977" quat="-7.586870913e-06 -0.002406546151 0.7071039847 -0.7071054825">
+            <inertial pos="0.04578279431 -0.004037096816 0.0002145767498" mass="0.04693729099" fullinertia="1.01421539e-05 1.18373976e-05 1.114691766e-05 1.632705629e-06 1.06396801e-08 -5.16209509e-08" />
+            <joint name="rf_pip" class="pip" pos="0 0 0" axis="0 0 1" />
+            <geom name="rf_md_visual" class="visual" mesh="ring_link3" material="white" />
+            <geom name="rf_md_collision" class="collision" mesh="ring_link3" />
+            <body name="rf_ds" pos="0.059 0.00020143 -0.0002" quat="0.7059023776 0 0 0.7083091368">
+              <inertial pos="-0.000147243776 -0.03804437152 0.0003796335634" mass="0.02161107438" fullinertia="6.75675602e-06 4.820424239e-06 4.350788248e-06 -2.816556338e-07 3.806376673e-09 -5.347317544e-08" />
+              <joint name="rf_dip" class="dip" pos="0 0 0" axis="0 0 1" />
+              <geom name="rf_ds_visual" class="visual" mesh="ring_tip" material="sensor_blue" />
+              <geom name="rf_ds_collision" class="collision" mesh="ring_tip" />
+              <site name="tx_rf_tip_r0_c0" pos="0.010815 -0.040555 -0.013957" quat="0.010812 0.927473 -0.026901 0.372766" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_rf_tip_r0_c1" pos="0.014136 -0.040539 -0.009980" quat="0.006635 0.882365 -0.012447 0.470354" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_rf_tip_r0_c2" pos="0.016342 -0.040533 -0.005174" quat="0.000619 0.807431 -0.000847 0.589961" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_rf_tip_r0_c3" pos="0.017129 -0.040532 0.000102" quat="-0.003266 0.694107 0.003149 0.719858" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_rf_tip_r0_c4" pos="0.016332 -0.040533 0.005375" quat="0.001314 0.569935 -0.000911 0.821688" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_rf_tip_r0_c5" pos="0.014132 -0.040539 0.010183" quat="0.013352 0.454914 -0.006822 0.890409" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_rf_tip_r0_c6" pos="0.010796 -0.040554 0.014152" quat="0.021421 0.372634 -0.008605 0.927691" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_rf_tip_r1_c0" pos="0.010499 -0.045572 -0.013900" quat="0.016242 0.927644 -0.040622 0.370895" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_rf_tip_r1_c1" pos="0.013898 -0.045555 -0.009973" quat="0.014284 0.884612 -0.027155 0.465317" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_rf_tip_r1_c2" pos="0.016202 -0.045551 -0.005191" quat="0.012294 0.810858 -0.017044 0.584865" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_rf_tip_r1_c3" pos="0.017040 -0.045552 0.000102" quat="0.012538 0.693687 -0.012079 0.720066" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_rf_tip_r1_c4" pos="0.016187 -0.045551 0.005391" quat="0.017721 0.567286 -0.012211 0.823240" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_rf_tip_r1_c5" pos="0.013886 -0.045555 0.010170" quat="0.028556 0.447238 -0.014288 0.893845" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_rf_tip_r1_c6" pos="0.010496 -0.045573 0.014101" quat="0.040308 0.373183 -0.016232 0.926739" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_rf_tip_r2_c0" pos="0.009982 -0.050596 -0.013832" quat="0.023817 0.937706 -0.065619 0.340345" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_rf_tip_r2_c1" pos="0.013485 -0.050581 -0.009975" quat="0.024837 0.890021 -0.048840 0.452615" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_rf_tip_r2_c2" pos="0.015882 -0.050581 -0.005211" quat="0.023722 0.812154 -0.033102 0.582020" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_rf_tip_r2_c3" pos="0.016758 -0.050586 0.000103" quat="0.028088 0.693333 -0.027065 0.719561" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_rf_tip_r2_c4" pos="0.015863 -0.050580 0.005412" quat="0.033979 0.567186 -0.023430 0.822555" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_rf_tip_r2_c5" pos="0.013469 -0.050580 0.010175" quat="0.049519 0.442759 -0.024499 0.894937" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_rf_tip_r2_c6" pos="0.009968 -0.050595 0.014028" quat="0.068911 0.325162 -0.023766 0.942845" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_rf_tip_r3_c0" pos="0.009224 -0.055604 -0.013777" quat="0.033485 0.937705 -0.094379 0.332689" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_rf_tip_r3_c1" pos="0.012813 -0.055592 -0.009991" quat="0.035252 0.880978 -0.066483 0.467135" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_rf_tip_r3_c2" pos="0.015235 -0.055596 -0.005225" quat="0.044517 0.806768 -0.061289 0.585992" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_rf_tip_r3_c3" pos="0.016114 -0.055603 0.000104" quat="0.057339 0.692530 -0.055385 0.716970" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_rf_tip_r3_c4" pos="0.015214 -0.055594 0.005430" quat="0.064139 0.571406 -0.044863 0.816926" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_rf_tip_r3_c5" pos="0.012773 -0.055588 0.010188" quat="0.066607 0.451848 -0.033856 0.888960" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_rf_tip_r3_c6" pos="0.009176 -0.055599 0.013971" quat="0.096644 0.330483 -0.034042 0.938233" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_rf_tip_r4_c0" pos="0.008128 -0.060541 -0.013739" quat="0.041785 0.938560 -0.122598 0.319889" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_rf_tip_r4_c1" pos="0.011791 -0.060540 -0.010021" quat="0.053579 0.888654 -0.107590 0.442546" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_rf_tip_r4_c2" pos="0.014167 -0.060537 -0.005236" quat="0.080720 0.799501 -0.110336 0.584900" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_rf_tip_r4_c3" pos="0.014996 -0.060539 0.000101" quat="0.103450 0.679802 -0.097749 0.719453" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_rf_tip_r4_c4" pos="0.014160 -0.060537 0.005438" quat="0.108169 0.584993 -0.079108 0.799890" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_rf_tip_r4_c5" pos="0.011764 -0.060539 0.010218" quat="0.107778 0.467542 -0.057557 0.875486" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_rf_tip_r4_c6" pos="0.008103 -0.060540 0.013938" quat="0.117710 0.331504 -0.041727 0.935151" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_rf_tip_r5_c0" pos="0.006234 -0.065201 -0.013626" quat="0.114824 0.885138 -0.314455 0.323210" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_rf_tip_r5_c1" pos="0.010050 -0.065260 -0.010057" quat="0.129544 0.843014 -0.234011 0.466675" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_rf_tip_r5_c2" pos="0.012447 -0.065269 -0.005267" quat="0.131686 0.777741 -0.173714 0.589577" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_rf_tip_r5_c3" pos="0.013216 -0.065256 0.000101" quat="0.143496 0.677398 -0.137233 0.708313" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_rf_tip_r5_c4" pos="0.012454 -0.065273 0.005471" quat="0.178408 0.584795 -0.133771 0.779930" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_rf_tip_r5_c5" pos="0.010049 -0.065265 0.010256" quat="0.234155 0.466690 -0.129637 0.842951" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+              <site name="tx_rf_tip_r5_c6" pos="0.006242 -0.065206 0.013822" quat="0.331537 0.300117 -0.112128 0.887379" size="0.001500" rgba="0.2 0.85 1.0 0.9" group="0" />
+            </body>
+            <site name="tx_rf_distal_pad_r0_c0" pos="0.024457 0.016184 -0.015100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_rf_distal_pad_r0_c1" pos="0.024457 0.016184 -0.010100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_rf_distal_pad_r0_c2" pos="0.024457 0.016184 -0.005100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_rf_distal_pad_r0_c3" pos="0.024457 0.016184 -0.000100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_rf_distal_pad_r0_c4" pos="0.024457 0.016184 0.004900" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_rf_distal_pad_r0_c5" pos="0.024457 0.016184 0.009900" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_rf_distal_pad_r0_c6" pos="0.024457 0.016184 0.014900" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_rf_distal_pad_r1_c0" pos="0.029457 0.016201 -0.015100" quat="0.500852 -0.499146 -0.500853 -0.499145" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_rf_distal_pad_r1_c1" pos="0.029457 0.016201 -0.010100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_rf_distal_pad_r1_c2" pos="0.029457 0.016201 -0.005100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_rf_distal_pad_r1_c3" pos="0.029457 0.016201 -0.000100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_rf_distal_pad_r1_c4" pos="0.029457 0.016201 0.004900" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_rf_distal_pad_r1_c5" pos="0.029457 0.016201 0.009900" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_rf_distal_pad_r1_c6" pos="0.029457 0.016201 0.014900" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_rf_distal_pad_r2_c0" pos="0.034457 0.016218 -0.015100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_rf_distal_pad_r2_c1" pos="0.034457 0.016218 -0.010100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_rf_distal_pad_r2_c2" pos="0.034457 0.016218 -0.005100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_rf_distal_pad_r2_c3" pos="0.034457 0.016218 -0.000100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_rf_distal_pad_r2_c4" pos="0.034457 0.016218 0.004900" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_rf_distal_pad_r2_c5" pos="0.034457 0.016218 0.009900" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_rf_distal_pad_r2_c6" pos="0.034457 0.016218 0.014900" quat="0.500853 -0.499145 -0.500852 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_rf_distal_pad_r3_c0" pos="0.039457 0.016235 -0.015100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_rf_distal_pad_r3_c1" pos="0.039457 0.016235 -0.010100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_rf_distal_pad_r3_c2" pos="0.039457 0.016235 -0.005100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_rf_distal_pad_r3_c3" pos="0.039457 0.016235 -0.000100" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_rf_distal_pad_r3_c4" pos="0.039457 0.016235 0.004900" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_rf_distal_pad_r3_c5" pos="0.039457 0.016235 0.009900" quat="0.500853 -0.499146 -0.500853 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+            <site name="tx_rf_distal_pad_r3_c6" pos="0.039457 0.016235 0.014900" quat="0.500853 -0.499145 -0.500852 -0.499146" size="0.001500" rgba="1.0 0.7 0.2 0.9" group="0" />
+          </body>
+        </body>
+        <site name="tx_rf_mid_pad_r0_c0" pos="0.016239 -0.040787 -0.015090" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_rf_mid_pad_r0_c1" pos="0.016239 -0.040770 -0.010090" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_rf_mid_pad_r0_c2" pos="0.016239 -0.040753 -0.005090" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_rf_mid_pad_r0_c3" pos="0.016239 -0.040736 -0.000090" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_rf_mid_pad_r0_c4" pos="0.016239 -0.040719 0.004910" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_rf_mid_pad_r0_c5" pos="0.016239 -0.040702 0.009910" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_rf_mid_pad_r0_c6" pos="0.016239 -0.040685 0.014910" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_rf_mid_pad_r1_c0" pos="0.016222 -0.035787 -0.015107" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_rf_mid_pad_r1_c1" pos="0.016222 -0.035770 -0.010107" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_rf_mid_pad_r1_c2" pos="0.016222 -0.035753 -0.005107" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_rf_mid_pad_r1_c3" pos="0.016222 -0.035736 -0.000107" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_rf_mid_pad_r1_c4" pos="0.016222 -0.035719 0.004893" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_rf_mid_pad_r1_c5" pos="0.016222 -0.035702 0.009893" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_rf_mid_pad_r1_c6" pos="0.016222 -0.035685 0.014893" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_rf_mid_pad_r2_c0" pos="0.016205 -0.030787 -0.015124" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_rf_mid_pad_r2_c1" pos="0.016205 -0.030770 -0.010124" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_rf_mid_pad_r2_c2" pos="0.016205 -0.030753 -0.005124" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_rf_mid_pad_r2_c3" pos="0.016205 -0.030736 -0.000124" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_rf_mid_pad_r2_c4" pos="0.016205 -0.030719 0.004876" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_rf_mid_pad_r2_c5" pos="0.016205 -0.030702 0.009876" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_rf_mid_pad_r2_c6" pos="0.016205 -0.030685 0.014876" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_rf_mid_pad_r3_c0" pos="0.016188 -0.025787 -0.015140" quat="-0.000008 0.707102 0.002406 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_rf_mid_pad_r3_c1" pos="0.016188 -0.025770 -0.010140" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_rf_mid_pad_r3_c2" pos="0.016188 -0.025753 -0.005141" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_rf_mid_pad_r3_c3" pos="0.016188 -0.025736 -0.000141" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_rf_mid_pad_r3_c4" pos="0.016188 -0.025719 0.004859" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_rf_mid_pad_r3_c5" pos="0.016188 -0.025702 0.009859" quat="-0.000008 0.707103 0.002407 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+        <site name="tx_rf_mid_pad_r3_c6" pos="0.016188 -0.025685 0.014859" quat="-0.000008 0.707103 0.002406 0.707107" size="0.001500" rgba="1.0 0.85 0.2 0.9" group="0" />
+      </body>
+      <body name="th_mp" pos="0.0678 -0.06865 0.00995" quat="0.5 -0.5 0.5 -0.5">
+        <inertial pos="-0.0005384912739 0.006228106176 -0.03465898546" mass="0.02724420242" fullinertia="3.927531772e-06 2.847698173e-06 4.171324979e-06 -2.374513117e-08 0 -1.022739526e-10" />
+        <joint name="th_cmc" class="thumb_cmc" pos="0 0 0" axis="0 0 -1" />
+        <geom name="th_mp_visual" class="visual" mesh="thumb_link1" material="white" />
+        <geom name="th_mp_collision" class="collision" mesh="thumb_link1" />
+        <body name="th_bs" pos="0 1e-05 -0.036" quat="0.4999981634 0.5 -0.5000018366 -0.5">
+          <inertial pos="0 0 -0.02977048425" mass="0.00631322406" fullinertia="2.659747712e-06 1.215936241e-06 2.198131808e-06 0 0 0" />
+          <joint name="th_axl" class="thumb_axl" pos="0 0 0" axis="0 0 -1" />
+          <geom name="th_bs_visual" class="visual" mesh="thumb_link2" material="white" />
+          <geom name="th_bs_collision" class="collision" mesh="thumb_link2" />
+          <body name="th_px" pos="0 -0.0001 -0.05" quat="0.4999981634 0.5 -0.5 0.5000018366">
+            <inertial pos="-0.02067951312 -3.720144609e-05 -0.0004271856844" mass="0.04111463757" fullinertia="7.626286252e-06 1.037973537e-05 7.548536928e-06 1.182443266e-07 2.428489126e-08 -3.919902158e-09" />
+            <joint name="th_mcp" class="thumb_mcp" pos="0 0 0" axis="0 0 1" />
+            <geom name="th_px_visual" class="visual" mesh="thumb_link3" quat="0 1 0 0" material="sensor_blue" />
+            <geom name="th_px_collision" class="collision" mesh="thumb_link3" quat="0 1 0 0" />
+            <body name="th_ds" pos="-0.07285 0 -4e-05" quat="0.9999993793 0 0 0.001114199769">
+              <inertial pos="-0.02310395466 -0.0001059294091 0.0002555663529" mass="0.04308710167" fullinertia="5.668932777e-06 8.063068882e-06 6.969447956e-06 -2.85616334e-07 -7.599062352e-09 -4.470501987e-09" />
+              <joint name="th_ipl" class="thumb_ipl" pos="0 0 0" axis="0 0 1" />
+              <geom name="th_ds_visual" class="visual" mesh="thumb_tip" quat="0 1 0 0" material="sensor_blue" />
+              <geom name="th_ds_collision" class="collision" mesh="thumb_tip" quat="0 1 0 0" />
+              <site name="tx_th_tip_r0_c0" pos="-0.043811 -0.010644 0.014005" quat="0.636946 0.275452 0.261534 -0.670840" size="0.001500" rgba="0.3 0.9 1.0 0.9" group="0" />
+              <site name="tx_th_tip_r0_c1" pos="-0.043796 -0.013979 0.010036" quat="0.619081 0.327037 0.316291 -0.640114" size="0.001500" rgba="0.3 0.9 1.0 0.9" group="0" />
+              <site name="tx_th_tip_r0_c2" pos="-0.043789 -0.016178 0.005228" quat="0.579098 0.404335 0.401671 -0.582940" size="0.001500" rgba="0.3 0.9 1.0 0.9" group="0" />
+              <site name="tx_th_tip_r0_c3" pos="-0.043788 -0.016976 -0.000044" quat="0.510460 0.489422 0.492200 -0.507579" size="0.001500" rgba="0.3 0.9 1.0 0.9" group="0" />
+              <site name="tx_th_tip_r0_c4" pos="-0.043789 -0.016195 -0.005320" quat="0.416014 0.572512 0.569364 -0.418314" size="0.001500" rgba="0.3 0.9 1.0 0.9" group="0" />
+              <site name="tx_th_tip_r0_c5" pos="-0.043796 -0.013996 -0.010127" quat="0.327322 0.633777 0.614044 -0.337841" size="0.001500" rgba="0.3 0.9 1.0 0.9" group="0" />
+              <site name="tx_th_tip_r0_c6" pos="-0.043811 -0.010679 -0.014108" quat="0.255477 0.675930 0.635647 -0.271667" size="0.001500" rgba="0.3 0.9 1.0 0.9" group="0" />
+              <site name="tx_th_tip_r1_c0" pos="-0.048829 -0.010334 0.013954" quat="0.625633 0.275788 0.251933 -0.684875" size="0.001500" rgba="0.3 0.9 1.0 0.9" group="0" />
+              <site name="tx_th_tip_r1_c1" pos="-0.048811 -0.013723 0.010023" quat="0.610737 0.326871 0.305585 -0.653279" size="0.001500" rgba="0.3 0.9 1.0 0.9" group="0" />
+              <site name="tx_th_tip_r1_c2" pos="-0.048807 -0.016024 0.005244" quat="0.568572 0.410436 0.391797 -0.595621" size="0.001500" rgba="0.3 0.9 1.0 0.9" group="0" />
+              <site name="tx_th_tip_r1_c3" pos="-0.048808 -0.016879 -0.000044" quat="-0.499413 -0.499874 -0.481117 0.518883" size="0.001500" rgba="0.3 0.9 1.0 0.9" group="0" />
+              <site name="tx_th_tip_r1_c4" pos="-0.048807 -0.016046 -0.005336" quat="0.404148 0.586373 0.560311 -0.422946" size="0.001500" rgba="0.3 0.9 1.0 0.9" group="0" />
+              <site name="tx_th_tip_r1_c5" pos="-0.048811 -0.013748 -0.010121" quat="0.318349 0.645751 0.605212 -0.339673" size="0.001500" rgba="0.3 0.9 1.0 0.9" group="0" />
+              <site name="tx_th_tip_r1_c6" pos="-0.048828 -0.010351 -0.014051" quat="0.250310 0.685737 0.626050 -0.274175" size="0.001500" rgba="0.3 0.9 1.0 0.9" group="0" />
+              <site name="tx_th_tip_r2_c0" pos="-0.053850 -0.009796 0.013881" quat="0.616742 0.247093 0.212698 -0.716473" size="0.001500" rgba="0.3 0.9 1.0 0.9" group="0" />
+              <site name="tx_th_tip_r2_c1" pos="-0.053836 -0.013297 0.010028" quat="0.596659 0.330906 0.295190 -0.668851" size="0.001500" rgba="0.3 0.9 1.0 0.9" group="0" />
+              <site name="tx_th_tip_r2_c2" pos="-0.053836 -0.015690 0.005265" quat="0.556572 0.418284 0.383780 -0.606612" size="0.001500" rgba="0.3 0.9 1.0 0.9" group="0" />
+              <site name="tx_th_tip_r2_c3" pos="-0.053841 -0.016588 -0.000043" quat="-0.488042 -0.510201 -0.470252 0.529502" size="0.001500" rgba="0.3 0.9 1.0 0.9" group="0" />
+              <site name="tx_th_tip_r2_c4" pos="-0.053837 -0.015716 -0.005356" quat="0.394045 0.598626 0.549852 -0.428998" size="0.001500" rgba="0.3 0.9 1.0 0.9" group="0" />
+              <site name="tx_th_tip_r2_c5" pos="-0.053836 -0.013326 -0.010123" quat="0.301908 0.664890 0.593671 -0.338126" size="0.001500" rgba="0.3 0.9 1.0 0.9" group="0" />
+              <site name="tx_th_tip_r2_c6" pos="-0.053850 -0.009828 -0.013982" quat="0.223380 0.710509 0.615447 -0.257883" size="0.001500" rgba="0.3 0.9 1.0 0.9" group="0" />
+              <site name="tx_th_tip_r3_c0" pos="-0.058851 -0.008998 0.013824" quat="0.593844 0.258116 0.209175 -0.732783" size="0.001500" rgba="0.3 0.9 1.0 0.9" group="0" />
+              <site name="tx_th_tip_r3_c1" pos="-0.058841 -0.012592 0.010040" quat="0.580337 0.343949 0.294979 -0.676680" size="0.001500" rgba="0.3 0.9 1.0 0.9" group="0" />
+              <site name="tx_th_tip_r3_c2" pos="-0.058848 -0.015038 0.005284" quat="0.531237 0.436403 0.371578 -0.623915" size="0.001500" rgba="0.3 0.9 1.0 0.9" group="0" />
+              <site name="tx_th_tip_r3_c3" pos="-0.058858 -0.015942 -0.000042" quat="-0.465494 -0.529624 -0.449627 0.548315" size="0.001500" rgba="0.3 0.9 1.0 0.9" group="0" />
+              <site name="tx_th_tip_r3_c4" pos="-0.058850 -0.015065 -0.005371" quat="0.382119 0.614708 0.526085 -0.446490" size="0.001500" rgba="0.3 0.9 1.0 0.9" group="0" />
+              <site name="tx_th_tip_r3_c5" pos="-0.058845 -0.012645 -0.010137" quat="0.304780 0.670938 0.574791 -0.355762" size="0.001500" rgba="0.3 0.9 1.0 0.9" group="0" />
+              <site name="tx_th_tip_r3_c6" pos="-0.058856 -0.009063 -0.013928" quat="0.211127 0.730810 0.595075 -0.259284" size="0.001500" rgba="0.3 0.9 1.0 0.9" group="0" />
+              <site name="tx_th_tip_r4_c0" pos="-0.063790 -0.007918 0.013789" quat="0.576747 0.264264 0.204453 -0.745471" size="0.001500" rgba="0.3 0.9 1.0 0.9" group="0" />
+              <site name="tx_th_tip_r4_c1" pos="-0.063791 -0.011583 0.010069" quat="0.552356 0.360641 0.286742 -0.694709" size="0.001500" rgba="0.3 0.9 1.0 0.9" group="0" />
+              <site name="tx_th_tip_r4_c2" pos="-0.063791 -0.013988 0.005293" quat="-0.488024 -0.470201 -0.356913 0.642928" size="0.001500" rgba="0.3 0.9 1.0 0.9" group="0" />
+              <site name="tx_th_tip_r4_c3" pos="-0.063796 -0.014831 -0.000044" quat="-0.434585 -0.550514 -0.410635 0.582623" size="0.001500" rgba="0.3 0.9 1.0 0.9" group="0" />
+              <site name="tx_th_tip_r4_c4" pos="-0.063792 -0.014003 -0.005382" quat="0.355706 0.644183 0.486214 -0.471272" size="0.001500" rgba="0.3 0.9 1.0 0.9" group="0" />
+              <site name="tx_th_tip_r4_c5" pos="-0.063792 -0.011623 -0.010166" quat="0.274442 0.705393 0.551093 -0.351282" size="0.001500" rgba="0.3 0.9 1.0 0.9" group="0" />
+              <site name="tx_th_tip_r4_c6" pos="-0.063791 -0.007963 -0.013887" quat="0.196213 0.751335 0.575691 -0.256078" size="0.001500" rgba="0.3 0.9 1.0 0.9" group="0" />
+              <site name="tx_th_tip_r5_c0" pos="-0.068475 -0.006105 0.013682" quat="-0.391567 -0.291727 -0.132430 0.862573" size="0.001500" rgba="0.3 0.9 1.0 0.9" group="0" />
+              <site name="tx_th_tip_r5_c1" pos="-0.068529 -0.009903 0.010110" quat="-0.429183 -0.422073 -0.237612 0.762363" size="0.001500" rgba="0.3 0.9 1.0 0.9" group="0" />
+              <site name="tx_th_tip_r5_c2" pos="-0.068533 -0.012300 0.005323" quat="-0.424183 -0.508646 -0.318055 0.678372" size="0.001500" rgba="0.3 0.9 1.0 0.9" group="0" />
+              <site name="tx_th_tip_r5_c3" pos="-0.068514 -0.013056 -0.000044" quat="-0.398357 -0.576683 -0.380970 0.603001" size="0.001500" rgba="0.3 0.9 1.0 0.9" group="0" />
+              <site name="tx_th_tip_r5_c4" pos="-0.068529 -0.012297 -0.005411" quat="0.322907 0.673508 0.425962 -0.510562" size="0.001500" rgba="0.3 0.9 1.0 0.9" group="0" />
+              <site name="tx_th_tip_r5_c5" pos="-0.068524 -0.009917 -0.010206" quat="0.237667 0.762306 0.429329 -0.421996" size="0.001500" rgba="0.3 0.9 1.0 0.9" group="0" />
+              <site name="tx_th_tip_r5_c6" pos="-0.068469 -0.006113 -0.013784" quat="0.146822 0.848928 0.402085 -0.309988" size="0.001500" rgba="0.3 0.9 1.0 0.9" group="0" />
+            </body>
+            <site name="tx_th_pad_r0_c0" pos="-0.032585 -0.014560 0.014913" quat="0.500000 0.500000 0.500000 -0.500000" size="0.001500" rgba="1.0 0.6 0.2 0.9" group="0" />
+            <site name="tx_th_pad_r0_c1" pos="-0.032585 -0.014560 0.009913" quat="0.500000 0.500000 0.500000 -0.500000" size="0.001500" rgba="1.0 0.6 0.2 0.9" group="0" />
+            <site name="tx_th_pad_r0_c2" pos="-0.032585 -0.014560 0.004913" quat="0.500000 0.500000 0.500000 -0.500000" size="0.001500" rgba="1.0 0.6 0.2 0.9" group="0" />
+            <site name="tx_th_pad_r0_c3" pos="-0.032585 -0.014560 -0.000087" quat="0.500000 0.500000 0.500000 -0.500000" size="0.001500" rgba="1.0 0.6 0.2 0.9" group="0" />
+            <site name="tx_th_pad_r0_c4" pos="-0.032585 -0.014560 -0.005087" quat="0.500000 0.500000 0.500000 -0.500000" size="0.001500" rgba="1.0 0.6 0.2 0.9" group="0" />
+            <site name="tx_th_pad_r0_c5" pos="-0.032585 -0.014560 -0.010087" quat="0.500000 0.500000 0.500000 -0.500000" size="0.001500" rgba="1.0 0.6 0.2 0.9" group="0" />
+            <site name="tx_th_pad_r0_c6" pos="-0.032585 -0.014560 -0.015087" quat="0.500000 0.500000 0.500000 -0.500000" size="0.001500" rgba="1.0 0.6 0.2 0.9" group="0" />
+            <site name="tx_th_pad_r1_c0" pos="-0.037585 -0.014560 0.014913" quat="0.500000 0.500000 0.500000 -0.500000" size="0.001500" rgba="1.0 0.6 0.2 0.9" group="0" />
+            <site name="tx_th_pad_r1_c1" pos="-0.037585 -0.014560 0.009913" quat="0.500000 0.500000 0.500000 -0.500000" size="0.001500" rgba="1.0 0.6 0.2 0.9" group="0" />
+            <site name="tx_th_pad_r1_c2" pos="-0.037585 -0.014560 0.004913" quat="0.500000 0.500000 0.500000 -0.500000" size="0.001500" rgba="1.0 0.6 0.2 0.9" group="0" />
+            <site name="tx_th_pad_r1_c3" pos="-0.037585 -0.014560 -0.000087" quat="0.500000 0.500000 0.500000 -0.500000" size="0.001500" rgba="1.0 0.6 0.2 0.9" group="0" />
+            <site name="tx_th_pad_r1_c4" pos="-0.037585 -0.014560 -0.005087" quat="0.500000 0.500000 0.500000 -0.500000" size="0.001500" rgba="1.0 0.6 0.2 0.9" group="0" />
+            <site name="tx_th_pad_r1_c5" pos="-0.037585 -0.014560 -0.010087" quat="0.500000 0.500000 0.500000 -0.500000" size="0.001500" rgba="1.0 0.6 0.2 0.9" group="0" />
+            <site name="tx_th_pad_r1_c6" pos="-0.037585 -0.014560 -0.015087" quat="0.500000 0.500000 0.500000 -0.500000" size="0.001500" rgba="1.0 0.6 0.2 0.9" group="0" />
+            <site name="tx_th_pad_r2_c0" pos="-0.042585 -0.014560 0.014913" quat="0.500000 0.500000 0.500000 -0.500000" size="0.001500" rgba="1.0 0.6 0.2 0.9" group="0" />
+            <site name="tx_th_pad_r2_c1" pos="-0.042585 -0.014560 0.009913" quat="0.500000 0.500000 0.500000 -0.500000" size="0.001500" rgba="1.0 0.6 0.2 0.9" group="0" />
+            <site name="tx_th_pad_r2_c2" pos="-0.042585 -0.014560 0.004913" quat="0.500000 0.500000 0.500000 -0.500000" size="0.001500" rgba="1.0 0.6 0.2 0.9" group="0" />
+            <site name="tx_th_pad_r2_c3" pos="-0.042585 -0.014560 -0.000087" quat="0.500000 0.500000 0.500000 -0.500000" size="0.001500" rgba="1.0 0.6 0.2 0.9" group="0" />
+            <site name="tx_th_pad_r2_c4" pos="-0.042585 -0.014560 -0.005087" quat="0.500000 0.500000 0.500000 -0.500000" size="0.001500" rgba="1.0 0.6 0.2 0.9" group="0" />
+            <site name="tx_th_pad_r2_c5" pos="-0.042585 -0.014560 -0.010087" quat="0.500000 0.500000 0.500000 -0.500000" size="0.001500" rgba="1.0 0.6 0.2 0.9" group="0" />
+            <site name="tx_th_pad_r2_c6" pos="-0.042585 -0.014560 -0.015087" quat="0.500000 0.500000 0.500000 -0.500000" size="0.001500" rgba="1.0 0.6 0.2 0.9" group="0" />
+            <site name="tx_th_pad_r3_c0" pos="-0.047585 -0.014560 0.014913" quat="0.500000 0.500000 0.500000 -0.500000" size="0.001500" rgba="1.0 0.6 0.2 0.9" group="0" />
+            <site name="tx_th_pad_r3_c1" pos="-0.047585 -0.014560 0.009913" quat="0.500000 0.500000 0.500000 -0.500000" size="0.001500" rgba="1.0 0.6 0.2 0.9" group="0" />
+            <site name="tx_th_pad_r3_c2" pos="-0.047585 -0.014560 0.004913" quat="0.500000 0.500000 0.500000 -0.500000" size="0.001500" rgba="1.0 0.6 0.2 0.9" group="0" />
+            <site name="tx_th_pad_r3_c3" pos="-0.047585 -0.014560 -0.000087" quat="0.500000 0.500000 0.500000 -0.500000" size="0.001500" rgba="1.0 0.6 0.2 0.9" group="0" />
+            <site name="tx_th_pad_r3_c4" pos="-0.047585 -0.014560 -0.005087" quat="0.500000 0.500000 0.500000 -0.500000" size="0.001500" rgba="1.0 0.6 0.2 0.9" group="0" />
+            <site name="tx_th_pad_r3_c5" pos="-0.047585 -0.014560 -0.010087" quat="0.500000 0.500000 0.500000 -0.500000" size="0.001500" rgba="1.0 0.6 0.2 0.9" group="0" />
+            <site name="tx_th_pad_r3_c6" pos="-0.047585 -0.014560 -0.015087" quat="0.500000 0.500000 0.500000 -0.500000" size="0.001500" rgba="1.0 0.6 0.2 0.9" group="0" />
+          </body>
+        </body>
+      </body>
+      <site name="tx_palm_r0_c0" pos="0.098798 -0.016611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r0_c1" pos="0.098798 -0.011611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r0_c2" pos="0.098798 -0.006611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r0_c3" pos="0.098798 -0.001611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r0_c4" pos="0.098798 0.003389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r0_c5" pos="0.098798 0.008389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r0_c6" pos="0.098798 0.013389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r0_c7" pos="0.098798 0.018389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r0_c8" pos="0.098798 0.023389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r0_c9" pos="0.098798 0.028389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r0_c10" pos="0.098798 0.033389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r0_c11" pos="0.098798 0.038389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r0_c12" pos="0.098798 0.043389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r0_c13" pos="0.098798 0.048389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r0_c14" pos="0.098798 0.053389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r0_c15" pos="0.098798 0.058389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r1_c0" pos="0.093798 -0.016611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r1_c1" pos="0.093798 -0.011611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r1_c2" pos="0.093798 -0.006611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r1_c3" pos="0.093798 -0.001611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r1_c4" pos="0.093798 0.003389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r1_c5" pos="0.093798 0.008389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r1_c6" pos="0.093798 0.013389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r1_c7" pos="0.093798 0.018389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r1_c8" pos="0.093798 0.023389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r1_c9" pos="0.093798 0.028389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r1_c10" pos="0.093798 0.033389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r1_c11" pos="0.093798 0.038389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r1_c12" pos="0.093798 0.043389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r1_c13" pos="0.093798 0.048389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r1_c14" pos="0.093798 0.053389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r1_c15" pos="0.093798 0.058389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r2_c0" pos="0.088798 -0.016611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r2_c1" pos="0.088798 -0.011611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r2_c2" pos="0.088798 -0.006611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r2_c3" pos="0.088798 -0.001611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r2_c4" pos="0.088798 0.003389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r2_c5" pos="0.088798 0.008389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r2_c6" pos="0.088798 0.013389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r2_c7" pos="0.088798 0.018389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r2_c8" pos="0.088798 0.023389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r2_c9" pos="0.088798 0.028389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r2_c10" pos="0.088798 0.033389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r2_c11" pos="0.088798 0.038389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r2_c12" pos="0.088798 0.043389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r2_c13" pos="0.088798 0.048389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r2_c14" pos="0.088798 0.053389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r2_c15" pos="0.088798 0.058389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r3_c0" pos="0.083798 -0.016611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r3_c1" pos="0.083798 -0.011611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r3_c2" pos="0.083798 -0.006611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r3_c3" pos="0.083798 -0.001611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r3_c4" pos="0.083798 0.003389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r3_c5" pos="0.083798 0.008389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r3_c6" pos="0.083798 0.013389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r3_c7" pos="0.083798 0.018389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r3_c8" pos="0.083798 0.023389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r3_c9" pos="0.083798 0.028389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r3_c10" pos="0.083798 0.033389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r3_c11" pos="0.083798 0.038389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r3_c12" pos="0.083798 0.043389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r3_c13" pos="0.083798 0.048389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r3_c14" pos="0.083798 0.053389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r3_c15" pos="0.083798 0.058389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r4_c0" pos="0.078798 -0.016611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r4_c1" pos="0.078798 -0.011611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r4_c2" pos="0.078798 -0.006611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r4_c3" pos="0.078798 -0.001611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r4_c4" pos="0.078798 0.003389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r4_c5" pos="0.078798 0.008389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r4_c6" pos="0.078798 0.013389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r4_c7" pos="0.078798 0.018389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r4_c8" pos="0.078798 0.023389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r4_c9" pos="0.078798 0.028389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r4_c10" pos="0.078798 0.033389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r4_c11" pos="0.078798 0.038389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r4_c12" pos="0.078798 0.043389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r4_c13" pos="0.078798 0.048389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r4_c14" pos="0.078798 0.053389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r4_c15" pos="0.078798 0.058389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r5_c0" pos="0.073798 -0.016611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r5_c1" pos="0.073798 -0.011611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r5_c2" pos="0.073798 -0.006611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r5_c3" pos="0.073798 -0.001611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r5_c4" pos="0.073798 0.003389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r5_c5" pos="0.073798 0.008389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r5_c6" pos="0.073798 0.013389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r5_c7" pos="0.073798 0.018389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r5_c8" pos="0.073798 0.023389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r5_c9" pos="0.073798 0.028389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r5_c10" pos="0.073798 0.033389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r5_c11" pos="0.073798 0.038389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r5_c12" pos="0.073798 0.043389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r5_c13" pos="0.073798 0.048389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r5_c14" pos="0.073798 0.053389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r5_c15" pos="0.073798 0.058389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r6_c0" pos="0.068798 -0.016611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r6_c1" pos="0.068798 -0.011611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r6_c2" pos="0.068798 -0.006611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r6_c3" pos="0.068798 -0.001611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r6_c4" pos="0.068798 0.003389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r6_c5" pos="0.068798 0.008389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r6_c6" pos="0.068798 0.013389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r6_c7" pos="0.068798 0.018389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r6_c8" pos="0.068798 0.023389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r6_c9" pos="0.068798 0.028389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r6_c10" pos="0.068798 0.033389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r6_c11" pos="0.068798 0.038389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r6_c12" pos="0.068798 0.043389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r6_c13" pos="0.068798 0.048389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r6_c14" pos="0.068798 0.053389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r6_c15" pos="0.068798 0.058389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r7_c0" pos="0.063798 -0.016611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r7_c1" pos="0.063798 -0.011611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r7_c2" pos="0.063798 -0.006611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r7_c3" pos="0.063798 -0.001611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r7_c4" pos="0.063798 0.003389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r7_c5" pos="0.063798 0.008389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r7_c6" pos="0.063798 0.013389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r7_c7" pos="0.063798 0.018389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r7_c8" pos="0.063798 0.023389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r7_c9" pos="0.063798 0.028389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r7_c10" pos="0.063798 0.033389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r7_c11" pos="0.063798 0.038389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r7_c12" pos="0.063798 0.043389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r7_c13" pos="0.063798 0.048389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r7_c14" pos="0.063798 0.053389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r7_c15" pos="0.063798 0.058389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r8_c0" pos="0.058798 -0.016611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r8_c1" pos="0.058798 -0.011611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r8_c2" pos="0.058798 -0.006611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r8_c3" pos="0.058798 -0.001611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r8_c4" pos="0.058798 0.003389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r8_c5" pos="0.058798 0.008389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r8_c6" pos="0.058798 0.013389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r8_c7" pos="0.058798 0.018389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r8_c8" pos="0.058798 0.023389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r8_c9" pos="0.058798 0.028389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r8_c10" pos="0.058798 0.033389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r8_c11" pos="0.058798 0.038389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r8_c12" pos="0.058798 0.043389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r8_c13" pos="0.058798 0.048389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r8_c14" pos="0.058798 0.053389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r8_c15" pos="0.058798 0.058389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r9_c0" pos="0.053798 -0.016611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r9_c1" pos="0.053798 -0.011611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r9_c2" pos="0.053798 -0.006611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r9_c3" pos="0.053798 -0.001611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r9_c4" pos="0.053798 0.003389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r9_c5" pos="0.053798 0.008389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r9_c6" pos="0.053798 0.013389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r9_c7" pos="0.053798 0.018389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r9_c8" pos="0.053798 0.023389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r9_c9" pos="0.053798 0.028389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r9_c10" pos="0.053798 0.033389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r9_c11" pos="0.053798 0.038389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r9_c12" pos="0.053798 0.043389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r9_c13" pos="0.053798 0.048389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r9_c14" pos="0.053798 0.053389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r9_c15" pos="0.053798 0.058389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r10_c0" pos="0.048798 -0.016611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r10_c1" pos="0.048798 -0.011611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r10_c2" pos="0.048798 -0.006611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r10_c3" pos="0.048798 -0.001611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r10_c4" pos="0.048798 0.003389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r10_c5" pos="0.048798 0.008389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r10_c6" pos="0.048798 0.013389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r10_c7" pos="0.048798 0.018389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r10_c8" pos="0.048798 0.023389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r10_c9" pos="0.048798 0.028389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r10_c10" pos="0.048798 0.033389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r10_c11" pos="0.048798 0.038389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r10_c12" pos="0.048798 0.043389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r10_c13" pos="0.048798 0.048389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r10_c14" pos="0.048798 0.053389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r10_c15" pos="0.048798 0.058389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r11_c0" pos="0.043798 -0.016611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r11_c1" pos="0.043798 -0.011611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r11_c2" pos="0.043798 -0.006611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r11_c3" pos="0.043798 -0.001611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r11_c4" pos="0.043798 0.003389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r11_c5" pos="0.043798 0.008389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r11_c6" pos="0.043798 0.013389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r11_c7" pos="0.043798 0.018389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r11_c8" pos="0.043798 0.023389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r11_c9" pos="0.043798 0.028389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r11_c10" pos="0.043798 0.033389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r11_c11" pos="0.043798 0.038389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r11_c12" pos="0.043798 0.043389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r11_c13" pos="0.043798 0.048389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r11_c14" pos="0.043798 0.053389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r11_c15" pos="0.043798 0.058389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r12_c0" pos="0.038798 -0.016611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r12_c1" pos="0.038798 -0.011611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r12_c2" pos="0.038798 -0.006611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r12_c3" pos="0.038798 -0.001611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r12_c4" pos="0.038798 0.003389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r12_c5" pos="0.038798 0.008389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r12_c6" pos="0.038798 0.013389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r12_c7" pos="0.038798 0.018389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r12_c8" pos="0.038798 0.023389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r12_c9" pos="0.038798 0.028389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r12_c10" pos="0.038798 0.033389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r12_c11" pos="0.038798 0.038389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r12_c12" pos="0.038798 0.043389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r12_c13" pos="0.038798 0.048389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r12_c14" pos="0.038798 0.053389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r12_c15" pos="0.038798 0.058389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r13_c0" pos="0.033798 -0.016611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r13_c1" pos="0.033798 -0.011611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r13_c2" pos="0.033798 -0.006611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r13_c3" pos="0.033798 -0.001611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r13_c4" pos="0.033798 0.003389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r13_c5" pos="0.033798 0.008389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r13_c6" pos="0.033798 0.013389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r13_c7" pos="0.033798 0.018389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r13_c8" pos="0.033798 0.023389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r13_c9" pos="0.033798 0.028389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r13_c10" pos="0.033798 0.033389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r13_c11" pos="0.033798 0.038389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r13_c12" pos="0.033798 0.043389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r13_c13" pos="0.033798 0.048389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r13_c14" pos="0.033798 0.053389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r13_c15" pos="0.033798 0.058389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r14_c0" pos="0.028798 -0.016611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r14_c1" pos="0.028798 -0.011611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r14_c2" pos="0.028798 -0.006611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r14_c3" pos="0.028798 -0.001611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r14_c4" pos="0.028798 0.003389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r14_c5" pos="0.028798 0.008389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r14_c6" pos="0.028798 0.013389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r14_c7" pos="0.028798 0.018389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r14_c8" pos="0.028798 0.023389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r14_c9" pos="0.028798 0.028389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r14_c10" pos="0.028798 0.033389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r14_c11" pos="0.028798 0.038389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r14_c12" pos="0.028798 0.043389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r14_c13" pos="0.028798 0.048389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r14_c14" pos="0.028798 0.053389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r14_c15" pos="0.028798 0.058389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r15_c0" pos="0.023798 -0.016611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r15_c1" pos="0.023798 -0.011611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r15_c2" pos="0.023798 -0.006611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r15_c3" pos="0.023798 -0.001611 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r15_c4" pos="0.023798 0.003389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r15_c5" pos="0.023798 0.008389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r15_c6" pos="0.023798 0.013389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r15_c7" pos="0.023798 0.018389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r15_c8" pos="0.023798 0.023389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r15_c9" pos="0.023798 0.028389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r15_c10" pos="0.023798 0.033389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r15_c11" pos="0.023798 0.038389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r15_c12" pos="0.023798 0.043389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r15_c13" pos="0.023798 0.048389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r15_c14" pos="0.023798 0.053389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+      <site name="tx_palm_r15_c15" pos="0.023798 0.058389 0.035500" quat="0.707107 0.000000 0.000000 0.707107" size="0.002200" rgba="0.1 1.0 0.4 0.8" group="0" />
+    </body>
+  </worldbody>
+</mujoco>

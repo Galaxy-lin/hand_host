@@ -1,0 +1,116 @@
+{
+  "joints": [
+    {
+      "name": "Thumb_joint0",
+      "motor_id": 1,
+      "min_angle": -200.0,
+      "max_angle": 200.0,
+      "default_angle": 0.0
+    },
+    {
+      "name": "Thumb_joint1",
+      "motor_id": 2,
+      "min_angle": -200.0,
+      "max_angle": 200.0,
+      "default_angle": 0.0
+    },
+    {
+      "name": "Thumb_joint2",
+      "motor_id": 3,
+      "min_angle": -200.0,
+      "max_angle": 200.0,
+      "default_angle": 0.0
+    },
+    {
+      "name": "Thumb_joint3",
+      "motor_id": 4,
+      "min_angle": -200.0,
+      "max_angle": 200.0,
+      "default_angle": 0.0
+    },
+    {
+      "name": "Index_joint1",
+      "motor_id": 5,
+      "min_angle": -200.0,
+      "max_angle": 200.0,
+      "default_angle": 0.0
+    },
+    {
+      "name": "Index_joint2",
+      "motor_id": 6,
+      "min_angle": -200.0,
+      "max_angle": 200.0,
+      "default_angle": 0.0
+    },
+    {
+      "name": "Index_joint3",
+      "motor_id": 7,
+      "min_angle": -200.0,
+      "max_angle": 200.0,
+      "default_angle": 0.0
+    },
+    {
+      "name": "Index_joint4",
+      "motor_id": 8,
+      "min_angle": -200.0,
+      "max_angle": 200.0,
+      "default_angle": 0.0
+    },
+    {
+      "name": "Middle_joint1",
+      "motor_id": 9,
+      "min_angle": -200.0,
+      "max_angle": 200.0,
+      "default_angle": 0.0
+    },
+    {
+      "name": "Middle_joint2",
+      "motor_id": 10,
+      "min_angle": -200.0,
+      "max_angle": 200.0,
+      "default_angle": 0.0
+    },
+    {
+      "name": "Middle_joint3",
+      "motor_id": 11,
+      "min_angle": -200.0,
+      "max_angle": 200.0,
+      "default_angle": 0.0
+    },
+    {
+      "name": "Middle_joint4",
+      "motor_id": 12,
+      "min_angle": -200.0,
+      "max_angle": 200.0,
+      "default_angle": 0.0
+    },
+    {
+      "name": "Ring_joint1",
+      "motor_id": 13,
+      "min_angle": -200.0,
+      "max_angle": 200.0,
+      "default_angle": 0.0
+    },
+    {
+      "name": "Ring_joint2",
+      "motor_id": 14,
+      "min_angle": -200.0,
+      "max_angle": 200.0,
+      "default_angle": 0.0
+    },
+    {
+      "name": "Ring_joint3",
+      "motor_id": 15,
+      "min_angle": -200.0,
+      "max_angle": 200.0,
+      "default_angle": 0.0
+    },
+    {
+      "name": "Ring_joint4",
+      "motor_id": 16,
+      "min_angle": -200.0,
+      "max_angle": 200.0,
+      "default_angle": 0.0
+    }
+  ]
+}

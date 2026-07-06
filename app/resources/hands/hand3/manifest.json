@@ -1,0 +1,512 @@
+{
+  "schema": "dexhand.hand.v1",
+  "hand_id": "hand3",
+  "display_name": "hand3 hand1升级版",
+  "preset": false,
+  "removable": true,
+  "driver": {
+    "kind": "python",
+    "path": "driver_adapter/driver.py",
+    "class": "HandDriver"
+  },
+  "motor": {
+    "kind": "python_adapter",
+    "protocols": [
+      "hand1"
+    ],
+    "default_protocol": "hand1",
+    "default_baudrates": {
+      "hand1": 230400
+    },
+    "force_control_supported": true,
+    "adapter_config": {
+      "command_debounce_ms": 16,
+      "telemetry_period_ms": 150,
+      "merge_interval_ms": 16,
+      "telemetry_interval_ms": 150
+    },
+    "actuator_order": [
+      "th1",
+      "th2",
+      "th3",
+      "th4",
+      "idx1",
+      "idx2",
+      "idx3",
+      "idx4",
+      "mid1",
+      "mid2",
+      "mid3",
+      "mid4",
+      "rng1",
+      "rng2",
+      "rng3",
+      "rng4"
+    ]
+  },
+  "tactile": {
+    "kind": "external_python",
+    "default_baudrate": 460800,
+    "adapter_config": {
+      "frame_format": "patches",
+      "value_scale": 255.0,
+      "baseline_frames": 30,
+      "baseline_threshold": 0.0
+    },
+    "layout": {
+      "patches": [
+        {
+          "name": "palm",
+          "display_name": "手掌",
+          "group": "手掌",
+          "rows": 16,
+          "cols": 16,
+          "display_transform": "identity",
+          "site_transform": "flip_horizontal"
+        },
+        {
+          "name": "if_mid_pad",
+          "display_name": "食指中节垫",
+          "group": "食指",
+          "rows": 4,
+          "cols": 7,
+          "display_transform": "identity",
+          "site_transform": "identity"
+        },
+        {
+          "name": "if_distal_pad",
+          "display_name": "食指远节垫",
+          "group": "食指",
+          "rows": 4,
+          "cols": 7,
+          "display_transform": "identity",
+          "site_transform": "flip_vertical"
+        },
+        {
+          "name": "if_tip",
+          "display_name": "食指指尖",
+          "group": "食指",
+          "rows": 6,
+          "cols": 7,
+          "display_transform": "identity",
+          "site_transform": "flip_vertical"
+        },
+        {
+          "name": "mf_mid_pad",
+          "display_name": "中指中节垫",
+          "group": "中指",
+          "rows": 4,
+          "cols": 7,
+          "display_transform": "identity",
+          "site_transform": "identity"
+        },
+        {
+          "name": "mf_distal_pad",
+          "display_name": "中指远节垫",
+          "group": "中指",
+          "rows": 4,
+          "cols": 7,
+          "display_transform": "identity",
+          "site_transform": "flip_vertical"
+        },
+        {
+          "name": "mf_tip",
+          "display_name": "中指指尖",
+          "group": "中指",
+          "rows": 6,
+          "cols": 7,
+          "display_transform": "identity",
+          "site_transform": "flip_vertical"
+        },
+        {
+          "name": "rf_mid_pad",
+          "display_name": "无名指中节垫",
+          "group": "无名指",
+          "rows": 4,
+          "cols": 7,
+          "display_transform": "identity",
+          "site_transform": "identity"
+        },
+        {
+          "name": "rf_distal_pad",
+          "display_name": "无名指远节垫",
+          "group": "无名指",
+          "rows": 4,
+          "cols": 7,
+          "display_transform": "identity",
+          "site_transform": "flip_vertical"
+        },
+        {
+          "name": "rf_tip",
+          "display_name": "无名指指尖",
+          "group": "无名指",
+          "rows": 6,
+          "cols": 7,
+          "display_transform": "identity",
+          "site_transform": "flip_vertical"
+        },
+        {
+          "name": "th_pad",
+          "display_name": "拇指掌侧垫",
+          "group": "拇指",
+          "rows": 4,
+          "cols": 7,
+          "display_transform": "identity",
+          "site_transform": "rotate_180"
+        },
+        {
+          "name": "th_tip",
+          "display_name": "拇指指尖",
+          "group": "拇指",
+          "rows": 6,
+          "cols": 7,
+          "display_transform": "identity",
+          "site_transform": "rotate_180"
+        }
+      ]
+    },
+    "adapter_path": "tactile_adapter/tactile_adapter.py",
+    "adapter_class": "TactileAdapter"
+  },
+  "teleop": {
+    "kind": "external_python",
+    "wrist_link_name": "base_link",
+    "adapter_config": {
+      "input": "mediapipe_21x3_or_features",
+      "output_unit": "degree",
+      "smoothing_alpha": 0.55,
+      "rate_limit_rad_per_s": 8.0,
+      "paired_k": 5,
+      "paired_sigma": 0.45
+    },
+    "tip_link_names": [
+      "thumb_tip",
+      "index_tip",
+      "middle_tip",
+      "ring_tip"
+    ],
+    "joint_names": [
+      "thumb_joint_1",
+      "thumb_joint_2",
+      "thumb_joint_3",
+      "thumb_joint_4",
+      "index_joint_1",
+      "index_joint_2",
+      "index_joint_3",
+      "index_joint_4",
+      "middle_joint_1",
+      "middle_joint_2",
+      "middle_joint_3",
+      "middle_joint_4",
+      "ring_joint_1",
+      "ring_joint_2",
+      "ring_joint_3",
+      "ring_joint_4"
+    ],
+    "adapter_path": "teleop_adapter/teleop_adapter.py",
+    "adapter_class": "TeleopAdapter"
+  },
+  "resources": {
+    "model": "model/1.xml",
+    "calibration": "calibration.json",
+    "gestures": "gestures"
+  },
+  "fingers": [
+    {
+      "name": "thumb",
+      "display_name": "拇指",
+      "joints": [
+        {
+          "name": "thumb_joint_1",
+          "display_name": "关节1",
+          "motor_id": 1,
+          "min_angle": -10.0,
+          "max_angle": 90.0,
+          "default_angle": 0.0,
+          "torque_limit": 150.0,
+          "actuator_name": "th1"
+        },
+        {
+          "name": "thumb_joint_2",
+          "display_name": "关节2",
+          "motor_id": 2,
+          "min_angle": -10.0,
+          "max_angle": 120.0,
+          "default_angle": 0.0,
+          "torque_limit": 150.0,
+          "actuator_name": "th2"
+        },
+        {
+          "name": "thumb_joint_3",
+          "display_name": "关节3",
+          "motor_id": 3,
+          "min_angle": -45.0,
+          "max_angle": 45.0,
+          "default_angle": 0.0,
+          "torque_limit": 150.0,
+          "actuator_name": "th3"
+        },
+        {
+          "name": "thumb_joint_4",
+          "display_name": "关节4",
+          "motor_id": 4,
+          "min_angle": 0.0,
+          "max_angle": 90.0,
+          "default_angle": 0.0,
+          "torque_limit": 150.0,
+          "actuator_name": "th4"
+        }
+      ]
+    },
+    {
+      "name": "index",
+      "display_name": "食指",
+      "joints": [
+        {
+          "name": "index_joint_1",
+          "display_name": "关节1",
+          "motor_id": 5,
+          "min_angle": -10.0,
+          "max_angle": 45.0,
+          "default_angle": 0.0,
+          "torque_limit": 150.0,
+          "actuator_name": "idx1"
+        },
+        {
+          "name": "index_joint_2",
+          "display_name": "关节2",
+          "motor_id": 6,
+          "min_angle": 0.0,
+          "max_angle": 90.0,
+          "default_angle": 0.0,
+          "torque_limit": 150.0,
+          "actuator_name": "idx2"
+        },
+        {
+          "name": "index_joint_3",
+          "display_name": "关节3",
+          "motor_id": 7,
+          "min_angle": 0.0,
+          "max_angle": 90.0,
+          "default_angle": 0.0,
+          "torque_limit": 150.0,
+          "actuator_name": "idx3"
+        },
+        {
+          "name": "index_joint_4",
+          "display_name": "关节4",
+          "motor_id": 8,
+          "min_angle": 0.0,
+          "max_angle": 90.0,
+          "default_angle": 0.0,
+          "torque_limit": 150.0,
+          "actuator_name": "idx4"
+        }
+      ]
+    },
+    {
+      "name": "middle",
+      "display_name": "中指",
+      "joints": [
+        {
+          "name": "middle_joint_1",
+          "display_name": "关节1",
+          "motor_id": 9,
+          "min_angle": -10.0,
+          "max_angle": 10.0,
+          "default_angle": 0.0,
+          "torque_limit": 150.0,
+          "actuator_name": "mid1"
+        },
+        {
+          "name": "middle_joint_2",
+          "display_name": "关节2",
+          "motor_id": 10,
+          "min_angle": 0.0,
+          "max_angle": 90.0,
+          "default_angle": 0.0,
+          "torque_limit": 150.0,
+          "actuator_name": "mid2"
+        },
+        {
+          "name": "middle_joint_3",
+          "display_name": "关节3",
+          "motor_id": 11,
+          "min_angle": 0.0,
+          "max_angle": 90.0,
+          "default_angle": 0.0,
+          "torque_limit": 150.0,
+          "actuator_name": "mid3"
+        },
+        {
+          "name": "middle_joint_4",
+          "display_name": "关节4",
+          "motor_id": 12,
+          "min_angle": 0.0,
+          "max_angle": 90.0,
+          "default_angle": 0.0,
+          "torque_limit": 150.0,
+          "actuator_name": "mid4"
+        }
+      ]
+    },
+    {
+      "name": "ring",
+      "display_name": "无名指",
+      "joints": [
+        {
+          "name": "ring_joint_1",
+          "display_name": "关节1",
+          "motor_id": 13,
+          "min_angle": -45.0,
+          "max_angle": 10.0,
+          "default_angle": 0.0,
+          "torque_limit": 150.0,
+          "actuator_name": "rng1"
+        },
+        {
+          "name": "ring_joint_2",
+          "display_name": "关节2",
+          "motor_id": 14,
+          "min_angle": 0.0,
+          "max_angle": 90.0,
+          "default_angle": 0.0,
+          "torque_limit": 150.0,
+          "actuator_name": "rng2"
+        },
+        {
+          "name": "ring_joint_3",
+          "display_name": "关节3",
+          "motor_id": 15,
+          "min_angle": 0.0,
+          "max_angle": 90.0,
+          "default_angle": 0.0,
+          "torque_limit": 150.0,
+          "actuator_name": "rng3"
+        },
+        {
+          "name": "ring_joint_4",
+          "display_name": "关节4",
+          "motor_id": 16,
+          "min_angle": 0.0,
+          "max_angle": 90.0,
+          "default_angle": 0.0,
+          "torque_limit": 150.0,
+          "actuator_name": "rng4"
+        }
+      ]
+    }
+  ],
+  "gestures": {
+    "builtin": {
+      "张开": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "握拳": [
+        40.11,
+        68.75,
+        11.46,
+        60.16,
+        31.51,
+        68.75,
+        68.75,
+        60.16,
+        0.0,
+        68.75,
+        68.75,
+        60.16,
+        -20.05,
+        68.75,
+        68.75,
+        60.16
+      ],
+      "捏取": [
+        40.11,
+        63.03,
+        5.73,
+        40.11,
+        14.32,
+        51.57,
+        42.97,
+        31.51,
+        0.0,
+        8.59,
+        5.73,
+        2.86,
+        0.0,
+        5.73,
+        2.86,
+        0.0
+      ],
+      "指向": [
+        20.05,
+        42.97,
+        2.86,
+        31.51,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        68.75,
+        68.75,
+        60.16,
+        -20.05,
+        68.75,
+        68.75,
+        60.16
+      ],
+      "三指抓取": [
+        34.38,
+        57.3,
+        5.73,
+        42.97,
+        20.05,
+        54.43,
+        48.7,
+        40.11,
+        0.0,
+        54.43,
+        48.7,
+        40.11,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "竖大拇指": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        31.51,
+        68.75,
+        68.75,
+        60.16,
+        0.0,
+        68.75,
+        68.75,
+        60.16,
+        -20.05,
+        68.75,
+        68.75,
+        60.16
+      ]
+    }
+  }
+}

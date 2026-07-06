@@ -1,0 +1,492 @@
+{
+  "schema": "dexhand.integration_kit.v1",
+  "hand_id": "hand2",
+  "display_name": "hand2 总线舵机手",
+  "model_xml": "model/right_hand_tactile.xml",
+  "driver": {
+    "source": "driver_adapter"
+  },
+  "driver_source": "driver_adapter",
+  "motor": {
+    "kind": "python_adapter",
+    "protocols": [
+      "controller",
+      "direct"
+    ],
+    "default_protocol": "controller",
+    "default_baudrates": {
+      "controller": 9600,
+      "direct": 115200
+    },
+    "actuator_order": [
+      "if_mcp_act",
+      "if_rot_act",
+      "if_pip_act",
+      "if_dip_act",
+      "mf_mcp_act",
+      "mf_rot_act",
+      "mf_pip_act",
+      "mf_dip_act",
+      "rf_mcp_act",
+      "rf_rot_act",
+      "rf_pip_act",
+      "rf_dip_act",
+      "th_cmc_act",
+      "th_axl_act",
+      "th_mcp_act",
+      "th_ipl_act"
+    ],
+    "force_control_supported": false,
+    "adapter_config": {
+      "command_debounce_ms": 30,
+      "telemetry_period_ms": 100,
+      "merge_interval_ms": 30,
+      "telemetry_interval_ms": 100,
+      "teleop_move_time_ms": 72,
+      "position_polling_enabled": false
+    }
+  },
+  "tactile": {
+    "default_baudrate": 460800,
+    "adapter_source": "tactile_adapter",
+    "layout": {
+      "patches": [
+        {
+          "group": "手掌",
+          "rows": 16,
+          "name": "palm",
+          "display_name": "手掌",
+          "cols": 16,
+          "site_transform": "flip_horizontal"
+        },
+        {
+          "group": "食指",
+          "rows": 4,
+          "name": "if_mid_pad",
+          "display_name": "食指中节垫",
+          "cols": 7,
+          "site_transform": "identity"
+        },
+        {
+          "group": "食指",
+          "rows": 4,
+          "name": "if_distal_pad",
+          "display_name": "食指远节垫",
+          "cols": 7,
+          "site_transform": "flip_vertical"
+        },
+        {
+          "group": "食指",
+          "rows": 6,
+          "name": "if_tip",
+          "display_name": "食指指尖",
+          "cols": 7,
+          "site_transform": "flip_vertical"
+        },
+        {
+          "group": "中指",
+          "rows": 4,
+          "name": "mf_mid_pad",
+          "display_name": "中指中节垫",
+          "cols": 7,
+          "site_transform": "identity"
+        },
+        {
+          "group": "中指",
+          "rows": 4,
+          "name": "mf_distal_pad",
+          "display_name": "中指远节垫",
+          "cols": 7,
+          "site_transform": "flip_vertical"
+        },
+        {
+          "group": "中指",
+          "rows": 6,
+          "name": "mf_tip",
+          "display_name": "中指指尖",
+          "cols": 7,
+          "site_transform": "flip_vertical"
+        },
+        {
+          "group": "无名指",
+          "rows": 4,
+          "name": "rf_mid_pad",
+          "display_name": "无名指中节垫",
+          "cols": 7,
+          "site_transform": "identity"
+        },
+        {
+          "group": "无名指",
+          "rows": 4,
+          "name": "rf_distal_pad",
+          "display_name": "无名指远节垫",
+          "cols": 7,
+          "site_transform": "flip_vertical"
+        },
+        {
+          "group": "无名指",
+          "rows": 6,
+          "name": "rf_tip",
+          "display_name": "无名指指尖",
+          "cols": 7,
+          "site_transform": "flip_vertical"
+        },
+        {
+          "group": "拇指",
+          "rows": 4,
+          "name": "th_pad",
+          "display_name": "拇指掌侧垫",
+          "cols": 7,
+          "site_transform": "rotate_180"
+        },
+        {
+          "group": "拇指",
+          "rows": 6,
+          "name": "th_tip",
+          "display_name": "拇指指尖",
+          "cols": 7,
+          "site_transform": "rotate_180"
+        }
+      ]
+    },
+    "adapter_config": {
+      "frame_format": "patches",
+      "baseline_threshold": 0,
+      "baseline_frames": 30,
+      "value_scale": 255
+    },
+    "kind": "external_python"
+  },
+  "teleop": {
+    "kind": "external_python",
+    "config": "teleop_config.json",
+    "pair_calibration": "teleop_pair_calibration.json",
+    "motor_to_sim_calibration": "motor_to_sim_calibration.json",
+    "wrist_link_name": "base_link",
+    "adapter_source": "teleop_adapter",
+    "adapter_config": {
+      "paired_sigma": 0.45,
+      "smoothing_alpha": 0.55,
+      "output_unit": "degree",
+      "rate_limit_rad_per_s": 8,
+      "input": "mediapipe_21x3_or_features",
+      "paired_k": 5
+    }
+  },
+  "fingers": [
+    {
+      "name": "index",
+      "display_name": "食指",
+      "joints": [
+        {
+          "name": "if_mcp",
+          "display_name": "MCP屈伸",
+          "motor_id": 5,
+          "min_angle": -17.99,
+          "max_angle": 111.73,
+          "default_angle": 0.0,
+          "torque_limit": 150.0,
+          "actuator_name": "if_mcp_act"
+        },
+        {
+          "name": "if_rot",
+          "display_name": "侧摆",
+          "motor_id": 6,
+          "min_angle": -59.99,
+          "max_angle": 59.99,
+          "default_angle": 0.0,
+          "torque_limit": 150.0,
+          "actuator_name": "if_rot_act"
+        },
+        {
+          "name": "if_pip",
+          "display_name": "PIP屈伸",
+          "motor_id": 7,
+          "min_angle": -28.99,
+          "max_angle": 108.0,
+          "default_angle": 0.0,
+          "torque_limit": 150.0,
+          "actuator_name": "if_pip_act"
+        },
+        {
+          "name": "if_dip",
+          "display_name": "DIP屈伸",
+          "motor_id": 8,
+          "min_angle": -20.97,
+          "max_angle": 117.0,
+          "default_angle": 0.0,
+          "torque_limit": 150.0,
+          "actuator_name": "if_dip_act"
+        }
+      ]
+    },
+    {
+      "name": "middle",
+      "display_name": "中指",
+      "joints": [
+        {
+          "name": "mf_mcp",
+          "display_name": "MCP屈伸",
+          "motor_id": 9,
+          "min_angle": -17.99,
+          "max_angle": 111.73,
+          "default_angle": 0.0,
+          "torque_limit": 150.0,
+          "actuator_name": "mf_mcp_act"
+        },
+        {
+          "name": "mf_rot",
+          "display_name": "侧摆",
+          "motor_id": 10,
+          "min_angle": -59.99,
+          "max_angle": 59.99,
+          "default_angle": 0.0,
+          "torque_limit": 150.0,
+          "actuator_name": "mf_rot_act"
+        },
+        {
+          "name": "mf_pip",
+          "display_name": "PIP屈伸",
+          "motor_id": 11,
+          "min_angle": -28.99,
+          "max_angle": 108.0,
+          "default_angle": 0.0,
+          "torque_limit": 150.0,
+          "actuator_name": "mf_pip_act"
+        },
+        {
+          "name": "mf_dip",
+          "display_name": "DIP屈伸",
+          "motor_id": 12,
+          "min_angle": -20.97,
+          "max_angle": 117.0,
+          "default_angle": 0.0,
+          "torque_limit": 150.0,
+          "actuator_name": "mf_dip_act"
+        }
+      ]
+    },
+    {
+      "name": "ring",
+      "display_name": "无名指",
+      "joints": [
+        {
+          "name": "rf_mcp",
+          "display_name": "MCP屈伸",
+          "motor_id": 13,
+          "min_angle": -17.99,
+          "max_angle": 111.73,
+          "default_angle": 0.0,
+          "torque_limit": 150.0,
+          "actuator_name": "rf_mcp_act"
+        },
+        {
+          "name": "rf_rot",
+          "display_name": "侧摆",
+          "motor_id": 14,
+          "min_angle": -59.99,
+          "max_angle": 59.99,
+          "default_angle": 0.0,
+          "torque_limit": 150.0,
+          "actuator_name": "rf_rot_act"
+        },
+        {
+          "name": "rf_pip",
+          "display_name": "PIP屈伸",
+          "motor_id": 15,
+          "min_angle": -28.99,
+          "max_angle": 108.0,
+          "default_angle": 0.0,
+          "torque_limit": 150.0,
+          "actuator_name": "rf_pip_act"
+        },
+        {
+          "name": "rf_dip",
+          "display_name": "DIP屈伸",
+          "motor_id": 16,
+          "min_angle": -20.97,
+          "max_angle": 117.0,
+          "default_angle": 0.0,
+          "torque_limit": 150.0,
+          "actuator_name": "rf_dip_act"
+        }
+      ]
+    },
+    {
+      "name": "thumb",
+      "display_name": "拇指",
+      "joints": [
+        {
+          "name": "th_cmc",
+          "display_name": "CMC屈伸",
+          "motor_id": 1,
+          "min_angle": -20.0,
+          "max_angle": 119.98,
+          "default_angle": 0.0,
+          "torque_limit": 150.0,
+          "actuator_name": "th_cmc_act"
+        },
+        {
+          "name": "th_axl",
+          "display_name": "对掌",
+          "motor_id": 2,
+          "min_angle": -119.98,
+          "max_angle": 20.0,
+          "default_angle": 0.0,
+          "torque_limit": 150.0,
+          "actuator_name": "th_axl_act"
+        },
+        {
+          "name": "th_mcp",
+          "display_name": "MCP屈伸",
+          "motor_id": 3,
+          "min_angle": -26.93,
+          "max_angle": 139.97,
+          "default_angle": 0.0,
+          "torque_limit": 150.0,
+          "actuator_name": "th_mcp_act"
+        },
+        {
+          "name": "th_ipl",
+          "display_name": "IP屈伸",
+          "motor_id": 4,
+          "min_angle": -76.78,
+          "max_angle": 107.72,
+          "default_angle": 0.0,
+          "torque_limit": 150.0,
+          "actuator_name": "th_ipl_act"
+        }
+      ]
+    }
+  ],
+  "gestures": {
+    "builtin": {
+      "张开": [
+        1.15,
+        0.0,
+        0.0,
+        0.0,
+        1.15,
+        0.0,
+        0.0,
+        0.0,
+        1.15,
+        0.0,
+        0.0,
+        0.0,
+        5.73,
+        -14.32,
+        1.15,
+        1.15
+      ],
+      "握拳": [
+        77.35,
+        0.0,
+        83.08,
+        71.62,
+        77.35,
+        0.0,
+        83.08,
+        71.62,
+        77.35,
+        0.0,
+        83.08,
+        71.62,
+        74.48,
+        -77.35,
+        83.08,
+        68.75
+      ],
+      "捏取": [
+        60.16,
+        0.0,
+        60.16,
+        48.7,
+        1.15,
+        0.0,
+        0.0,
+        0.0,
+        1.15,
+        0.0,
+        0.0,
+        0.0,
+        63.03,
+        -48.7,
+        54.43,
+        45.84
+      ],
+      "指向": [
+        1.15,
+        0.0,
+        0.0,
+        0.0,
+        77.35,
+        0.0,
+        83.08,
+        71.62,
+        77.35,
+        0.0,
+        83.08,
+        71.62,
+        48.7,
+        -42.97,
+        48.7,
+        42.97
+      ],
+      "OK 手势": [
+        60.16,
+        0.0,
+        60.16,
+        48.7,
+        1.15,
+        0.0,
+        0.0,
+        0.0,
+        1.15,
+        0.0,
+        0.0,
+        0.0,
+        63.03,
+        -48.7,
+        54.43,
+        45.84
+      ],
+      "三指抓取": [
+        48.7,
+        0.0,
+        54.43,
+        42.97,
+        48.7,
+        0.0,
+        54.43,
+        42.97,
+        1.15,
+        0.0,
+        0.0,
+        0.0,
+        60.16,
+        -42.97,
+        48.7,
+        40.11
+      ],
+      "竖大拇指": [
+        77.35,
+        0.0,
+        83.08,
+        71.62,
+        77.35,
+        0.0,
+        83.08,
+        71.62,
+        77.35,
+        0.0,
+        83.08,
+        71.62,
+        5.73,
+        -14.32,
+        1.15,
+        1.15
+      ]
+    }
+  }
+}
